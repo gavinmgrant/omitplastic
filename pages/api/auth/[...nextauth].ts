@@ -17,3 +17,11 @@ const options = {
   adapter: Adapters.Prisma.Adapter({ prisma }),
   secret: process.env.SECRET,
 };
+
+declare global {
+  namespace NodeJS {
+    interface Global {
+      prisma: any;
+    }
+  }
+}
