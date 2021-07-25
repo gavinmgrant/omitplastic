@@ -5,9 +5,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ["ui-sans-serif", "Heebo"],
-      serif: ["ui-serif", "DM Serif Text"],
-      mono: ["ui-monospace", "SFMono-Regular"],
+      sans: ["Heebo", "ui-sans-serif"],
+      serif: ["DM Serif Text", "ui-serif"],
+      mono: ["SFMono-Regular", "ui-monospace"],
       display: ["Oswald"],
       body: ["Open Sans"],
     },
