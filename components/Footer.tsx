@@ -11,8 +11,9 @@ const Footer: React.FC = () => {
   const [session] = useSession();
 
   return (
-    <div className="flex items-center justify-between p-4 h-16">
+    <div className="flex flex-col text-center items-center justify-between px-4 py-6 md:text-left md:flex-row">
       <span>© 2021 OmitPlastic</span>
+      <p>As an Amazon Associate I earn from qualifying purchases.</p>
       {/* <nav>
         {!session ? (
           <div className="text-right">

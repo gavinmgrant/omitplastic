@@ -31,6 +31,7 @@ const Product: React.FC<ProductProps> = (props) => {
         <div className="col-span-3">
           <h2 className="font-serif text-xl py-4">{props.name}</h2>
           <p>{props.description}</p>
+          <p className="pt-2">When you buy this product using our links, we earn an affiliate commission to support the site. Thank you!</p>
           <ul className="flex">
             {props.urls.map((url) => (
               <li key={Object.keys(url)[0]} className="mr-4">
