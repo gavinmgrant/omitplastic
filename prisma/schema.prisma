@@ -15,7 +15,6 @@ model Product {
   name        String  
   imageUrl    String 
   urls        Json[]
-  slug        String  @unique
   description String? 
   features    String[]
 }

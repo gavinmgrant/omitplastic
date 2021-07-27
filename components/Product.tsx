@@ -10,7 +10,6 @@ export type ProductProps = {
   name: string;
   imageUrl: string;
   urls: object[];
-  slug: string;
   description: string;
   features: string[];
 };
