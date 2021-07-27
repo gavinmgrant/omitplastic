@@ -13,8 +13,20 @@ const Layout: React.FC<Props> = (props) => (
       <title>OmitPlastic</title>
       <meta
         name="description"
-        content="Helping people omit plastic from their online purchase."
+        content="Find plastic-free products, compostable products, reusable products, and more to reduce plastic pollution."
       />
+      <meta
+          property="og:title"
+          content="OmitPlastic"
+        />
+        <meta
+          property="og:description"
+          content="Find plastic-free products, compostable products, reusable products, and more to reduce plastic pollution."
+        />
+        <meta
+          property="og:image"
+          content="/public/images/beach-bottle.jpg"
+        />
     </Head>
     <Header />
     <div className="pt-16">{props.children}</div>
