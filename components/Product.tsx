@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import Feature from "./Feature";
 
@@ -15,6 +15,14 @@ export type ProductProps = {
 };
 
 const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
+  const [productName, setProductName] = useState(product.name);
+
+  useEffect(() => {
+    if (product.name.length > 130) {
+      setProductName(product.name.substring(0, 130) + "...");
+    }
+  }, [product.name]);
+
   return (
     <div
       onClick={() => Router.push("/product/[upc]", `/product/${product.upc}`)}
@@ -22,9 +30,9 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
     >
       <div className="flex justify-between">
         <div className="pt-2 pr-6 w-2/5 md:pr-10">
-          <img src={product.imageUrl} alt={product.name} />
+          <img src={product.imageUrl} alt={product.name} className="max-h-44" />
         </div>
-        <h2 className="w-3/5 font-serif text-lg">{product.name}</h2>
+        <h2 className="w-3/5 font-serif text-lg">{productName}</h2>
       </div>
 
       <div className="flex justify-between">

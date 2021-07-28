@@ -18,21 +18,23 @@ const SearchBar: React.FC<Props> = ({ value, feature }) => {
     <form
       action={`/products/${featureURL}`}
       method="get"
-      className="flex items-center md:mr-4 xl:mr-8"
+      className="w-full"
     >
       <label htmlFor="header-search">
         <span className="hidden">Search</span>
       </label>
-      <input
-        type="text"
-        id="header-search"
-        placeholder={!value ? "Search products" : value}
-        name="s"
-        className="border-solid border-2 border-black rounded-md p-1 w-full md:w-1/2 xl:w-1/3 focus:bg-green-100 outline-none"
-      />
-      <button type="submit" className="ml-1">
-        <IconSearch />
-      </button>
+      <div className="flex items-center relative">
+        <div className="absolute left-2">
+          <IconSearch />
+        </div>
+        <input
+          type="text"
+          id="header-search"
+          placeholder={!value ? "Search products" : value}
+          name="s"
+          className="border-solid border-2 border-black rounded-lg p-1 pl-10 bg-white focus:bg-white focus:shadow-lg outline-none w-full sm:w-1/2 lg:w-1/3 2xl:w-1/4"
+        />
+      </div>
     </form>
   );
 };

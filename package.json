@@ -20,6 +20,7 @@
     "react-markdown": "5.0.2",
     "react-search-field": "^2.0.1",
     "react-spring": "^9.2.4",
+    "react-tooltip": "^4.2.21",
     "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {

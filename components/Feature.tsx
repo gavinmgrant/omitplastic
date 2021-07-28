@@ -1,4 +1,5 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import {
   IconBan,
   IconPlant,
@@ -10,7 +11,11 @@ import {
   IconRepeat,
 } from "@tabler/icons";
 
+const ReactTooltip = dynamic(() => import("react-tooltip"), {
+  ssr: false,
+})
 interface Props {
+  key: any;
   feat: string;
   text: boolean;
 };
@@ -54,8 +59,9 @@ const Feature: React.FC<Props> = ({ feat, text }) => {
       icon = "";
   }
   return (
-    <li className="flex mb-2">
-      {icon}<span className="ml-2">{text && name}</span>
+    <li className="flex mb-2 items-center">
+      <span data-tip={!text ? name : ""} date-place="top">{icon}</span><span className="ml-2">{text && name}</span>
+      <ReactTooltip />
     </li>
   );
 };
