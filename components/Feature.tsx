@@ -16,38 +16,46 @@ interface Props {
 };
 
 const Feature: React.FC<Props> = ({ feat, text }) => {
-  let icon;
+  let icon, name;
   switch (feat) {
-    case "BPA-free":
+    case "bpa-free":
       icon = <IconBan />;
+      name = "BPA Free";
       break;
-    case "Compostable":
+    case "compostable":
       icon = <IconPlant />;
+      name = "Compostable";
       break;
-    case "Organic":
+    case "organic":
       icon = <IconPlant2 />;
+      name = "Organic";
       break;
-    case "Plant-based":
+    case "plant-based":
       icon = <IconLeaf />;
+      name = "Plant-based";
       break;
-    case "Plastic-free packaging":
+    case "plastic-free-packaging":
       icon = <IconPackage />;
+      name = "Plastic-free packaging";
       break;
-    case "Plastic-free product":
+    case "plastic-free-product":
       icon = <IconSquareMinus />;
+      name = "Plastic-free product";
       break;
-    case "Recycled content":
+    case "recycled-content":
       icon = <IconRecycle />;
+      name = "Recycled content";
       break;
-    case "Reusable":
+    case "reusable":
       icon = <IconRepeat />;
+      name = "Reusable";
       break;
     default:
       icon = "";
   }
   return (
     <li className="flex mb-2">
-      {icon}<span className="ml-2">{text && feat}</span>
+      {icon}<span className="ml-2">{text && name}</span>
     </li>
   );
 };

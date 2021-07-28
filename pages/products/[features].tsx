@@ -1,41 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Layout from "../components/Layout";
-import Product, { ProductProps } from "../components/Product";
-import SearchBar from "../components/SearchBar";
-import prisma from "../lib/prisma";
+import Head from "next/head";
+import Layout from "../../components/Layout";
+import Product, { ProductProps } from "../../components/Product";
+import SearchBar from "../../components/SearchBar";
+import prisma from "../../lib/prisma";
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const feed = await prisma.product.findMany({
-    orderBy: [
-      {
-        category: "asc",
+    where: {
+      features: {
+        has: String(params?.features),
       },
-      {
-        type: "asc",
-      },
-      {
-        name: "asc",
-      },
-    ],
+    },
   });
-
-  return { props: { feed } };
+  return {
+    props: { feed },
+  };
 };
 
 type Products = {
   feed: ProductProps[];
 };
 
-const ProductsPage: React.FC<Products> = (props) => {
+const FilteredProducts: React.FC<Products> = (props) => {
   const [products, setProducts] = useState([]);
   const [queryValue, setQueryValue] = useState("");
   const router = useRouter();
-
+  const feature = router.query.features;
   const showAll = () => {
-    setProducts(props.feed);
-    setQueryValue("");
+    router.push("/products");
   };
 
   useEffect(() => {
@@ -54,18 +49,17 @@ const ProductsPage: React.FC<Products> = (props) => {
     const filteredProducts = filterProducts(props.feed, query);
     setProducts(filteredProducts);
     query ? setQueryValue(query) : setQueryValue("");
-    router.push("/products");
   }, [queryValue]);
 
   return (
     <Layout>
       <div className="fixed w-screen top-16 left-0 h-20 px-4 pb-1 bg-white shadow-lg">
         <div>
-          <SearchBar value={queryValue} />
+          <SearchBar value={queryValue} feature={feature} />
         </div>
         <div className="flex justify-between pt-2">
           <p>{products.length} products found</p>
-          {queryValue && <button onClick={showAll}>Show all products</button>}
+          <button onClick={showAll}>Show all products</button>
         </div>
       </div>
 
@@ -89,4 +83,4 @@ const ProductsPage: React.FC<Products> = (props) => {
   );
 };
 
-export default ProductsPage;
+export default FilteredProducts;
