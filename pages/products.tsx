@@ -78,7 +78,7 @@ const ProductsPage: React.FC<Products> = (props) => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="p-4 hover:shadow-lg rounded-lg border-solid border border-gray-200"
+              className="p-4 hover:shadow-lg hover:border-black rounded-lg border-solid border-2 border-gray-200"
             >
               <Product key={product.id} product={product} />
             </div>
