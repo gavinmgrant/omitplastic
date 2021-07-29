@@ -9,7 +9,7 @@ import prisma from "../../lib/prisma";
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const product = await prisma.product.findUnique({
     where: {
-      upc: String(params?.upc),
+      barcode: String(params?.barcode),
     },
   });
   return {

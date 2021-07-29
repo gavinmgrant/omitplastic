@@ -9,6 +9,7 @@ generator client {
 
 model Product {
   id          Int     @default(autoincrement()) @id
+  barcode     String  @unique  
   upc         String  @unique
   category    String
   type        String
