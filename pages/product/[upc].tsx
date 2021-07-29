@@ -28,8 +28,8 @@ const Product: React.FC<ProductProps> = (props) => {
         <meta property="og:image" content={props.imageUrl} />
       </Head>
       <div className="grid grid-cols-1 sm:grid-cols-5 sm:gap-8 p-4">
-        <div className="col-span-2">
-          <img src={props.imageUrl} alt={props.name} />
+        <div className="col-span-2 flex flex-row justify-center items-center">
+          <img src={props.imageUrl} alt={props.name} className="max-h-96"/>
         </div>
         <div className="col-span-3">
           <h2 className="font-serif text-xl py-4">{props.name}</h2>
