@@ -57,13 +57,13 @@ const FilteredProducts: React.FC<Products> = (props) => {
 
   useEffect(() => {
     const feat = FeaturesList.find(name => Object.keys(name) == feature);
-    setFeatureName(Object.values(feat)[0].toLowerCase());
+    setFeatureName(Object.values(feat)[0]);
   }, [feature]);
   
   return (
     <Layout>
       <Head>
-        <title>Find {featureName} products</title>
+        <title>Find eco-friendly products: {featureName}</title>
         <meta property="og:title" content={`Find ${featureName} products`} />
       </Head>
       <div className="fixed w-full top-16 left-0 h-20 px-4 pb-1 bg-white shadow-lg">
@@ -81,16 +81,18 @@ const FilteredProducts: React.FC<Products> = (props) => {
         </div>
       </div>
 
+      <h2 className="pt-24 pb-5 text-center text-4xl">{featureName}</h2>
+
       {products.length === 0 ? (
-        <div className="pt-28 text-center h-screen">
+        <div className="text-center h-screen">
           <p>No products found.</p>
         </div>
       ) : (
-        <main className="pt-24 px-4 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <main className="px-4 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {products.map((product) => (
             <div
               key={product.id}
-              className="cursor-pointer p-4 hover:shadow-lg rounded-lg border-solid border border-gray-200"
+              className="p-4 hover:shadow-lg hover:border-black rounded-lg border-solid border-2 border-gray-200"
             >
               <Product product={product} />
             </div>
