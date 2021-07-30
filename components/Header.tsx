@@ -21,7 +21,7 @@ const Header: React.FC = () => {
           </a>
           {router.pathname.startsWith("/products") && (
             <div onClick={() => setMenuOn(!menuOn)} className="cursor-pointer">
-              {menuOn ? <IconX size={30} /> : <IconFilter size={30} />}
+              {menuOn ? <IconX size={28} /> : <IconFilter size={28} />}
             </div>
           )}
         </div>
