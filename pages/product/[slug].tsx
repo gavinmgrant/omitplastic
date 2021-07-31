@@ -29,7 +29,7 @@ const Product: React.FC<ProductProps> = (props) => {
       </Head>
       <div className="grid grid-cols-1 sm:grid-cols-5 sm:gap-8 p-4">
         <div className="col-span-2 flex flex-row justify-center items-center">
-          <img src={props.imageUrl} alt={props.name} className="max-h-96"/>
+          <img src={props.imageUrl} alt={props.name} className="max-h-96" />
         </div>
         <div className="col-span-3">
           <h2 className="font-serif text-xl py-4">{props.name}</h2>
@@ -41,7 +41,10 @@ const Product: React.FC<ProductProps> = (props) => {
           <ul className="flex">
             {props.urls.map((url, index) => (
               <li key={index} className="mr-4">
-                <button key={index} className="border-solid border-2 border-black rounded-full p-3 my-4 bg-black text-white hover:bg-white hover:text-black font-serif text-xl">
+                <button
+                  key={index}
+                  className="border-solid border-2 border-black rounded-full p-3 my-4 bg-black text-white hover:bg-white hover:text-black font-serif text-xl"
+                >
                   <a key={index} href={Object.values(url)[0]} target="_blank">
                     {Object.keys(url)[0]}
                   </a>
