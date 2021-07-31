@@ -1,10 +1,10 @@
 export const FeaturesList = [
-  { "bpa-free": "BPA-free" },
-  { "compostable": "Compostable" },
-  { "organic": "Organic" },
-  { "plant-based": "Plant-based" },
-  { "plastic-free-packaging": "Plastic-free packaging" },
-  { "plastic-free-product": "Plastic-free product" },
-  { "recycled-content": "Recycled content" },
-  { "reusable": "Reusable" },
+  { slug: "bpa-free", name: "BPA-free" },
+  { slug: "compostable", name: "Compostable" },
+  { slug: "organic", name: "Organic" },
+  { slug: "plant-based", name: "Plant-based" },
+  { slug: "plastic-free-packaging", name: "Plastic-free packaging" },
+  { slug: "plastic-free-product", name: "Plastic-free product" },
+  { slug: "recycled-content", name: "Recycled content" },
+  { slug: "reusable", name: "Reusable" },
 ];

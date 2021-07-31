@@ -32,12 +32,12 @@ const Header: React.FC = () => {
           {FeaturesList.map((feature, index) => (
             <a
               key={index}
-              href={`/products/${Object.keys(feature).toString()}`}
+              href={`/products/${feature.slug}`}
             >
               <div key={index} className="leading-8">
                 <Feature
                   key={index}
-                  feat={Object.keys(feature).toString()}
+                  feat={feature.slug}
                   text
                 />
               </div>

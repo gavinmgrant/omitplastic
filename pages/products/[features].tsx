@@ -56,8 +56,8 @@ const FilteredProducts: React.FC<Products> = (props) => {
   }, [queryValue]);
 
   useEffect(() => {
-    const feat = FeaturesList.find(name => Object.keys(name) == feature);
-    setFeatureName(Object.values(feat)[0]);
+    const feat = FeaturesList.find(f => f.slug == feature);
+    setFeatureName(feat.name);
   }, [feature]);
   
   return (

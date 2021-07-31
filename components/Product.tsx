@@ -8,6 +8,7 @@ export type ProductProps = {
   category: string;
   type: string;
   name: string;
+  slug: string;
   imageUrl: string;
   urls: object[];
   description: string;
@@ -27,7 +28,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
     <div className="h-60 lg:h-64 flex flex-col justify-between">
       <div
         className="flex justify-between cursor-pointer"
-        onClick={() => Router.push("/product/[barcode]", `/product/${product.barcode}`)}
+        onClick={() => Router.push("/product/[slug]", `/product/${product.slug}`)}
       >
         <div className="pt-2 pr-6 w-2/5 md:pr-10">
           <img src={product.imageUrl} alt={product.name} className="max-h-44" />

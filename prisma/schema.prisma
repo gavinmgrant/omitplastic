@@ -10,10 +10,11 @@ generator client {
 model Product {
   id          Int     @default(autoincrement()) @id
   barcode     String  @unique  
-  asin        String? @unique
+  asin        String  @unique
   category    String
   type        String
-  name        String  
+  name        String 
+  slug        String  @unique 
   imageUrl    String 
   urls        Json[]
   description String? 
