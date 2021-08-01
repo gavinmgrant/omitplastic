@@ -4,23 +4,12 @@ import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import Product, { ProductProps } from "../components/Product";
 import SearchBar from "../components/SearchBar";
-import prisma from "../lib/prisma";
+import useSWR from "swr";
+
+const fetcher = url => fetch(url).then(r => r.json());
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.product.findMany({
-    orderBy: [
-      {
-        category: "asc",
-      },
-      {
-        type: "asc",
-      },
-      {
-        name: "asc",
-      },
-    ],
-  });
-
+  const feed = await fetcher ('https://www.omitplastic.com/api/products');
   return { props: { feed } };
 };
 
@@ -33,8 +22,10 @@ const ProductsPage: React.FC<Products> = (props) => {
   const [queryValue, setQueryValue] = useState("");
   const router = useRouter();
 
+  const { data } = useSWR('/api/products', fetcher, { initialData: props.feed })
+
   const showAll = () => {
-    setProducts(props.feed);
+    setProducts(data);
     setQueryValue("");
   };
 
@@ -51,7 +42,12 @@ const ProductsPage: React.FC<Products> = (props) => {
         return name.includes(query);
       });
     };
-    const filteredProducts = filterProducts(props.feed, query);
+    const filteredProducts = filterProducts(data, query).sort((a, b) => {
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+      return aName.localeCompare(bName);
+    });
+    
     setProducts(filteredProducts);
     query ? setQueryValue(query) : setQueryValue("");
     router.push("/products");
