@@ -32,7 +32,7 @@ const SearchBar: React.FC<Props> = ({ value, feature }) => {
           id="header-search"
           placeholder={!value ? "Search products" : value}
           name="s"
-          className="border-solid border-2 border-black rounded-full p-1 pl-10 bg-white focus:bg-white focus:shadow-lg outline-none w-full"
+          className="border-solid border-2 border-gray-300 focus:border-black rounded-full p-1 pl-10 bg-white focus:bg-white focus:shadow-lg outline-none w-full"
         />
       </div>
     </form>

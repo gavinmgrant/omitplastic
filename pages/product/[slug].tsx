@@ -27,7 +27,7 @@ const Product: React.FC<ProductProps> = (props) => {
         <meta property="og:description" content={props.description} />
         <meta property="og:image" content={props.imageUrl} />
       </Head>
-      <div className="grid grid-cols-1 sm:grid-cols-5 sm:gap-8 p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-5 sm:gap-8 p-4 md:px-8">
         <div className="col-span-2 flex flex-row justify-center items-center">
           <img src={props.imageUrl} alt={props.name} className="max-h-96" />
         </div>
@@ -54,7 +54,7 @@ const Product: React.FC<ProductProps> = (props) => {
           </ul>
         </div>
       </div>
-      <div className="p-4">
+      <div className="p-4 md:px-8">
         <h2 className="font-serif text-xl mb-2">Features:</h2>
         <ul>
           {props.features.map((feature, index) => (

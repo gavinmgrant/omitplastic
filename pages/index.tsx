@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Layout from "../components/Layout";
+import Feature from "../components/Feature";
+import { FeaturesList } from "../lib/featuresList";
 import { useSpring, animated, config } from "react-spring";
 import VisibilitySensor from "react-visibility-sensor";
 import bottle from "../public/images/beach-bottle.jpg";
@@ -10,6 +13,7 @@ import plastic from "../public/images/plastic-pollution.jpg";
 
 const Home: React.FC = () => {
   const [isVisible, setVisibility] = useState(false);
+  const router = useRouter();
 
   const number = useSpring({
     delay: isVisible ? 100 : 10000,
@@ -122,6 +126,26 @@ const Home: React.FC = () => {
             </div>
           </Link>
         </h1>
+      </div>
+      <div className="md:h-screen flex flex-col justify-center items-center m-4 mb-12">
+        <h1 className="md:w-3/4 my-12 mx-4 md:mx-12 text-4xl xl:text-5xl text-center">
+          We've curated a collection of well-designed products that reduce
+          plastic pollution.
+        </h1>
+        <h2 className="mb-8 text-center leading-7">
+          Filter our collection of products by features that are important to
+          you:
+        </h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
+          {FeaturesList.map((feature, i) => (
+            <div
+              className="p-4 pt-6 rounded-lg border-2 border-gray-300 hover:border-black hover:shadow-lg cursor-pointer"
+              onClick={() => router.push("/products")}
+            >
+              <Feature key={i} feat={feature.slug} text />
+            </div>
+          ))}
+        </ul>
       </div>
     </Layout>
   );

@@ -89,7 +89,7 @@ const ProductsPage: React.FC<Products> = (props) => {
 
   return (
     <Layout>
-      <div className="fixed flex flex-col w-full top-16 left-0 h-20 sm:h-12 sm:flex-row px-4 pb-1 bg-white shadow-lg">
+      <div className="fixed flex flex-col w-full top-16 left-0 h-20 sm:h-12 sm:flex-row px-4 md:px-8 pb-1 bg-white shadow-lg">
         <SearchBar value={queryValue} />
         <div className="flex flex-row justify-between items-center mt-2 sm:ml-2 sm:mt-0 sm:mb-2 sm:w-full">
           <p>{products.length} products found</p>
@@ -110,9 +110,9 @@ const ProductsPage: React.FC<Products> = (props) => {
       <div className={menuOn ? "block" : "hidden"}>
         <ul className="fixed top-36 sm:top-28 right-4 px-4 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-20 shadow-lg">
           <h2>Filter by feature:</h2>
-          {FeaturesList.map((feature, index) => (
+          {FeaturesList.map((feature) => (
             <div
-              key={index}
+              key={feature.slug}
               className={
                 features.includes(feature.slug)
                   ? "leading-8 opacity-100"
@@ -120,7 +120,7 @@ const ProductsPage: React.FC<Products> = (props) => {
               }
               onClick={() => addFeature(feature.slug)}
             >
-              <Feature key={index} feat={feature.slug} text />
+              <Feature key={feature.slug} feat={feature.slug} text />
             </div>
           ))}
         </ul>
@@ -131,11 +131,11 @@ const ProductsPage: React.FC<Products> = (props) => {
           <p>No products found.</p>
         </div>
       ) : (
-        <main className="pt-24 sm:pt-16 px-4 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <main className="pt-24 sm:pt-16 px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {products.map((product) => (
             <div
               key={product.id}
-              className="p-4 hover:shadow-lg hover:border-black rounded-lg border-solid border-2 border-gray-200"
+              className="p-4 hover:shadow-lg hover:border-black rounded-lg border-solid border-2 border-gray-300"
             >
               <Product key={product.id} product={product} />
             </div>

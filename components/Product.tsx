@@ -38,8 +38,8 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
 
       <div className="flex justify-between">
         <ul className="flex">
-          {product.features.map((feature, index) => (
-            <Feature key={index} feat={feature} text={false} />
+          {product.features.map((feature) => (
+            <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
       </div>
