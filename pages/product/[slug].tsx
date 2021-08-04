@@ -43,9 +43,14 @@ const Product: React.FC<ProductProps> = (props) => {
               <li key={index} className="mr-4">
                 <button
                   key={index}
-                  className="border-solid border-2 border-black rounded-full p-3 my-4 bg-black text-white hover:bg-white hover:text-black font-serif text-xl"
+                  className="border-solid border-2 border-black rounded-full p-3 my-4 bg-black hover:bg-white hover:text-black font-serif text-xl"
                 >
-                  <a key={index} href={Object.values(url)[0]} target="_blank">
+                  <a
+                    key={index}
+                    href={Object.values(url)[0]}
+                    target="_blank"
+                    className="text-white"
+                  >
                     {Object.keys(url)[0]}
                   </a>
                 </button>
@@ -58,7 +63,7 @@ const Product: React.FC<ProductProps> = (props) => {
         <h2 className="font-serif text-xl mb-2">Features:</h2>
         <ul>
           {props.features.map((feature, index) => (
-            <a key={index} href={`/products/${feature}`}>
+            <a href="/products" className="text-black">
               <Feature key={index} feat={feature} text />
             </a>
           ))}

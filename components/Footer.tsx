@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
   const [session] = useSession();
 
   return (
-    <div className="flex flex-col text-center items-center justify-between px-4 py-8 md:px-8 md:text-left md:flex-row bg-black text-white">
+    <div className="flex flex-col text-center items-center justify-between px-4 py-8 md:px-8 md:text-left md:flex-row bg-custom-green text-white">
       <div className="flex flex-col order-last pt-8 md:pt-0">
         <p className="pb-1">
           As an Amazon Associate we earn from qualifying purchases.
@@ -19,10 +19,12 @@ const Footer: React.FC = () => {
         <span>© 2021 OmitPlastic</span>
       </div>
       <div className="flex flex-col text-center md:text-right md:order-last">
-        <div className="pb-1">
-          <Link href="/terms">Terms and Conditions</Link>
-        </div>
-        <Link href="/privacy">Privacy Policy</Link>
+        <Link href="/terms">
+          <a className="pb-1 text-white">Terms and Conditions</a>
+        </Link>
+        <Link href="/privacy">
+          <a className="pb-1 text-white">Privacy Policy</a>
+        </Link>
       </div>
       {/* <nav>
         {!session ? (

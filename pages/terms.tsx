@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 const TermsPage: React.FC = () => {
   return (
     <Layout>
-      <div className="p-4">
+      <div className="p-4 md:px-8">
         <h1>Terms and Conditions</h1>
         <p>Last updated: July 26, 2021</p>
         <p>

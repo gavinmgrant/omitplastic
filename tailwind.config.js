@@ -25,13 +25,17 @@ module.exports = {
       "1/2": "50%",
       "3/4": "75%",
     },
-    extend: {},
+    extend: {
+      colors: {
+        'custom-green':'#5f7552',
+      }
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [
-    plugin(function ({ addBase, theme }) {
+    plugin(({ addBase, theme }) => {
       addBase({
         h1: {
           fontSize: theme("fontSize.2xl"),
@@ -47,6 +51,9 @@ module.exports = {
           fontSize: theme("fontSize.lg"),
           fontFamily: theme("fontFamily.serif"),
           lineHeight: theme("lineHeight.loose"),
+        },
+        a: {
+          color: theme("colors.custom-green"),
         },
       });
     }),
