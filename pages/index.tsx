@@ -42,12 +42,13 @@ const Home: React.FC = () => {
           <Image
             src={bottle}
             alt="Plastic bottle on the beach"
-            width={640}
-            height={800}
+            width={360}
+            height={450}
+            layout="fixed"
           />
         </div>
 
-        <h1 className="px-6 md:px-4 md:pl-8 font-serif text-center text-4xl xl:text-5xl absolute md:relative md:text-left pb-28 md:pb-0">
+        <h1 className="px-6 md:px-4 md:pl-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left pb-28 md:pb-0">
           We help people omit plastic from their online purchases.{" "}
           <Link href="/products">
             <a className="underline">Get started.</a>
@@ -56,7 +57,7 @@ const Home: React.FC = () => {
       </div>
       <div className="flex flex-row justify-center items-center h-screen md:px-2 lg:px-10 xl:px-16 relative">
         <VisibilitySensor onChange={onChange}>
-          <h1 className="px-10 md:px-4 md:pr-8 font-serif text-center text-4xl xl:text-5xl absolute md:relative md:text-left text-white md:text-black z-10 pb-16 md:pb-0">
+          <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-white md:text-black z-10 pb-16 md:pb-0">
             Approximate tons of{" "}
             <a
               href="https://www.nationalgeographic.com/environment/article/plastic-pollution"
@@ -65,12 +66,12 @@ const Home: React.FC = () => {
               plastic waste
             </a>{" "}
             end up in the oceans from coastal nations every year:
-            <animated.div className="mt-4 text-6xl xl:text-7xl">
+            <animated.div className="mt-1 text-5xl xl:text-6xl">
               {number.val.to((val) =>
                 new Intl.NumberFormat().format(Math.floor(val))
               )}
             </animated.div>
-          </h1>
+          </h2>
         </VisibilitySensor>
         <div className="md:hidden">
           <Image
@@ -84,8 +85,9 @@ const Home: React.FC = () => {
           <Image
             src={ocean}
             alt="Plastic pollution in ocean"
-            width={640}
-            height={853}
+            width={360}
+            height={450}
+            layout="fixed"
           />
         </div>
       </div>
@@ -102,12 +104,13 @@ const Home: React.FC = () => {
           <Image
             src={plastic}
             alt="Plastic pollution"
-            width={640}
-            height={800}
+            width={360}
+            height={450}
+            layout="fixed"
           />
         </div>
 
-        <h1 className="px-6 md:px-4 md:pl-8 font-serif text-center text-4xl xl:text-5xl absolute md:relative md:text-left text-white md:text-black">
+        <h2 className="px-6 md:px-4 md:pl-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-white md:text-black">
           Scientists say the world is approaching a non-reversible{" "}
           <a
             href="https://scitechdaily.com/global-plastic-pollution-may-be-nearing-an-irreversible-tipping-point/"
@@ -122,17 +125,17 @@ const Home: React.FC = () => {
               Start buying less.
             </a>
           </Link>
-        </h1>
+        </h2>
       </div>
-      <div className="md:h-screen flex flex-col justify-center items-center m-4 mb-12">
-        <h1 className="md:w-3/4 my-12 mx-4 md:mx-12 text-4xl xl:text-5xl text-center">
+      <div className="md:h-screen flex flex-col justify-center items-center m-2 mb-12">
+        <h2 className="md:w-3/4 my-12 mx-4 md:mx-12 text-4xl xl:text-5xl text-center">
           We've curated a collection of well-designed products that reduce
           plastic pollution.
-        </h1>
-        <h2 className="mb-8 text-center leading-7">
+        </h2>
+        <h3 className="mb-8 text-center leading-7">
           Filter our collection of products by features that are important to
           you:
-        </h2>
+        </h3>
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
           {FeaturesList.map((feature, i) => (
             <div
@@ -144,16 +147,19 @@ const Home: React.FC = () => {
           ))}
         </ul>
       </div>
-      <div className="md:h-screen flex flex-col justify-center items-center m-8 mb-12 md:mx-16">
-        <h1 className="my-8 text-4xl xl:text-5xl text-center">
+      <div className="md:h-screen flex flex-col justify-center items-center m-4 mb-12 md:mx-24 lg:mx-36 xl:mx-48">
+        <h2 className="my-8 text-3xl xl:text-4xl text-center">
           Five reasons to reduce the use of plastics now.
-        </h1>
+        </h2>
         <ul>
           <li className="pb-4">
-            <h2 className="leading-6 mb-2">
-              1. Plastic production contributes to climate change.
-            </h2>
-            <p className="ml-6">
+            <h3 className="leading-5 mb-2 flex items-center relative left-0">
+              <span className="text-4xl">1.</span>
+              <span className="relative left-2">
+                Plastic production contributes to climate change.
+              </span>
+            </h3>
+            <p className="ml-12">
               Oil, gas, and coal are the fossil-fuel building blocks of
               plastics. Studies show that fossil fuel air pollution causes
               almost{" "}
@@ -167,10 +173,13 @@ const Home: React.FC = () => {
             </p>
           </li>
           <li className="pb-4">
-            <h2 className="leading-6 mb-2">
-              2. Plastics pollution is killing vulnerable wildlife.
-            </h2>
-            <p className="ml-6">
+            <h3 className="leading-5 mb-2 flex items-center relative left-0">
+              <span className="text-4xl">2.</span>
+              <span className="relative left-2">
+                Plastics pollution is killing vulnerable wildlife.
+              </span>
+            </h3>
+            <p className="ml-12">
               Thousands of seabirds and sea turtles, seals, and other marine
               mammals are killed each year after inadvertently eating plastic or
               getting caught in it. Endangered wildlife like Hawaiian monk seals
@@ -186,11 +195,14 @@ const Home: React.FC = () => {
             </p>
           </li>
           <li className="pb-4">
-            <h2 className="leading-6 mb-2">
-              3. Enormous amounts of plastic waste are thrown away into
-              landfills, taking up valuable space.
-            </h2>
-            <p className="ml-6">
+            <h3 className="leading-5 mb-2 flex items-center relative left-0">
+              <span className="text-4xl">3.</span>
+              <span className="relative left-2">
+                Enormous amounts of plastic waste are thrown away into
+                landfills, taking up valuable space.
+              </span>
+            </h3>
+            <p className="ml-12">
               It's estimated that over{" "}
               <a
                 href="https://www.nationalgeographic.com/science/article/plastic-produced-recycling-waste-ocean-trash-debris-environment"
@@ -204,11 +216,14 @@ const Home: React.FC = () => {
             </p>
           </li>
           <li className="pb-4">
-            <h2 className="leading-6 mb-2">
-              4. The amount of plastic polluting oceans could nearly triple by
-              2040 without urgent action.
-            </h2>
-            <p className="ml-6">
+            <h3 className="leading-5 mb-2 flex items-center relative left-0">
+              <span className="text-4xl">4.</span>
+              <span className="relative left-2">
+                The amount of plastic polluting oceans could nearly triple by
+                2040 without urgent action.
+              </span>
+            </h3>
+            <p className="ml-12">
               Fortunately, we can do something to avoid this. Studies show
               reducing plastic production and consumption can affect this the
               most and would{" "}
@@ -222,12 +237,17 @@ const Home: React.FC = () => {
             </p>
           </li>
           <li className="pb-4">
-            <h2 className="leading-6 mb-2">
-              5. Reusing products rather than using single-use plastic saves
-              money.
-            </h2>
-            <p className="ml-6">
-              Reuse beats single-use on{" "}
+            <h3 className="leading-5 mb-2 flex items-center relative left-0">
+              <span className="text-4xl">5.</span>
+              <span className="relative left-2">
+                Reusing products rather than using single-use plastic saves
+                money.
+              </span>
+            </h3>
+            <p className="ml-12">
+              Using single-use plastic products ends up costing more over time
+              than using, well-made reusable products. Not only that, reuse
+              beats single-use on{" "}
               <a
                 href="https://upstreamsolutions.org/reuse-vs-single-use-environment"
                 target="_blank"
