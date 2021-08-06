@@ -139,6 +139,7 @@ const Home: React.FC = () => {
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-4">
           {FeaturesList.map((feature, i) => (
             <div
+              key={feature.slug}
               className="p-4 pt-6 rounded-lg border-2 border-gray-300 hover:border-black hover:shadow-lg cursor-pointer"
               onClick={() => router.push("/products")}
             >
