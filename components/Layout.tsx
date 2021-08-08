@@ -29,7 +29,7 @@ const Layout: React.FC<Props> = (props) => (
         />
     </Head>
     <Header />
-    <div className="pt-16">{props.children}</div>
+    <div className="pt-16 min-h-screen">{props.children}</div>
     <Footer />
   </div>
 );

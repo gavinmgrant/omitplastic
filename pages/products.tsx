@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
-import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import Feature from "../components/Feature";
 import Product, { ProductProps } from "../components/Product";
@@ -8,6 +7,7 @@ import SearchBar from "../components/SearchBar";
 import useSWR from "swr";
 import { FeaturesList } from "../lib/featuresList";
 import { IconFilter, IconX } from "@tabler/icons";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -21,15 +21,25 @@ type Products = {
 };
 
 const ProductsPage: React.FC<Products> = (props) => {
+  const [graybg, setGraybg] = useState(false);
   const [products, setProducts] = useState([]);
   const [queryValue, setQueryValue] = useState("");
   const [features, setFeatures] = useState([]);
   const [menuOn, setMenuOn] = useState(false);
-  const router = useRouter();
 
   const { data } = useSWR("/api/products", fetcher, {
     initialData: props.feed,
   });
+
+  const ref = useOnclickOutside(() => {
+    setMenuOn(false);
+    setGraybg(false);
+  });
+
+  const handleClickBtn = () => {
+    setMenuOn(!menuOn);
+    setGraybg(!graybg);
+  };
 
   useEffect(() => {
     const { search } = window.location;
@@ -53,7 +63,6 @@ const ProductsPage: React.FC<Products> = (props) => {
 
     setProducts(filteredProducts);
     query ? setQueryValue(query) : setQueryValue("");
-    // router.push("/products");
   }, [queryValue]);
 
   useEffect(() => {
@@ -83,23 +92,27 @@ const ProductsPage: React.FC<Products> = (props) => {
     }
   };
 
+  const clearFeatures = () => {
+    setFeatures([]);
+  };
+
   useEffect(() => {
     setProducts(data);
   }, []);
 
   return (
     <Layout>
-      <div className="fixed flex flex-col w-full top-16 left-0 h-20 sm:h-12 sm:flex-row px-4 md:px-8 pb-1 bg-white shadow-lg">
-        <SearchBar value={queryValue} />
+      <div
+        className="fixed flex flex-col w-full top-16 left-0 h-20 sm:h-12 sm:flex-row px-4 md:px-8 pb-1 bg-white shadow-lg z-30"
+        ref={ref}
+      >
+        <SearchBar value={queryValue} onClick={() => setGraybg(!graybg)} />
         <div className="flex flex-row justify-between items-center mt-2 sm:ml-2 sm:mt-0 sm:mb-2 sm:w-full">
           <p>{products.length} products found</p>
           <div className="flex">
             {queryValue && <a href="/products">Show all</a>}
             {!queryValue && (
-              <div
-                onClick={() => setMenuOn(!menuOn)}
-                className="cursor-pointer"
-              >
+              <div onClick={handleClickBtn} className="cursor-pointer">
                 {menuOn ? <IconX /> : <IconFilter />}
               </div>
             )}
@@ -107,8 +120,11 @@ const ProductsPage: React.FC<Products> = (props) => {
         </div>
       </div>
 
-      <div className={menuOn ? "block" : "hidden"}>
-        <ul className="fixed top-36 sm:top-28 right-4 px-4 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-20 shadow-lg">
+      {menuOn && (
+        <ul
+          ref={ref}
+          className="fixed top-36 sm:top-28 right-4 px-5 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg"
+        >
           <h2>Filter by feature:</h2>
           {FeaturesList.map((feature) => (
             <div
@@ -123,24 +139,39 @@ const ProductsPage: React.FC<Products> = (props) => {
               <Feature key={feature.slug} feat={feature.slug} text />
             </div>
           ))}
+          <button className="w-full my-2" onClick={clearFeatures}>
+            <p
+              className={`text-center ${
+                features.length !== 0 ? "opacity-100" : "opacity-40"
+              }`}
+            >
+              Clear filters
+            </p>
+          </button>
         </ul>
-      </div>
-
+      )}
       {products.length === 0 ? (
         <div className="pt-28 text-center h-screen">
           <p>No products found.</p>
         </div>
       ) : (
-        <main className="pt-24 sm:pt-16 px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="p-4 hover:shadow-lg hover:border-black rounded-lg border-solid border-2 border-gray-300"
-            >
-              <Product key={product.id} product={product} />
-            </div>
-          ))}
-        </main>
+        <div>
+          {graybg && (
+            <div className="h-screen w-screen fixed z-20 bg-black bg-opacity-50"></div>
+          )}
+          <main className="pt-24 sm:pt-16 px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className={`transition-all duration-500 p-4 hover:shadow-lg hover:border-black rounded-lg border-2 border-solid ${
+                  graybg ? "opacity-50" : "opacity-100"
+                }`}
+              >
+                <Product key={product.id} product={product} />
+              </div>
+            ))}
+          </main>
+        </div>
       )}
     </Layout>
   );

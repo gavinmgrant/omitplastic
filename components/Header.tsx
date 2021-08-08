@@ -12,7 +12,10 @@ const Header: React.FC = () => {
           <a className="font-serif text-2xl sm:text-3xl">OmitPlastic</a>
         </Link>
         <div className="flex items-center">
-          <a href="/products">
+          <a
+            href="/products"
+            className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-1 px-3 bg-custom-green hover:bg-white text-white hover:text-custom-green shadow-md"
+          >
             Products
           </a>
         </div>

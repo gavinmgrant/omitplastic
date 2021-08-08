@@ -27,7 +27,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        'custom-green':'#5f7552',
+        "custom-green": "#5f7552",
+      },
+      zIndex: {
+        "-10": "-10",
+        "-20": "-20"
       }
     },
   },

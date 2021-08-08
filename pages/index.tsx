@@ -11,6 +11,18 @@ import bottle from "../public/images/beach-bottle.jpg";
 import ocean from "../public/images/ocean-above.jpg";
 import plastic from "../public/images/plastic-pollution.jpg";
 
+const CallToAction = () => {
+  return (
+    <div className="flex items-center mt-6">
+      <Link href="/products">
+        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-3 px-5 bg-custom-green hover:bg-white font-serif text-2xl text-white hover:text-custom-green shadow-md">
+          Start buying less plastic!
+        </a>
+      </Link>
+    </div>
+  );
+};
+
 const Home: React.FC = () => {
   const [isVisible, setVisibility] = useState(false);
   const router = useRouter();
@@ -48,12 +60,10 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <h1 className="px-6 md:px-4 md:pl-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left pb-28 md:pb-0">
-          We help people omit plastic from their online purchases.{" "}
-          <Link href="/products">
-            <a className="underline">Get started.</a>
-          </Link>
-        </h1>
+        <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left pb-28 md:pb-0 flex flex-col justify-center items-center">
+          <h1 className="text-3xl xl:text-4xl">We help people omit plastic from their online purchases.</h1>
+          <CallToAction />
+        </div>
       </div>
       <div className="flex flex-row justify-center items-center h-screen md:px-2 lg:px-10 xl:px-16 relative">
         <VisibilitySensor onChange={onChange}>
@@ -110,8 +120,8 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <h2 className="px-6 md:px-4 md:pl-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-white md:text-black">
-          Scientists say the world is approaching a non-reversible{" "}
+        <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left text-white md:text-black flex flex-col justify-center items-center">
+          <h2 className="text-3xl xl:text-4xl">Scientists say the world is approaching a non-reversible{" "}
           <a
             href="https://scitechdaily.com/global-plastic-pollution-may-be-nearing-an-irreversible-tipping-point/"
             target="_blank"
@@ -119,13 +129,9 @@ const Home: React.FC = () => {
           >
             tipping point
           </a>{" "}
-          in plastic pollution.{" "}
-          <Link href="/products">
-            <a className="underline cursor-pointer text-gray-300 md:text-custom-green">
-              Start buying less.
-            </a>
-          </Link>
-        </h2>
+          in plastic pollution.</h2>
+          <CallToAction />
+        </div>
       </div>
       <div className="md:h-screen flex flex-col justify-center items-center m-2 mb-12">
         <h2 className="md:w-3/4 my-12 mx-4 md:mx-12 text-4xl xl:text-5xl text-center">
@@ -260,6 +266,7 @@ const Home: React.FC = () => {
             </p>
           </li>
         </ul>
+        <CallToAction />
       </div>
     </Layout>
   );

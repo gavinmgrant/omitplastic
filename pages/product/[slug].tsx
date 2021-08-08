@@ -27,47 +27,47 @@ const Product: React.FC<ProductProps> = (props) => {
         <meta property="og:description" content={props.description} />
         <meta property="og:image" content={props.imageUrl} />
       </Head>
-      <div className="grid grid-cols-1 sm:grid-cols-5 sm:gap-8 p-4 md:px-8">
-        <div className="col-span-2 flex flex-row justify-center items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-8 p-4 md:px-8">
+        <div className="col-span-2 flex flex-row justify-center items-start my-2 md:my-6">
           <img src={props.imageUrl} alt={props.name} className="max-h-96" />
         </div>
-        <div className="col-span-3">
+        <div className="col-span-2">
           <h2 className="font-serif text-xl py-4">{props.name}</h2>
           <p>{props.description}</p>
-          <p className="pt-2">
-            When you buy this product using our links, we earn an affiliate
-            commission to support the site. Thank you!
-          </p>
-          <ul className="flex">
+          <div className="mt-8">
+            <h2 className="font-serif text-xl mb-2">Features:</h2>
+            <ul>
+              {props.features.map((feature, index) => (
+                <a key={index} href="/products" className="text-black">
+                  <Feature key={index} feat={feature} text />
+                </a>
+              ))}
+            </ul>
+            <p className="my-8">
+              When you buy this product using our links, we may earn an
+              affiliate commission.
+            </p>
+          </div>
+
+          <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-12">
             {props.urls.map((url, index) => (
-              <li key={index} className="mr-4">
+              <li key={index} className="mb-9">
                 <button
                   key={index}
-                  className="border-solid border-2 border-black rounded-full p-3 my-4 bg-black hover:bg-white hover:text-black font-serif text-xl"
                 >
                   <a
                     key={index}
                     href={Object.values(url)[0]}
                     target="_blank"
-                    className="text-white"
+                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-3 px-5 bg-black hover:bg-white font-serif text-xl text-white hover:text-black shadow-md"
                   >
-                    {Object.keys(url)[0]}
+                    Buy now at {Object.keys(url)[0]}
                   </a>
                 </button>
               </li>
             ))}
           </ul>
         </div>
-      </div>
-      <div className="p-4 md:px-8">
-        <h2 className="font-serif text-xl mb-2">Features:</h2>
-        <ul>
-          {props.features.map((feature, index) => (
-            <a href="/products" className="text-black">
-              <Feature key={index} feat={feature} text />
-            </a>
-          ))}
-        </ul>
       </div>
     </Layout>
   );
