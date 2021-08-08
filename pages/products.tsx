@@ -50,8 +50,20 @@ const ProductsPage: React.FC<Products> = (props) => {
       }
 
       return products.filter((product) => {
-        const name = product.name.toLowerCase();
-        return name.includes(query);
+        const features = product.features
+          .join(" ")
+          .toLowerCase()
+          .replace(/-/g, " ");
+        const content =
+          product.name.toLowerCase() +
+          " " +
+          product.description.toLowerCase() +
+          " " +
+          product.type.toLowerCase() +
+          " " +
+          features;
+          
+        return content.includes(query);
       });
     };
 
