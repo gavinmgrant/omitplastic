@@ -49,13 +49,10 @@ const Product: React.FC<ProductProps> = (props) => {
             </p>
           </div>
 
-          <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-12">
+          <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-8">
             {props.urls.map((url, index) => (
-              <li key={index} className="mb-9">
-                <button
-                  key={index}
-                  className="h-14"
-                >
+              <li key={index} className="mb-3">
+                <button key={index} className="h-14">
                   <a
                     key={index}
                     href={Object.values(url)[0]}
@@ -69,6 +66,20 @@ const Product: React.FC<ProductProps> = (props) => {
             ))}
           </ul>
         </div>
+      </div>
+      <div className="py-8 px-4 md:px-8 text-gray-500">
+        <p>
+          Disclaimer: While we work to ensure that product information is
+          correct, on occasion manufacturers may alter their ingredient lists.
+          Actual product packaging and materials may contain more and/or
+          different information than that shown on this web site. We recommend
+          that you do not solely rely on the information presented and that you
+          always read labels, warnings, and directions before using or consuming
+          a product. For additional information about a product, please contact
+          the manufacturer. Content on this site is for reference purposes only.
+          OmitPlastic.com assumes no liability for inaccuracies or misstatements
+          about products.
+        </p>
       </div>
     </Layout>
   );
