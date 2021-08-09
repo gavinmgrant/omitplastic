@@ -38,7 +38,7 @@ const Product: React.FC<ProductProps> = (props) => {
             <h2 className="font-serif text-xl mb-2">Features:</h2>
             <ul>
               {props.features.map((feature, index) => (
-                <a key={index} href="/products" className="text-black">
+                <a key={index} href={`/products/?s=${feature.replace(/-/g, " ")}`} className="text-black">
                   <Feature key={index} feat={feature} text />
                 </a>
               ))}

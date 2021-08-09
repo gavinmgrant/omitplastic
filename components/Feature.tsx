@@ -13,13 +13,13 @@ import {
 
 const ReactTooltip = dynamic(() => import("react-tooltip"), {
   ssr: false,
-})
+});
 interface Props {
   key: any;
   feat: string;
   text: boolean;
   onClick?: () => void;
-};
+}
 
 const Feature: React.FC<Props> = ({ feat, text }) => {
   let icon, name;
@@ -61,7 +61,10 @@ const Feature: React.FC<Props> = ({ feat, text }) => {
   }
   return (
     <li className="flex mb-2 items-center cursor-pointer">
-      <span data-tip={!text ? name : ""} date-place="top">{icon}</span><span className="ml-2">{text && name}</span>
+      <span data-tip={!text ? name : ""} date-place="top">
+        {icon}
+      </span>
+      <span className="ml-2">{text && name}</span>
       <ReactTooltip />
     </li>
   );
