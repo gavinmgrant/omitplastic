@@ -169,11 +169,19 @@ const ProductsPage: React.FC<Products> = (props) => {
         </div>
       ) : (
         <div>
-          {queryValue && <h2 className="pt-24 sm:pt-16 text-center">Search results for "{queryValue}".</h2>}
+          {queryValue && (
+            <h2 className="pt-24 sm:pt-16 text-center">
+              Search results for "{queryValue}".
+            </h2>
+          )}
           {graybg && (
             <div className="h-screen w-screen fixed z-20 bg-black bg-opacity-50"></div>
           )}
-          <main className={`${queryValue ? "pt-2 sm:pt-4" : "pt-24 sm:pt-16"} px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4`}>
+          <main
+            className={`${
+              queryValue ? "pt-2 sm:pt-4" : "pt-24 sm:pt-16"
+            } px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4`}
+          >
             {products.map((product) => (
               <div
                 key={product.id}

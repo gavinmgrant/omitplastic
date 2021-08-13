@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import Feature from "../../components/Feature";
 import { ProductProps } from "../../components/Product";
+import Loader from "../../components/Loader";
+import { IconChevronRight } from "@tabler/icons";
 import prisma from "../../lib/prisma";
+import axios from "axios";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const product = await prisma.product.findUnique({
@@ -18,6 +21,37 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const Product: React.FC<ProductProps> = (props) => {
+  const [price, setPrice] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 8000);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        `https://amazon-product-scrapper.p.rapidapi.com/products/${props.asin}`,
+        {
+          params: {
+            api_key: process.env.NEXT_PUBLIC_AMAZON_SCRAPPER_API_KEY,
+          },
+          headers: {
+            "x-rapidapi-key": process.env.NEXT_PUBLIC_XRAPID_API_KEY,
+            "x-rapidapi-host": "amazon-web-scrapper.p.rapidapi.com",
+          },
+        }
+      )
+      .then((response) => {
+        !price && setPrice(response.data.pricing);
+        price && setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [props]);
+
   return (
     <Layout>
       <Head>
@@ -38,7 +72,11 @@ const Product: React.FC<ProductProps> = (props) => {
             <h2 className="font-serif text-xl mb-2">Features:</h2>
             <ul>
               {props.features.map((feature, index) => (
-                <a key={index} href={`/products/?s=${feature.replace(/-/g, " ")}`} className="text-black">
+                <a
+                  key={index}
+                  href={`/products/?s=${feature.replace(/-/g, " ")}`}
+                  className="text-black"
+                >
                   <Feature key={index} feat={feature} text />
                 </a>
               ))}
@@ -57,9 +95,20 @@ const Product: React.FC<ProductProps> = (props) => {
                     key={index}
                     href={Object.values(url)[0]}
                     target="_blank"
-                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-3 px-5 bg-black hover:bg-white font-serif text-xl text-white hover:text-black shadow-md"
+                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-3 px-5 bg-black hover:bg-white font-serif text-xl text-white hover:text-black shadow-md flex justify-center items-center"
                   >
-                    Buy now at {Object.keys(url)[0]}
+                    <p>Buy now at {Object.keys(url)[0]} </p>
+                    <div className="ml-2">
+                      {Object.keys(url)[0] === "Amazon" ? (
+                        loading ? (
+                          <Loader />
+                        ) : (
+                          price
+                        )
+                      ) : (
+                        <IconChevronRight />
+                      )}
+                    </div>
                   </a>
                 </button>
               </li>
@@ -69,16 +118,14 @@ const Product: React.FC<ProductProps> = (props) => {
       </div>
       <div className="py-8 px-4 md:px-8 text-gray-500">
         <p>
-          Disclaimer: While we work to ensure that product information is
-          correct, on occasion manufacturers may alter their ingredient lists.
-          Actual product packaging and materials may contain more and/or
-          different information than that shown on this web site. We recommend
-          that you do not solely rely on the information presented and that you
-          always read labels, warnings, and directions before using or consuming
-          a product. For additional information about a product, please contact
-          the manufacturer. Content on this site is for reference purposes only.
-          OmitPlastic.com assumes no liability for inaccuracies or misstatements
-          about products.
+          Disclaimer: While we strive to ensure that product information is
+          correct, manufacturers may change their product's specifications.
+          Actual product packaging and materials may contain different
+          information than that shown on this web site. We recommend that you do
+          not solely rely on the information presented here. For additional
+          information about a product, please contact the manufacturer. Content
+          on this site is for reference purposes only. OmitPlastic.com assumes
+          no liability for inaccuracies or misstatements about products.
         </p>
       </div>
     </Layout>

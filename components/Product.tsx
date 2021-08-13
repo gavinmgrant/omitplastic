@@ -5,6 +5,7 @@ import Feature from "./Feature";
 export type ProductProps = {
   id: number;
   barcode: string;
+  asin: string;
   category: string;
   type: string;
   name: string;
@@ -42,6 +43,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
             <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
+        <button onClick={() => Router.push("/product/[slug]", `/product/${product.slug}`)}>Details</button>
       </div>
     </div>
   );
