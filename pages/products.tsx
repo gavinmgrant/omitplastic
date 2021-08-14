@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Layout from "../components/Layout";
 import Feature from "../components/Feature";
 import Product, { ProductProps } from "../components/Product";
@@ -112,8 +113,18 @@ const ProductsPage: React.FC<Products> = (props) => {
     setProducts(data);
   }, []);
 
+  const title = "Find plastic free products and plastic free packaging.";
+  const description = "Reduce plastic use by purchasing plastic free products, plastic free packaging, and reusable products.";
+
   return (
     <Layout>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="/public/images/ocean-plastic.jpg" />
+      </Head>
       <div
         className="fixed flex flex-col w-full top-16 left-0 h-20 sm:h-12 sm:flex-row px-4 md:px-8 pb-1 bg-white shadow-lg z-30"
         ref={ref}

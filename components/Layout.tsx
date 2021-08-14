@@ -10,7 +10,7 @@ type Props = {
 const Layout: React.FC<Props> = (props) => (
   <div>
     <Head>
-      <title>OmitPlastic</title>
+      <title>OmitPlastic | Buy products that reduce plastic pollution.</title>
       <meta
         name="description"
         content="Find plastic-free products, compostable products, reusable products, and more to reduce plastic pollution."
