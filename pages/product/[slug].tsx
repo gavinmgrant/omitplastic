@@ -26,7 +26,7 @@ const Product: React.FC<ProductProps> = (props) => {
 
   setTimeout(() => {
     setLoading(false);
-  }, 8000);
+  }, 14000);
 
   useEffect(() => {
     setLoading(true);
@@ -51,6 +51,16 @@ const Product: React.FC<ProductProps> = (props) => {
         console.error(error);
       });
   }, [props]);
+
+  useEffect(() => {
+    if (price.includes("-")) {
+      let index = price.indexOf("-");
+      let firstPrice = price.slice(0, index);
+      setPrice(`from ${firstPrice}`);
+    } else {
+      setPrice(price);
+    }
+  }, [price]);
 
   return (
     <Layout>
@@ -95,10 +105,10 @@ const Product: React.FC<ProductProps> = (props) => {
                     key={index}
                     href={Object.values(url)[0]}
                     target="_blank"
-                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-3 px-5 bg-black hover:bg-white font-serif text-xl text-white hover:text-black shadow-md flex justify-center items-center"
+                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-3 px-4 bg-black hover:bg-white font-serif text-xl text-white hover:text-black shadow-md flex justify-center items-center"
                   >
-                    <p>Buy now at {Object.keys(url)[0]} </p>
-                    <div className="ml-2">
+                    <p>Buy at {Object.keys(url)[0]} </p>
+                    <div className="ml-1">
                       {Object.keys(url)[0] === "Amazon" ? (
                         loading ? (
                           <Loader />
