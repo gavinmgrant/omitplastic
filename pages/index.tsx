@@ -45,7 +45,7 @@ const Home: React.FC = () => {
         <div className="md:hidden opacity-80">
           <Image
             src={bottle}
-            alt="Plastic bottle on the beach"
+            alt="Find plastic-free products to reduce plastic pollution."
             layout="fill"
             objectFit="cover"
           />
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
         <div className="hidden md:block pl-12 opacity-80">
           <Image
             src={bottle}
-            alt="Plastic bottle on the beach"
+            alt="Find plastic-free products to reduce plastic pollution."
             width={360}
             height={450}
             layout="fixed"
@@ -86,7 +86,7 @@ const Home: React.FC = () => {
         <div className="md:hidden">
           <Image
             src={ocean}
-            alt="Plastic pollution in ocean"
+            alt="Reduce plastic pollution in oceans by buying less plastic."
             layout="fill"
             objectFit="cover"
           />
@@ -94,7 +94,7 @@ const Home: React.FC = () => {
         <div className="hidden md:block pr-12">
           <Image
             src={ocean}
-            alt="Plastic pollution in ocean"
+            alt="Reduce plastic pollution in oceans by buying less plastic."
             width={360}
             height={450}
             layout="fixed"
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
         <div className="md:hidden">
           <Image
             src={plastic}
-            alt="Plastic pollution"
+            alt="Buy products with less plastic to reduce plastic pollution."
             layout="fill"
             objectFit="cover"
           />
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
         <div className="hidden md:block pl-12">
           <Image
             src={plastic}
-            alt="Plastic pollution"
+            alt="Buy products with less plastic to reduce plastic pollution."
             width={360}
             height={450}
             layout="fixed"

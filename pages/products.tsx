@@ -58,6 +58,8 @@ const ProductsPage: React.FC<Products> = (props) => {
         const content =
           product.name.toLowerCase() +
           " " +
+          product.category.toLowerCase() +
+          " " +
           product.description.toLowerCase() +
           " " +
           product.type.toLowerCase() +
