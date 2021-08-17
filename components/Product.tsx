@@ -14,7 +14,6 @@ export type ProductProps = {
   urls: object[];
   description: string;
   features: string[];
-  price: number;
 };
 
 const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
@@ -44,7 +43,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
             <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
-        <button onClick={() => Router.push("/product/[slug]", `/product/${product.slug}`)}>{product.price}</button>
+        <button onClick={() => Router.push("/product/[slug]", `/product/${product.slug}`)}>Details</button>
       </div>
     </div>
   );

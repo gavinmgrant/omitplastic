@@ -26,7 +26,7 @@ const Product: React.FC<ProductProps> = (props) => {
 
   setTimeout(() => {
     setLoading(false);
-  }, 14000);
+  }, 16000);
 
   useEffect(() => {
     setLoading(true);
@@ -109,15 +109,8 @@ const Product: React.FC<ProductProps> = (props) => {
                   >
                     <p>Buy at {Object.keys(url)[0]} </p>
                     <div className="ml-1">
-                      {Object.keys(url)[0] === "Amazon" ? (
-                        loading ? (
-                          <Loader />
-                        ) : (
-                          price
-                        )
-                      ) : (
-                        <IconChevronRight />
-                      )}
+                      {Object.keys(url)[0] === "Amazon" &&
+                        (loading ? <Loader /> : price)}
                     </div>
                   </a>
                 </button>
