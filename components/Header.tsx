@@ -14,7 +14,7 @@ const Header: React.FC = () => {
         <div className="flex items-center">
           <a
             href="/products"
-            className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-1 px-3 bg-custom-green hover:bg-white text-white hover:text-custom-green shadow-md"
+            className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-xl text-white hover:text-custom-green shadow-md flex justify-center items-center"
           >
             Products
           </a>
