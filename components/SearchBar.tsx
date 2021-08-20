@@ -27,7 +27,7 @@ const SearchBar: React.FC<Props> = ({ value, feature, onClick }) => {
       </label>
       <div className="flex items-center relative">
         <div className="absolute left-2">
-          <IconSearch />
+          <IconSearch size={28} />
         </div>
         <input
           type="text"

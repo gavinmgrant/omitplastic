@@ -145,7 +145,7 @@ const ProductsPage: React.FC<Products> = (props) => {
             {queryValue && <a href="/products">Show all</a>}
             {!queryValue && (
               <div onClick={handleClickBtn} className="cursor-pointer">
-                {menuOn ? <IconX /> : <IconFilter />}
+                {menuOn ? <IconX size={28} /> : <IconFilter size={28} />}
               </div>
             )}
           </div>
