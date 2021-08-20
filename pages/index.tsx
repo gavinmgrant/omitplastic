@@ -16,7 +16,7 @@ const CallToAction = () => {
   return (
     <div className="flex items-center mt-6">
       <Link href="/products">
-        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-3 px-5 bg-custom-green hover:bg-white font-serif text-2xl text-white hover:text-custom-green shadow-md">
+        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-2xl text-white hover:text-custom-green shadow-md">
           Start buying less plastic!
         </a>
       </Link>
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
 
   const number = useSpring({
     delay: isVisible ? 100 : 10000,
-    from: { val: 1000000 },
+    from: { val:7000000 },
     to: { val: 8000000 },
     config: config.molasses,
     reset: !isVisible,
@@ -88,16 +88,17 @@ const Home: React.FC = () => {
         </div>
         <div className="flex flex-row justify-center items-center h-screen md:px-2 lg:px-10 xl:px-16 relative">
           <VisibilitySensor onChange={onChange}>
-            <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-white md:text-black z-10 pb-16 md:pb-0">
+            <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-gray-200 md:text-black z-10 pb-16 md:pb-0">
               Approximate tons of{" "}
               <a
                 href="https://www.nationalgeographic.com/environment/article/plastic-pollution"
                 target="_blank"
+                className="text-white md:text-custom-green"
               >
                 plastic waste
               </a>{" "}
               end up in the oceans from coastal nations every year:
-              <animated.div className="mt-1 text-5xl xl:text-6xl">
+              <animated.div className="mt-1 text-5xl xl:text-6xl text-white md:text-black">
                 {number.val.to((val) =>
                   new Intl.NumberFormat().format(Math.floor(val))
                 )}
@@ -141,13 +142,13 @@ const Home: React.FC = () => {
             />
           </div>
 
-          <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left text-white md:text-black flex flex-col justify-center items-center">
+          <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left text-gray-200 md:text-black flex flex-col justify-center items-center">
             <h2 className="text-3xl xl:text-4xl">
               Scientists say the world is approaching a non-reversible{" "}
               <a
                 href="https://scitechdaily.com/global-plastic-pollution-may-be-nearing-an-irreversible-tipping-point/"
                 target="_blank"
-                className="text-gray-300 md:text-custom-green"
+                className="text-white md:text-custom-green"
               >
                 tipping point
               </a>{" "}
@@ -177,7 +178,7 @@ const Home: React.FC = () => {
             ))}
           </ul>
         </div>
-        <div className="md:h-screen flex flex-col justify-center items-center m-4 mb-12 md:mx-24 lg:mx-36 xl:mx-48">
+        <div className="md:h-screen flex flex-col justify-center items-center m-4 mb-16 md:mb-24 md:mx-24 lg:mx-36 xl:mx-48">
           <h2 className="my-8 text-3xl xl:text-4xl text-center">
             Five reasons to reduce the use of plastics now.
           </h2>

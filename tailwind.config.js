@@ -1,7 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  purge: false,
+  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
@@ -42,17 +42,17 @@ module.exports = {
     plugin(({ addBase, theme }) => {
       addBase({
         h1: {
-          fontSize: theme("fontSize.2xl"),
+          fontSize: theme("fontSize.3xl"),
           fontFamily: theme("fontFamily.serif"),
           lineHeight: theme("lineHeight.loose"),
         },
         h2: {
-          fontSize: theme("fontSize.xl"),
+          fontSize: theme("fontSize.2xl"),
           fontFamily: theme("fontFamily.serif"),
           lineHeight: theme("lineHeight.loose"),
         },
         h3: {
-          fontSize: theme("fontSize.lg"),
+          fontSize: theme("fontSize.xl"),
           fontFamily: theme("fontFamily.serif"),
           lineHeight: theme("lineHeight.loose"),
         },
