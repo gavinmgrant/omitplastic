@@ -5,6 +5,7 @@ import Layout from "../../components/Layout";
 import Feature from "../../components/Feature";
 import { ProductProps } from "../../components/Product";
 import Loader from "../../components/Loader";
+import RelatedProducts from "../../components/RelatedProducts";
 import { IconBrandTwitter, IconBrandFacebook } from "@tabler/icons";
 import prisma from "../../lib/prisma";
 import axios from "axios";
@@ -81,13 +82,15 @@ const Product: React.FC<ProductProps> = (props) => {
       </Head>
       <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-8 p-4 md:px-8">
         <div className="col-span-2 flex flex-col justify-start items-start my-2 md:my-6">
-          <img src={props.imageUrl} alt={props.name} className="max-h-96" />
+          <div className="w-full flex justify-center">
+            <img src={props.imageUrl} alt={props.name} className="max-h-96" />
+          </div>
           <div className="flex justify-center items-center mt-6 md:mt-8">
             <h2 className="mr-2">Share:</h2>
             <div className="border-2 border-black border-solid rounded-full mr-2 p-2">
               <a
                 href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20${props.name}%20at%20OmitPlastic%20\nomitplastic.com/product/${props.slug}`}
-                target="_blank" 
+                target="_blank"
                 rel="noreferrer"
                 className="text-black"
               >
@@ -97,7 +100,7 @@ const Product: React.FC<ProductProps> = (props) => {
             <div className="border-2 border-black border-solid rounded-full mr-2 p-2">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://omitplastic.com/product/${props.slug}`}
-                target="_blank" 
+                target="_blank"
                 rel="noreferrer"
                 className="text-black"
               >
@@ -150,16 +153,15 @@ const Product: React.FC<ProductProps> = (props) => {
           </ul>
         </div>
       </div>
+      <RelatedProducts id={props.id} type={props.type} />
       <div className="py-8 px-4 md:px-8 text-gray-500">
         <p>
           Disclaimer: While we strive to ensure that product information is
           correct, manufacturers may change their product's specifications.
           Actual product packaging and materials may contain different
-          information than that shown on this web site. We recommend that you do
-          not solely rely on the information presented here. For additional
-          information about a product, please contact the manufacturer. Content
-          on this site is for reference purposes only. OmitPlastic.com assumes
-          no liability for inaccuracies or misstatements about products.
+          information than that shown on this web site. Content on this site is
+          for reference purposes only. OmitPlastic.com assumes no liability for
+          inaccuracies or misstatements about products.
         </p>
       </div>
     </Layout>
