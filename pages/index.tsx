@@ -34,15 +34,17 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const number = useSpring({
-    delay: isVisible ? 100 : 10000,
-    from: { val:7000000 },
-    to: { val: 8000000 },
+    val: isVisible ? 8000000 : 1000000,
+    from: { val: 1000000 },
     config: config.molasses,
     reset: !isVisible,
+    clamp: true,
   });
 
   const onChange = (visible: boolean) => {
-    setVisibility(visible);
+    if (!isVisible && visible) {
+      setVisibility(true);
+    }
   };
 
   return (
