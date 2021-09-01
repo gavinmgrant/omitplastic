@@ -85,9 +85,8 @@ const Product: React.FC<ProductProps> = (props) => {
           <div className="w-full flex justify-center">
             <img src={props.imageUrl} alt={props.name} className="max-h-96" />
           </div>
-          <div className="flex justify-center items-center mt-6 md:mt-8">
-            <h2 className="mr-2">Share:</h2>
-            <div className="border-2 border-black border-solid rounded-full mr-2 p-2">
+          <div className="w-full flex justify-center items-center mt-6 md:mt-8">
+            <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
               <a
                 href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20${props.name}%20at%20OmitPlastic%20\nomitplastic.com/product/${props.slug}`}
                 target="_blank"
@@ -97,7 +96,7 @@ const Product: React.FC<ProductProps> = (props) => {
                 <IconBrandTwitter size={28} stroke={1.5} />
               </a>
             </div>
-            <div className="border-2 border-black border-solid rounded-full mr-2 p-2">
+            <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://omitplastic.com/product/${props.slug}`}
                 target="_blank"
