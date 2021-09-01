@@ -35,11 +35,11 @@ const RelatedProducts: React.FC<Products> = ({ id, type }, props) => {
         .slice(0, 3);
       setProducts(randomProducts);
     }
-  }, [data]);
+  }, [data, id]);
 
   return (
     <div className="px-4 pb-4 md:px-8">
-      <h2>Other {type.toLowerCase()} to consider:</h2>
+      <h2 className="font-serif leading-snug pb-4">Other {type.toLowerCase()}:</h2>
       <div className="grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {products.map((product) => (
           <div
