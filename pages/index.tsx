@@ -99,7 +99,7 @@ const Home: React.FC = () => {
               >
                 plastic waste
               </a>{" "}
-              end up in the oceans from coastal nations every year:
+              that end up in the oceans from coastal nations every year:
               <animated.div className="mt-1 text-5xl xl:text-6xl text-white md:text-black">
                 {number.val.to((val) =>
                   new Intl.NumberFormat().format(Math.floor(val))

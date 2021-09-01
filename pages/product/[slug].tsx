@@ -130,9 +130,9 @@ const Product: React.FC<ProductProps> = (props) => {
             </p>
           </div>
 
-          <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-8">
+          <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-8 md:flex-row">
             {props.urls.map((url, index) => (
-              <li key={index} className="mb-3">
+              <li key={index} className="mb-3 mx-2">
                 <button key={index} className="h-14">
                   <a
                     key={index}
