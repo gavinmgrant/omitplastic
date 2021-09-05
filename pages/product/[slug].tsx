@@ -6,7 +6,7 @@ import Feature from "../../components/Feature";
 import { ProductProps } from "../../components/Product";
 import Loader from "../../components/Loader";
 import RelatedProducts from "../../components/RelatedProducts";
-import { IconBrandTwitter, IconBrandFacebook } from "@tabler/icons";
+import { IconBrandTwitter, IconBrandFacebook, IconSend } from "@tabler/icons";
 import prisma from "../../lib/prisma";
 import axios from "axios";
 
@@ -88,7 +88,7 @@ const Product: React.FC<ProductProps> = (props) => {
           <div className="w-full flex justify-center items-center mt-6 md:mt-8">
             <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
               <a
-                href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20${props.name}%20at%20OmitPlastic%20\nomitplastic.com/product/${props.slug}`}
+                href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20${props.name}:%20omitplastic.com/product/${props.slug}&hashtags=omitplastic,reducewaste,ecofriendly,climateaction`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-black"
@@ -104,6 +104,14 @@ const Product: React.FC<ProductProps> = (props) => {
                 className="text-black"
               >
                 <IconBrandFacebook size={28} stroke={1.5} />
+              </a>
+            </div>
+            <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
+              <a
+                href={`mailto:?subject=${props.name}%20&body=Check%20out%20the%20${props.name}%20at%20https://omitplastic.com/product/${props.slug}.`}
+                className="text-black"
+              >
+                <IconSend size={28} stroke={1.5} />
               </a>
             </div>
           </div>
