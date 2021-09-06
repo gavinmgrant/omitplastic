@@ -20,8 +20,8 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   const [productName, setProductName] = useState(product.name);
 
   useEffect(() => {
-    if (product.name.length > 130) {
-      setProductName(product.name.substring(0, 130) + "...");
+    if (product.name.length > 110) {
+      setProductName(product.name.substring(0, 110) + "...");
     }
   }, [product.name]);
 

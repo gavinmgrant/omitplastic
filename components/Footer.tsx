@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { IconHeart } from "@tabler/icons";
 import { signOut, useSession } from "next-auth/client";
 
 const Footer: React.FC = () => {
@@ -16,14 +17,20 @@ const Footer: React.FC = () => {
         <p className="pb-2">
           As an Amazon Associate we earn from qualifying purchases.
         </p>
-        <span>© 2021 OmitPlastic</span>
+        <p className="pb-2 text-white">
+          Made with <IconHeart size={19} className="inline-block mb-1" /> in San Diego.
+        </p>
+        <span className="pb-2 text-white">© 2021 OmitPlastic</span>
       </div>
       <div className="flex flex-col text-center md:text-right md:order-last">
+        <Link href="/faq">
+          <a className="pb-2 text-white">Frequently Asked Questions</a>
+        </Link>
         <Link href="/terms">
           <a className="pb-2 text-white">Terms and Conditions</a>
         </Link>
         <Link href="/privacy">
-          <a className="pb-1 text-white">Privacy Policy</a>
+          <a className="pb-2 text-white">Privacy Policy</a>
         </Link>
       </div>
       {/* <nav>
