@@ -95,6 +95,7 @@ const Home: React.FC = () => {
               <a
                 href="https://www.nationalgeographic.com/environment/article/plastic-pollution"
                 target="_blank"
+                rel="noreferrer"
                 className="text-white md:text-custom-green"
               >
                 plastic waste
@@ -150,6 +151,7 @@ const Home: React.FC = () => {
               <a
                 href="https://scitechdaily.com/global-plastic-pollution-may-be-nearing-an-irreversible-tipping-point/"
                 target="_blank"
+                rel="noreferrer"
                 className="text-white md:text-custom-green"
               >
                 tipping point
@@ -161,7 +163,7 @@ const Home: React.FC = () => {
         </div>
         <div className="md:h-screen flex flex-col justify-center items-center m-2 mb-12">
           <h2 className="md:w-3/4 my-12 mx-4 md:mx-12 text-4xl xl:text-5xl text-center">
-            We've curated a collection of well-designed products that reduce
+            We&apos;ve curated a collection of well-designed products that reduce
             plastic pollution.
           </h2>
           <h3 className="mb-8 text-center leading-7">
@@ -199,6 +201,7 @@ const Home: React.FC = () => {
                 <a
                   href="https://www.cnn.com/2021/02/09/world/climate-fossil-fuels-pollution-intl-scn/index.html"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   1 in 5 deaths globally
                 </a>{" "}
@@ -236,12 +239,13 @@ const Home: React.FC = () => {
                 </span>
               </h3>
               <p className="ml-12">
-                It's estimated that over{" "}
+                It&apos;s estimated that over{" "}
                 <a
                   href="https://www.nationalgeographic.com/science/article/plastic-produced-recycling-waste-ocean-trash-debris-environment"
                   target="_blank"
+                  rel="noreferrer"
                 >
-                  90% of plastic waste isn't recycled
+                  90% of plastic waste isn&apos;t recycled
                 </a>
                 . If present trends continue, by 2050, there will be 12 billion
                 metric tons of plastic in landfills. That amount is 35,000 times
@@ -263,6 +267,7 @@ const Home: React.FC = () => {
                 <a
                   href="https://www.pewtrusts.org/en/trust/archive/winter-2021/ocean-plastic-pollution-is-a-huge-but-solvable-problem"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   lessen plastic waste generation by 30%
                 </a>
@@ -284,6 +289,7 @@ const Home: React.FC = () => {
                 <a
                   href="https://upstreamsolutions.org/reuse-vs-single-use-environment"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   every environmental metric
                 </a>

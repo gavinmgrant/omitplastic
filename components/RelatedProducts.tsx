@@ -35,7 +35,7 @@ const RelatedProducts: React.FC<Products> = ({ id, type }, props) => {
         .slice(0, 3);
       setProducts(randomProducts);
     }
-  }, [data, id]);
+  }, [data, id, type]);
 
   return (
     <div className="px-4 pb-4 md:px-8">

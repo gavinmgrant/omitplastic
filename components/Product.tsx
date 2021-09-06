@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Router from "next/router";
 import Feature from "./Feature";
 

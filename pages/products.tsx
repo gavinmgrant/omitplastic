@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import Feature from "../components/Feature";
 import Product, { ProductProps } from "../components/Product";
@@ -78,7 +79,7 @@ const ProductsPage: React.FC<Products> = (props) => {
 
     setProducts(filteredProducts);
     query ? setQueryValue(query) : setQueryValue("");
-  }, [queryValue]);
+  }, [queryValue, products]);
 
   useEffect(() => {
     const filterProducts = (products, features) => {
@@ -97,7 +98,7 @@ const ProductsPage: React.FC<Products> = (props) => {
     });
 
     setProducts(filteredProducts);
-  }, [features]);
+  }, [features, data]);
 
   const addFeature = (feature) => {
     if (!features.includes(feature)) {
@@ -113,7 +114,7 @@ const ProductsPage: React.FC<Products> = (props) => {
 
   useEffect(() => {
     setProducts(data);
-  }, []);
+  }, [data]);
 
   const title = "Find plastic free products and plastic free packaging.";
   const description =
@@ -142,7 +143,7 @@ const ProductsPage: React.FC<Products> = (props) => {
         <div className="flex flex-row justify-between items-center mt-2 sm:ml-2 sm:mt-0 sm:mb-2 sm:w-full">
           <p>{products.length} products found</p>
           <div className="flex">
-            {queryValue && <a href="/products">Show all</a>}
+            {queryValue && <Link href="/products"><a>Show all</a></Link>}
             {!queryValue && (
               <div onClick={handleClickBtn} className="cursor-pointer">
                 {menuOn ? <IconX size={28} /> : <IconFilter size={28} />}
@@ -191,7 +192,7 @@ const ProductsPage: React.FC<Products> = (props) => {
         <div>
           {queryValue && (
             <h2 className="pt-24 sm:pt-16 text-center">
-              Search results for "{queryValue}".
+              Search results for &quot;{queryValue}&quot;.
             </h2>
           )}
           {graybg && (

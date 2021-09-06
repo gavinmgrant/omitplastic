@@ -10,20 +10,21 @@ const FAQ: React.FC = () => {
       </h1>
       <div className="p-4 md:p-8 grid grid-cols-1 w-full gap-8 sm:grid-cols-2">
         <FAQItem
-          question={<>How did you determine which products to select?</>}
+          question={<>How did you determine which products to include here?</>}
           answer={
             <>
               The majority of{" "}
               <a
                 href="https://www.iucn.org/resources/issues-briefs/marine-plastics"
                 target="_blank"
+                rel="noreferrer"
               >
                 marine waste
               </a>{" "}
-              is from single-use plastic and we want to change that. We've
+              is from single-use plastic and we want to change that. We&apos;ve
               curated a selection of products that replace single-use plastic
-              items, are well-designed, and highly rated. The ideal product is
-              free of plastic, but that isn't always possible so we also look
+              items, are well-designed, and get high ratings. The ideal product is
+              free of plastic, but that isn&apos;t always possible so we also look
               for ones with recycled content and lower plastic content.
             </>
           }
@@ -39,13 +40,15 @@ const FAQ: React.FC = () => {
               <a
                 href="https://draxe.com/health/bpa-toxic-effects/"
                 target="_blank"
+                rel="noreferrer"
               >
                 Dr. Josh Axe
               </a>
-              . If a product isn't labeled, the{" "}
+              . If a product isn&apos;t labeled, the{" "}
               <a
                 href="https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/bpa/faq-20058331"
                 target="_blank"
+                rel="noreferrer"
               >
                 Mayo Clinic
               </a>{" "}
@@ -57,7 +60,7 @@ const FAQ: React.FC = () => {
         <FAQItem
           question={
             <>
-              What's the difference between a biodegradable and compostable
+              What&apos;s the difference between a biodegradable and compostable
               product?
             </>
           }
@@ -65,13 +68,14 @@ const FAQ: React.FC = () => {
             <>
               Biodegradable items refer to any material that breaks down and
               decomposes in the environment, while compostable items are organic
-              matter that breaks down into nutrient-rich soil. It's important to
+              matter that breaks down into nutrient-rich soil. It&apos;s important to
               understand that compostable products require certain conditions to
               break down, so you must commit to actually composting those items
               properly, rather than just sending them to a landfill.{" "}
               <a
                 href="https://www.bhg.com/gardening/yard/compost/how-to-compost/"
                 target="_blank"
+                rel="noreferrer"
               >
                 Go here
               </a>{" "}
@@ -83,7 +87,7 @@ const FAQ: React.FC = () => {
           question={<>How do I buy a product?</>}
           answer={
             <>
-              Click on the BUY button to take you to the retailer's site where
+              Click on the BUY button to take you to the retailer&apos;s site where
               you can buy the product.
             </>
           }

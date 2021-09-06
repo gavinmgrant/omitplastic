@@ -9,15 +9,16 @@ const Header: React.FC = () => {
     <header>
       <nav className="flex fixed w-full top-0 left-0 px-4 md:px-8 h-16 items-center justify-between py-4 bg-white z-20">
         <Link href="/">
-          <a className="font-serif text-2xl sm:text-3xl text-black">OmitPlastic</a>
+          <a className="font-serif text-2xl sm:text-3xl text-black">
+            OmitPlastic
+          </a>
         </Link>
         <div className="flex items-center">
-          <a
-            href="/products"
-            className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-xl text-white hover:text-custom-green shadow-md flex justify-center items-center"
-          >
-            Products
-          </a>
+          <Link href="/products">
+            <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-xl text-white hover:text-custom-green shadow-md flex justify-center items-center">
+              Products
+            </a>
+          </Link>
         </div>
       </nav>
     </header>
