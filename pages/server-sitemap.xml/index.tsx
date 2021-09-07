@@ -14,6 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     .concat([
       { loc: "https://www.omitplastic.com", lastmod: new Date().toISOString() },
       { loc: "https://www.omitplastic.com/products", lastmod: new Date().toISOString() },
+      { loc: "https://www.omitplastic.com/faq", lastmod: new Date().toISOString() },
     ]);
 
   return getServerSideSitemap(ctx, fields);

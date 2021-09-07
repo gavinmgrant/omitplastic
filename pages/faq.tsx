@@ -1,10 +1,31 @@
 import React from "react";
+import Head from "next/head";
 import Layout from "../components/Layout";
 import FAQItem from "../components/FAQItem";
 
 const FAQ: React.FC = () => {
+  const title = "OmitPlastic | Frequently asked questions about reducing plastic pollution.";
+  const description =
+    "Answers to frequently asked questions about reducing plastic pollution. OmitPlastic helps you buy products with less plastic.";
+  const image = "/public/images/ocean-plastic.jpg";
+
   return (
     <Layout>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta
+          property="og:url"
+          content="https://www.omitplastic.com/faq"
+        />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+      </Head>
       <h1 className="p-4 md:px-8 border-b-2 border-solid border-gray-300 leading-tight">
         Frequently Asked Questions
       </h1>
@@ -23,9 +44,9 @@ const FAQ: React.FC = () => {
               </a>{" "}
               is from single-use plastic and we want to change that. We&apos;ve
               curated a selection of products that replace single-use plastic
-              items, are well-designed, and get high ratings. The ideal product is
-              free of plastic, but that isn&apos;t always possible so we also look
-              for ones with recycled content and lower plastic content.
+              items, are well-designed, and get high ratings. The ideal product
+              is free of plastic, but that isn&apos;t always possible so we also
+              look for ones with recycled content and lower plastic content.
             </>
           }
         />
@@ -68,10 +89,11 @@ const FAQ: React.FC = () => {
             <>
               Biodegradable items refer to any material that breaks down and
               decomposes in the environment, while compostable items are organic
-              matter that breaks down into nutrient-rich soil. It&apos;s important to
-              understand that compostable products require certain conditions to
-              break down, so you must commit to actually composting those items
-              properly, rather than just sending them to a landfill.{" "}
+              matter that breaks down into nutrient-rich soil. It&apos;s
+              important to understand that compostable products require certain
+              conditions to break down, so you must commit to actually
+              composting those items properly, rather than just sending them to
+              a landfill.{" "}
               <a
                 href="https://www.bhg.com/gardening/yard/compost/how-to-compost/"
                 target="_blank"
@@ -87,8 +109,8 @@ const FAQ: React.FC = () => {
           question={<>How do I buy a product?</>}
           answer={
             <>
-              Click on the BUY button to take you to the retailer&apos;s site where
-              you can buy the product.
+              Click on the BUY button to take you to the retailer&apos;s site
+              where you can buy the product.
             </>
           }
         />
