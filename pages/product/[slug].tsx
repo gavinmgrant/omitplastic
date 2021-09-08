@@ -73,6 +73,7 @@ const Product: React.FC<ProductProps> = (props) => {
           content={`https://www.omitplastic.com/product/${props.slug}`}
         />
         <meta property="og:title" content={props.name} />
+        <meta property="og:type" content="website" />
         <meta property="og:description" content={props.description} />
         <meta property="og:image" content={props.imageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

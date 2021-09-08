@@ -116,7 +116,7 @@ const ProductsPage: React.FC<Products> = (props) => {
     setProducts(data);
   }, [data]);
 
-  const title = "Find plastic free products and plastic free packaging.";
+  const title = "Find plastic free products and plastic free packaging. | OmitPlastic";
   const description =
     "Reduce plastic use by purchasing plastic free products, plastic free packaging, and reusable products.";
   const image = "/public/images/ocean-plastic.jpg";
@@ -128,6 +128,7 @@ const ProductsPage: React.FC<Products> = (props) => {
         <meta name="description" content={description} />
         <meta property="og:url" content="https://www.omitplastic.com/products" />
         <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />

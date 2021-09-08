@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import FAQItem from "../components/FAQItem";
 
 const FAQ: React.FC = () => {
-  const title = "OmitPlastic | Frequently asked questions about reducing plastic pollution.";
+  const title = "Frequently asked questions about reducing plastic pollution. | OmitPlastic";
   const description =
     "Answers to frequently asked questions about reducing plastic pollution. OmitPlastic helps you buy products with less plastic.";
   const image = "/public/images/ocean-plastic.jpg";
@@ -19,6 +19,7 @@ const FAQ: React.FC = () => {
           content="https://www.omitplastic.com/faq"
         />
         <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />

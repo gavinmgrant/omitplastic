@@ -24,7 +24,7 @@ const CallToAction = () => {
   );
 };
 
-const title = "OmitPlastic | Buy products that reduce plastic pollution.";
+const title = "Buy products that reduce plastic pollution. | OmitPlastic";
 const description =
   "Find plastic-free products, compostable products, reusable products, and more to reduce plastic pollution.";
 const image = "/public/images/beach-bottle.jpg";
@@ -54,6 +54,7 @@ const Home: React.FC = () => {
         <meta name="description" content={description} />
         <meta property="og:url" content="https://www.omitplastic.com" />
         <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -222,8 +223,9 @@ const Home: React.FC = () => {
                 seals and Pacific loggerhead sea turtles are among nearly 700
                 species that eat and get caught in{" "}
                 <a
-                  href="biologicaldiversity.org/campaigns/ocean_plastics/"
+                  href="https://www.biologicaldiversity.org/campaigns/ocean_plastics/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   plastic waste
                 </a>

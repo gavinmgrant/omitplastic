@@ -1,9 +1,13 @@
 import React from "react";
+import Head from "next/head";
 import Layout from "../components/Layout";
 
 const PrivacyPage: React.FC = () => {
   return (
     <Layout>
+      <Head>
+        <title>Privacy Policy | OmitPlastic</title>
+      </Head>
       <div className="p-4 md:px-8">
         <h1>Privacy Policy</h1>
         <p>Last updated: July 26, 2021</p>
@@ -27,15 +31,15 @@ const PrivacyPage: React.FC = () => {
           </a>
           .
         </p>
-        <h1>Interpretation and Definitions</h1>
-        <h2>Interpretation</h2>
+        <h2>Interpretation and Definitions</h2>
+        <h3>Interpretation</h3>
         <p>
           The words of which the initial letter is capitalized have meanings
           defined under the following conditions. The following definitions
           shall have the same meaning regardless of whether they appear in
           singular or in plural.
         </p>
-        <h2>Definitions</h2>
+        <h3>Definitions</h3>
         <p>For the purposes of this Privacy Policy:</p>
         <ul className="list-disc ml-6">
           <li>
@@ -120,9 +124,9 @@ const PrivacyPage: React.FC = () => {
             </p>
           </li>
         </ul>
-        <h1>Collecting and Using Your Personal Data</h1>
-        <h2>Types of Data Collected</h2>
-        <h3>Personal Data</h3>
+        <h2>Collecting and Using Your Personal Data</h2>
+        <h3>Types of Data Collected</h3>
+        <h4>Personal Data</h4>
         <p>
           While using Our Service, We may ask You to provide Us with certain
           personally identifiable information that can be used to contact or
@@ -132,7 +136,7 @@ const PrivacyPage: React.FC = () => {
         <ul className="list-disc ml-6">
           <li>Usage Data</li>
         </ul>
-        <h3>Usage Data</h3>
+        <h4>Usage Data</h4>
         <p>Usage Data is collected automatically when using the Service.</p>
         <p>
           Usage Data may include information such as Your Device&apos;s Internet
@@ -154,7 +158,7 @@ const PrivacyPage: React.FC = () => {
           visit our Service or when You access the Service by or through a
           mobile device.
         </p>
-        <h3>Tracking Technologies and Cookies</h3>
+        <h4>Tracking Technologies and Cookies</h4>
         <p>
           We use Cookies and similar tracking technologies to track the activity
           on Our Service and store certain information. Tracking technologies
@@ -374,7 +378,7 @@ const PrivacyPage: React.FC = () => {
             information for any other purpose with Your consent.
           </li>
         </ul>
-        <h2>Retention of Your Personal Data</h2>
+        <h3>Retention of Your Personal Data</h3>
         <p>
           The Company will retain Your Personal Data only for as long as is
           necessary for the purposes set out in this Privacy Policy. We will
@@ -390,7 +394,7 @@ const PrivacyPage: React.FC = () => {
           improve the functionality of Our Service, or We are legally obligated
           to retain this data for longer time periods.
         </p>
-        <h2>Transfer of Your Personal Data</h2>
+        <h3>Transfer of Your Personal Data</h3>
         <p>
           Your information, including Personal Data, is processed at the
           Company&apos;s operating offices and in any other places where the parties
@@ -411,21 +415,21 @@ const PrivacyPage: React.FC = () => {
           organization or a country unless there are adequate controls in place
           including the security of Your data and other personal information.
         </p>
-        <h2>Disclosure of Your Personal Data</h2>
-        <h3>Business Transactions</h3>
+        <h3>Disclosure of Your Personal Data</h3>
+        <h4>Business Transactions</h4>
         <p>
           If the Company is involved in a merger, acquisition or asset sale,
           Your Personal Data may be transferred. We will provide notice before
           Your Personal Data is transferred and becomes subject to a different
           Privacy Policy.
         </p>
-        <h3>Law enforcement</h3>
+        <h4>Law enforcement</h4>
         <p>
           Under certain circumstances, the Company may be required to disclose
           Your Personal Data if required to do so by law or in response to valid
           requests by public authorities (e.g. a court or a government agency).
         </p>
-        <h3>Other legal requirements</h3>
+        <h4>Other legal requirements</h4>
         <p>
           The Company may disclose Your Personal Data in the good faith belief
           that such action is necessary to:
@@ -442,7 +446,7 @@ const PrivacyPage: React.FC = () => {
           </li>
           <li>Protect against legal liability</li>
         </ul>
-        <h2>Security of Your Personal Data</h2>
+        <h3>Security of Your Personal Data</h3>
         <p>
           The security of Your Personal Data is important to Us, but remember
           that no method of transmission over the Internet, or method of
@@ -450,7 +454,7 @@ const PrivacyPage: React.FC = () => {
           acceptable means to protect Your Personal Data, We cannot guarantee
           its absolute security.
         </p>
-        <h1>Children&apos;s Privacy</h1>
+        <h2>Children&apos;s Privacy</h2>
         <p>
           Our Service does not address anyone under the age of 13. We do not
           knowingly collect personally identifiable information from anyone
@@ -466,7 +470,7 @@ const PrivacyPage: React.FC = () => {
           require Your parent&apos;s consent before We collect and use that
           information.
         </p>
-        <h1>Links to Other Websites</h1>
+        <h2>Links to Other Websites</h2>
         <p>
           Our Service may contain links to other websites that are not operated
           by Us. If You click on a third party link, You will be directed to
@@ -477,7 +481,7 @@ const PrivacyPage: React.FC = () => {
           We have no control over and assume no responsibility for the content,
           privacy policies or practices of any third party sites or services.
         </p>
-        <h1>Changes to this Privacy Policy</h1>
+        <h2>Changes to this Privacy Policy</h2>
         <p>
           We may update Our Privacy Policy from time to time. We will notify You
           of any changes by posting the new Privacy Policy on this page.
@@ -492,7 +496,7 @@ const PrivacyPage: React.FC = () => {
           changes. Changes to this Privacy Policy are effective when they are
           posted on this page.
         </p>
-        <h1>Contact Us</h1>
+        <h2>Contact Us</h2>
         <p>
           If you have any questions about this Privacy Policy, You can contact
           us:

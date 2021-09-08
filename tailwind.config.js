@@ -56,6 +56,11 @@ module.exports = {
           fontFamily: theme("fontFamily.serif"),
           lineHeight: theme("lineHeight.loose"),
         },
+        h4: {
+          fontSize: theme("fontSize.lg"),
+          fontFamily: theme("fontFamily.serif"),
+          lineHeight: theme("lineHeight.loose"),
+        },
         a: {
           color: theme("colors.custom-green"),
         },

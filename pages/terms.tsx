@@ -1,9 +1,13 @@
 import React from "react";
+import Head from "next/head";
 import Layout from "../components/Layout";
 
 const TermsPage: React.FC = () => {
   return (
     <Layout>
+      <Head>
+        <title>Terms and Conditions | OmitPlastic</title>
+      </Head>
       <div className="p-4 md:px-8">
         <h1>Terms and Conditions</h1>
         <p>Last updated: July 26, 2021</p>
@@ -11,15 +15,15 @@ const TermsPage: React.FC = () => {
           Please read these terms and conditions carefully before using Our
           Service.
         </p>
-        <h1>Interpretation and Definitions</h1>
-        <h2>Interpretation</h2>
+        <h2>Interpretation and Definitions</h2>
+        <h3>Interpretation</h3>
         <p>
           The words of which the initial letter is capitalized have meanings
           defined under the following conditions. The following definitions
           shall have the same meaning regardless of whether they appear in
           singular or in plural.
         </p>
-        <h2>Definitions</h2>
+        <h3>Definitions</h3>
         <p>For the purposes of these Terms and Conditions:</p>
         <ul className="list-disc ml-6">
           <li>
@@ -100,7 +104,7 @@ const TermsPage: React.FC = () => {
             </p>
           </li>
         </ul>
-        <h1>Acknowledgment</h1>
+        <h2>Acknowledgment</h2>
         <p>
           These are the Terms and Conditions governing the use of this Service
           and the agreement that operates between You and the Company. These
@@ -131,7 +135,7 @@ const TermsPage: React.FC = () => {
           rights and how the law protects You. Please read Our Privacy Policy
           carefully before using Our Service.
         </p>
-        <h1>Links to Other Websites</h1>
+        <h2>Links to Other Websites</h2>
         <p>
           Our Service may contain links to third-party web sites or services
           that are not owned or controlled by the Company.
@@ -149,7 +153,7 @@ const TermsPage: React.FC = () => {
           We strongly advise You to read the terms and conditions and privacy
           policies of any third-party web sites or services that You visit.
         </p>
-        <h1>Termination</h1>
+        <h2>Termination</h2>
         <p>
           We may terminate or suspend Your access immediately, without prior
           notice or liability, for any reason whatsoever, including without
@@ -159,7 +163,7 @@ const TermsPage: React.FC = () => {
           Upon termination, Your right to use the Service will cease
           immediately.
         </p>
-        <h1>Limitation of Liability</h1>
+        <h2>Limitation of Liability</h2>
         <p>
           Notwithstanding any damages that You might incur, the entire liability
           of the Company and any of its suppliers under any provision of this
@@ -187,7 +191,7 @@ const TermsPage: React.FC = () => {
           states, each party&apos;s liability will be limited to the greatest extent
           permitted by law.
         </p>
-        <h1>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h1>
+        <h2>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h2>
         <p>
           The Service is provided to You &quot;AS IS&quot; and &quot;AS
           AVAILABLE&quot; and with all faults and defects without warranty of
@@ -227,25 +231,25 @@ const TermsPage: React.FC = () => {
           set forth in this section shall be applied to the greatest extent
           enforceable under applicable law.
         </p>
-        <h1>Governing Law</h1>
+        <h2>Governing Law</h2>
         <p>
           The laws of the Country, excluding its conflicts of law rules, shall
           govern this Terms and Your use of the Service. Your use of the
           Application may also be subject to other local, state, national, or
           international laws.
         </p>
-        <h1>Disputes Resolution</h1>
+        <h2>Disputes Resolution</h2>
         <p>
           If You have any concern or dispute about the Service, You agree to
           first try to resolve the dispute informally by contacting the Company.
         </p>
-        <h1>For European Union (EU) Users</h1>
+        <h2>For European Union (EU) Users</h2>
         <p>
           If You are a European Union consumer, you will benefit from any
           mandatory provisions of the law of the country in which you are
           resident in.
         </p>
-        <h1>United States Legal Compliance</h1>
+        <h2>United States Legal Compliance</h2>
         <p>
           You represent and warrant that (i) You are not located in a country
           that is subject to the United States government embargo, or that has
@@ -253,8 +257,8 @@ const TermsPage: React.FC = () => {
           supporting&quot; country, and (ii) You are not listed on any United
           States government list of prohibited or restricted parties.
         </p>
-        <h1>Severability and Waiver</h1>
-        <h2>Severability</h2>
+        <h2>Severability and Waiver</h2>
+        <h3>Severability</h3>
         <p>
           If any provision of these Terms is held to be unenforceable or
           invalid, such provision will be changed and interpreted to accomplish
@@ -262,7 +266,7 @@ const TermsPage: React.FC = () => {
           applicable law and the remaining provisions will continue in full
           force and effect.
         </p>
-        <h2>Waiver</h2>
+        <h3>Waiver</h3>
         <p>
           Except as provided herein, the failure to exercise a right or to
           require performance of an obligation under this Terms shall not effect
@@ -270,13 +274,13 @@ const TermsPage: React.FC = () => {
           at any time thereafter nor shall be the waiver of a breach constitute
           a waiver of any subsequent breach.
         </p>
-        <h1>Translation Interpretation</h1>
+        <h2>Translation Interpretation</h2>
         <p>
           These Terms and Conditions may have been translated if We have made
           them available to You on our Service. You agree that the original
           English text shall prevail in the case of a dispute.
         </p>
-        <h1>Changes to These Terms and Conditions</h1>
+        <h2>Changes to These Terms and Conditions</h2>
         <p>
           We reserve the right, at Our sole discretion, to modify or replace
           these Terms at any time. If a revision is material We will make
@@ -290,7 +294,7 @@ const TermsPage: React.FC = () => {
           do not agree to the new terms, in whole or in part, please stop using
           the website and the Service.
         </p>
-        <h1>Contact Us</h1>
+        <h2>Contact Us</h2>
         <p>
           If you have any questions about these Terms and Conditions, You can
           contact us:
