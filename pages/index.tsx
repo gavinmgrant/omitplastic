@@ -34,8 +34,8 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const number = useSpring({
-    val: isVisible ? 8000000 : 1000000,
-    from: { val: 1000000 },
+    val: isVisible ? 8000000 : 7000000,
+    from: { val: 7000000 },
     config: config.molasses,
     reset: !isVisible,
     clamp: true,
@@ -70,6 +70,8 @@ const Home: React.FC = () => {
               alt="Find plastic-free products to reduce plastic pollution."
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
+              priority={true}
             />
           </div>
           <div className="hidden md:block pl-12 opacity-80">
@@ -79,11 +81,12 @@ const Home: React.FC = () => {
               width={360}
               height={450}
               layout="fixed"
+              placeholder="blur"
             />
           </div>
 
           <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left pb-28 md:pb-0 flex flex-col justify-center items-center">
-            <h1 className="text-3xl xl:text-4xl">
+            <h1 className="relative text-3xl xl:text-4xl">
               We help people omit plastic from their online purchases.
             </h1>
             <CallToAction />
@@ -164,8 +167,8 @@ const Home: React.FC = () => {
         </div>
         <div className="md:h-screen flex flex-col justify-center items-center m-2 mb-12">
           <h2 className="md:w-3/4 my-12 mx-4 md:mx-12 text-4xl xl:text-5xl text-center">
-            We&apos;ve curated a collection of well-designed products that reduce
-            plastic pollution.
+            We&apos;ve curated a collection of well-designed products that
+            reduce plastic pollution.
           </h2>
           <h3 className="mb-8 text-center leading-7">
             Filter our collection of products by features that are important to
