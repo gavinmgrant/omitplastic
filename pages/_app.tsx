@@ -1,4 +1,3 @@
-import { Provider } from "next-auth/client";
 import { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -23,11 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     };
   }, [router.events]);
 
-  return (
-    <Provider session={pageProps.session}>
-      <Component {...pageProps} />
-    </Provider>
-  );
+  return <Component {...pageProps} />;
 };
 
 export default App;

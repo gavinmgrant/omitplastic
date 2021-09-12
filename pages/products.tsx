@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import Feature from "../components/Feature";
 import Product, { ProductProps } from "../components/Product";
@@ -28,6 +28,8 @@ const ProductsPage: React.FC<Products> = (props) => {
   const [queryValue, setQueryValue] = useState("");
   const [features, setFeatures] = useState([]);
   const [menuOn, setMenuOn] = useState(false);
+  const [startOver, setStartOver] = useState(false);
+  const router = useRouter();
 
   const { data } = useSWR("/api/products", fetcher, {
     initialData: props.feed,
@@ -44,42 +46,44 @@ const ProductsPage: React.FC<Products> = (props) => {
   };
 
   useEffect(() => {
-    const { search } = window.location;
-    const query = new URLSearchParams(search.toLowerCase()).get("s");
-    const filterProducts = (products, query) => {
-      if (!query) {
-        return products;
-      }
+    if (!startOver) {
+      const { search } = window.location;
+      const query = new URLSearchParams(search.toLowerCase()).get("s");
+      const filterProducts = (products, query) => {
+        if (!query) {
+          return products;
+        }
 
-      return products.filter((product) => {
-        const features = product.features
-          .join(" ")
-          .toLowerCase()
-          .replace(/-/g, " ");
-        const content =
-          product.name.toLowerCase() +
-          " " +
-          product.category.toLowerCase() +
-          " " +
-          product.description.toLowerCase() +
-          " " +
-          product.type.toLowerCase() +
-          " " +
-          features;
+        return products.filter((product) => {
+          const features = product.features
+            .join(" ")
+            .toLowerCase()
+            .replace(/-/g, " ");
+          const content =
+            product.name.toLowerCase() +
+            " " +
+            product.category.toLowerCase() +
+            " " +
+            product.description.toLowerCase() +
+            " " +
+            product.type.toLowerCase() +
+            " " +
+            features;
 
-        return content.includes(query);
+          return content.includes(query);
+        });
+      };
+
+      const filteredProducts = filterProducts(data, query).sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        return aName.localeCompare(bName);
       });
-    };
 
-    const filteredProducts = filterProducts(products, query).sort((a, b) => {
-      const aName = a.name.toLowerCase();
-      const bName = b.name.toLowerCase();
-      return aName.localeCompare(bName);
-    });
-
-    setProducts(filteredProducts);
-    query ? setQueryValue(query) : setQueryValue("");
-  }, [queryValue, products]);
+      setProducts(filteredProducts);
+      query ? setQueryValue(query) : setQueryValue("");
+    }
+  }, [queryValue, data, startOver]);
 
   useEffect(() => {
     const filterProducts = (products, features) => {
@@ -112,11 +116,18 @@ const ProductsPage: React.FC<Products> = (props) => {
     setFeatures([]);
   };
 
+  const showAll = () => {
+    router.push("/products");
+    setQueryValue("");
+    setStartOver(true);
+  };
+
   useEffect(() => {
     setProducts(data);
-  }, [data]);
+  }, [data, startOver]);
 
-  const title = "Find plastic free products and plastic free packaging. | OmitPlastic";
+  const title =
+    "Find plastic free products and plastic free packaging. | OmitPlastic";
   const description =
     "Reduce plastic use by purchasing plastic free products, plastic free packaging, and reusable products.";
   const image = "/public/images/ocean-plastic.jpg";
@@ -126,7 +137,10 @@ const ProductsPage: React.FC<Products> = (props) => {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta property="og:url" content="https://www.omitplastic.com/products" />
+        <meta
+          property="og:url"
+          content="https://www.omitplastic.com/products"
+        />
         <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={description} />
@@ -144,7 +158,11 @@ const ProductsPage: React.FC<Products> = (props) => {
         <div className="flex flex-row justify-between items-center mt-2 sm:ml-2 sm:mt-0 sm:mb-2 sm:w-full">
           <p>{products.length} products found</p>
           <div className="flex">
-            {queryValue && <Link href="/products"><a>Show all</a></Link>}
+            {queryValue && (
+              <a className="cursor-pointer" onClick={showAll}>
+                Show all
+              </a>
+            )}
             {!queryValue && (
               <div onClick={handleClickBtn} className="cursor-pointer">
                 {menuOn ? <IconX size={28} /> : <IconFilter size={28} />}
