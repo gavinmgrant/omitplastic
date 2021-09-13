@@ -74,7 +74,7 @@ const ProductsPage: React.FC<Products> = (props) => {
         });
       };
 
-      const filteredProducts = filterProducts(data, query).sort((a, b) => {
+      const filteredProducts = filterProducts(products, query).sort((a, b) => {
         const aName = a.name.toLowerCase();
         const bName = b.name.toLowerCase();
         return aName.localeCompare(bName);
@@ -83,7 +83,7 @@ const ProductsPage: React.FC<Products> = (props) => {
       setProducts(filteredProducts);
       query ? setQueryValue(query) : setQueryValue("");
     }
-  }, [queryValue, data, startOver]);
+  }, [queryValue, products, startOver]);
 
   useEffect(() => {
     const filterProducts = (products, features) => {

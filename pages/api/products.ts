@@ -4,6 +4,9 @@ export default async function handle(req, res) {
   const products = await prisma.product.findMany({
     orderBy: [
       {
+        category: "desc"
+      },
+      {
         type: 'asc',
       },
       {
