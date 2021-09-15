@@ -82,22 +82,23 @@ const ProductsPage: React.FC<Products> = (props) => {
   }, [queryValue, startOver, data]);
 
   useEffect(() => {
-    const filterProducts = (products, features) => {
-      if (!features) {
-        return products;
-      }
-      return products.filter((product) => {
+    const filterProducts = (prods, features) => {
+      return prods.filter((product) => {
         return features.every((f) => product.features.includes(f));
       });
     };
 
-    const filteredProducts = filterProducts(data, features).sort((a, b) => {
-      const aName = a.name.toLowerCase();
-      const bName = b.name.toLowerCase();
-      return aName.localeCompare(bName);
-    });
+    let filteredProducts;
 
-    setProducts(filteredProducts);
+    if (features.length > 0) {
+      filteredProducts = filterProducts(data, features).sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        return aName.localeCompare(bName);
+      });
+    }
+
+    features.length > 0 ? setProducts(filteredProducts) : setProducts(data);
   }, [features, data]);
 
   const addFeature = (feature) => {
