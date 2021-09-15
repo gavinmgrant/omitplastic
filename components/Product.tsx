@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import Router from "next/router";
 import Feature from "./Feature";
+import { IconChevronRight } from "@tabler/icons";
 
 export type ProductProps = {
   id: number;
@@ -21,8 +22,8 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   const [productName, setProductName] = useState(product.name);
 
   useEffect(() => {
-    if (product.name.length > 110) {
-      setProductName(product.name.substring(0, 110) + "...");
+    if (product.name.length > 90) {
+      setProductName(product.name.substring(0, 90) + "...");
     }
   }, [product.name]);
 
@@ -44,7 +45,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
             <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
-        <button onClick={() => Router.push("/product/[slug]", `/product/${product.slug}`)}>Details</button>
+        <button onClick={() => Router.push("/product/[slug]", `/product/${product.slug}`)} className="flex justify-end">More<IconChevronRight /></button>
       </div>
     </div>
   );
