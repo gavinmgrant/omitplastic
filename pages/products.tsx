@@ -49,12 +49,8 @@ const ProductsPage: React.FC<Products> = (props) => {
     if (!startOver) {
       const { search } = window.location;
       const query = new URLSearchParams(search.toLowerCase()).get("s");
-      const filterProducts = (products, query) => {
-        if (!query) {
-          return products;
-        }
-
-        return products.filter((product) => {
+      const filterProducts = (prods, query) => {
+        return prods.filter((product) => {
           const features = product.features
             .join(" ")
             .toLowerCase()
@@ -74,7 +70,7 @@ const ProductsPage: React.FC<Products> = (props) => {
         });
       };
 
-      const filteredProducts = filterProducts(products, query).sort((a, b) => {
+      const filteredProducts = filterProducts(data, query).sort((a, b) => {
         const aName = a.name.toLowerCase();
         const bName = b.name.toLowerCase();
         return aName.localeCompare(bName);
@@ -83,7 +79,7 @@ const ProductsPage: React.FC<Products> = (props) => {
       setProducts(filteredProducts);
       query ? setQueryValue(query) : setQueryValue("");
     }
-  }, [queryValue, products, startOver]);
+  }, [queryValue, startOver, data]);
 
   useEffect(() => {
     const filterProducts = (products, features) => {
@@ -117,9 +113,9 @@ const ProductsPage: React.FC<Products> = (props) => {
   };
 
   const showAll = () => {
-    router.push("/products");
-    setQueryValue("");
+    setQueryValue(null);
     setStartOver(true);
+    router.push("/products");
   };
 
   useEffect(() => {
