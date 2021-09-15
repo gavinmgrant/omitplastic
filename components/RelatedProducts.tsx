@@ -18,7 +18,6 @@ type Products = {
 
 const RelatedProducts: React.FC<Products> = ({ id, type }, props) => {
   const [products, setProducts] = useState([]);
-  console.log(products);
 
   const { data } = useSWR("/api/products", fetcher, {
     initialData: props.feed,
