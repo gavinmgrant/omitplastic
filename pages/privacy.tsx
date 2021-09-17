@@ -7,6 +7,7 @@ const PrivacyPage: React.FC = () => {
     <Layout>
       <Head>
         <title>Privacy Policy | OmitPlastic</title>
+        <meta name="description" content="Privacy policy for OmitPlastic." />
       </Head>
       <div className="p-4 md:px-8">
         <h1>Privacy Policy</h1>
