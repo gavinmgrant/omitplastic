@@ -23,11 +23,22 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const Product: React.FC<ProductProps> = (props) => {
   const [price, setPrice] = useState("");
+  const [productName, setProductName] = useState(props.name);
+  const [productDescription, setProductDescription] = useState(props.description);
   const [loading, setLoading] = useState(true);
 
   setTimeout(() => {
     setLoading(false);
   }, 16000);
+
+  useEffect(() => {
+    if (props.name.length > 55) {
+      setProductName(props.name.substring(0, 55) + "...");
+    }
+    if (props.description.length > 155) {
+      setProductDescription(props.description.substring(0, 155) + "...");
+    }
+  }, [props.name, props.description]);
 
   useEffect(() => {
     setLoading(true);
@@ -66,19 +77,19 @@ const Product: React.FC<ProductProps> = (props) => {
   return (
     <Layout>
       <Head>
-        <title>{props.name}</title>
-        <meta name="description" content={props.description} />
+        <title>{productName}</title>
+        <meta name="description" content={productDescription} />
         <meta
           property="og:url"
           content={`https://www.omitplastic.com/product/${props.slug}`}
         />
-        <meta property="og:title" content={props.name} />
+        <meta property="og:title" content={productName} />
         <meta property="og:type" content="website" />
-        <meta property="og:description" content={props.description} />
+        <meta property="og:description" content={productDescription} />
         <meta property="og:image" content={props.imageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={props.name} />
-        <meta name="twitter:description" content={props.description} />
+        <meta name="twitter:title" content={productName} />
+        <meta name="twitter:description" content={productDescription} />
         <meta name="twitter:image" content={props.imageUrl} />
       </Head>
       <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-8 p-4 md:px-8">
