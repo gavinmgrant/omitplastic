@@ -5,7 +5,7 @@ import { IconHeart } from "@tabler/icons";
 const Footer: React.FC = () => {
 
   return (
-    <div className="flex flex-col text-center items-center justify-between px-4 py-12 md:px-8 md:text-left md:flex-row bg-custom-green text-white">
+    <div className="flex flex-col text-center items-center justify-between px-4 py-12 md:px-8 md:py-16 md:text-left md:flex-row bg-custom-green text-white">
       <div className="flex flex-col order-last pt-8 md:pt-0">
         <p className="pb-2">
           As an Amazon Associate we earn from qualifying purchases.
