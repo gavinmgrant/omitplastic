@@ -10,6 +10,7 @@ import useSWR from "swr";
 import { FeaturesList } from "../lib/featuresList";
 import { IconFilter, IconX } from "@tabler/icons";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { useSpring, animated } from "react-spring";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -33,6 +34,11 @@ const ProductsPage: React.FC<Products> = (props) => {
 
   const { data } = useSWR("/api/products", fetcher, {
     initialData: props.feed,
+  });
+
+  const menuStyle = useSpring({
+    transform: "translateX(125%)",
+    to: { transform: menuOn ? "translateX(0)" : "translateX(125%)" },
   });
 
   const ref = useOnclickOutside(() => {
@@ -170,9 +176,10 @@ const ProductsPage: React.FC<Products> = (props) => {
       </div>
 
       {menuOn && (
-        <ul
+        <animated.ul
           ref={ref}
-          className="fixed top-36 sm:top-28 right-4 px-5 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg"
+          style={menuStyle}
+          className="fixed top-36 sm:top-28 right-4 md:right-8 px-5 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg"
         >
           <h2>Filter by feature:</h2>
           {FeaturesList.map((feature) => (
@@ -197,7 +204,7 @@ const ProductsPage: React.FC<Products> = (props) => {
               Clear filters
             </p>
           </button>
-        </ul>
+        </animated.ul>
       )}
 
       {products.length === 0 ? (

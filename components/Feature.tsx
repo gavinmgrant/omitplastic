@@ -60,7 +60,7 @@ const Feature: React.FC<Props> = ({ feat, text }) => {
       icon = "";
   }
   return (
-    <li className="flex mb-2 items-center cursor-pointer">
+    <li className="flex mb-1 items-center cursor-pointer">
       <span data-tip={!text ? name : ""} date-place="top">
         {icon}
       </span>
