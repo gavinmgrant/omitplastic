@@ -14,11 +14,36 @@ const Header: React.FC = () => {
           </a>
         </Link>
         <div className="flex items-center">
-          <Link href="/products">
-            <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-xl text-white hover:text-custom-green shadow-md flex justify-center items-center">
-              Products
-            </a>
-          </Link>
+          {router.pathname.startsWith("/products") ? (
+            <menu className="font-serif flex items-center justify-end pl-2">
+              <Link href="/products/bags">
+                <a className="text-sm sm:text-base md:text-lg mx-1 sm:mx-2 leading-tight text-center">
+                  Bags
+                </a>
+              </Link>
+              <Link href="/products/bottles">
+                <a className="text-sm sm:text-base md:text-lg mx-1 sm:mx-2 leading-tight text-center">
+                  Bottles
+                </a>
+              </Link>
+              <Link href="/products/household-supplies">
+                <a className="text-sm sm:text-base md:text-lg mx-1 sm:mx-2 leading-tight text-center">
+                  Household Supplies
+                </a>
+              </Link>
+              <Link href="/products/personal-care">
+                <a className="text-sm sm:text-base md:text-lg mx-1 sm:mx-2 leading-tight text-center">
+                  Personal Care
+                </a>
+              </Link>
+            </menu>
+          ) : (
+            <Link href="/products">
+              <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-xl text-white hover:text-custom-green shadow-md flex justify-center items-center">
+                Products
+              </a>
+            </Link>
+          )}
         </div>
       </nav>
     </header>

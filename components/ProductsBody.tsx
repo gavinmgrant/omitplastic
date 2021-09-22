@@ -1,29 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { GetStaticProps } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import Layout from "../components/Layout";
-import Feature from "../components/Feature";
-import Product, { ProductProps } from "../components/Product";
-import SearchBar from "../components/SearchBar";
-import useSWR from "swr";
+import Layout from "./Layout";
+import Feature from "./Feature";
+import Product, { ProductProps } from "./Product";
+import SearchBar from "./SearchBar";
 import { FeaturesList } from "../lib/featuresList";
 import { IconFilter, IconX } from "@tabler/icons";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { useSpring, animated } from "react-spring";
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
-
-export const getStaticProps: GetStaticProps = async () => {
-  const feed = await fetcher("https://www.omitplastic.com/api/products");
-  return { props: { feed } };
-};
-
 type Products = {
   feed: ProductProps[];
 };
 
-const ProductsPage: React.FC<Products> = (props) => {
+const ProductsBody: React.FC<Products> = (props) => {
   const [graybg, setGraybg] = useState(false);
   const [products, setProducts] = useState([]);
   const [queryValue, setQueryValue] = useState("");
@@ -31,10 +21,6 @@ const ProductsPage: React.FC<Products> = (props) => {
   const [menuOn, setMenuOn] = useState(false);
   const [startOver, setStartOver] = useState(false);
   const router = useRouter();
-
-  const { data } = useSWR("/api/products", fetcher, {
-    initialData: props.feed,
-  });
 
   const menuStyle = useSpring({
     transform: "translateX(125%)",
@@ -76,16 +62,18 @@ const ProductsPage: React.FC<Products> = (props) => {
         });
       };
 
-      const filteredProducts = filterProducts(data, query).sort((a, b) => {
-        const aName = a.name.toLowerCase();
-        const bName = b.name.toLowerCase();
-        return aName.localeCompare(bName);
-      });
+      const filteredProducts = filterProducts(props.feed, query).sort(
+        (a, b) => {
+          const aName = a.name.toLowerCase();
+          const bName = b.name.toLowerCase();
+          return aName.localeCompare(bName);
+        }
+      );
 
       setProducts(filteredProducts);
       query ? setQueryValue(query) : setQueryValue("");
     }
-  }, [queryValue, startOver, data]);
+  }, [queryValue, startOver, props.feed]);
 
   useEffect(() => {
     const filterProducts = (prods, features) => {
@@ -97,15 +85,17 @@ const ProductsPage: React.FC<Products> = (props) => {
     let filteredProducts;
 
     if (features.length > 0) {
-      filteredProducts = filterProducts(data, features).sort((a, b) => {
+      filteredProducts = filterProducts(props.feed, features).sort((a, b) => {
         const aName = a.name.toLowerCase();
         const bName = b.name.toLowerCase();
         return aName.localeCompare(bName);
       });
     }
 
-    features.length > 0 ? setProducts(filteredProducts) : setProducts(data);
-  }, [features, data]);
+    features.length > 0
+      ? setProducts(filteredProducts)
+      : setProducts(props.feed);
+  }, [features, props.feed]);
 
   const addFeature = (feature) => {
     if (!features.includes(feature)) {
@@ -126,33 +116,11 @@ const ProductsPage: React.FC<Products> = (props) => {
   };
 
   useEffect(() => {
-    setProducts(data);
-  }, [data, startOver]);
-
-  const title =
-    "Find plastic free products and plastic free packaging. | OmitPlastic";
-  const description =
-    "Reduce plastic use by purchasing plastic free products, plastic free packaging, and reusable products.";
-  const image = "/public/images/ocean-plastic.jpg";
+    setProducts(props.feed);
+  }, [props.feed, startOver]);
 
   return (
     <Layout>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta
-          property="og:url"
-          content="https://www.omitplastic.com/products"
-        />
-        <meta property="og:title" content={title} />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
-      </Head>
       <div
         className="fixed flex flex-col w-full top-16 left-0 h-20 sm:h-12 sm:flex-row px-4 md:px-8 pb-1 bg-white shadow-lg z-30"
         ref={ref}
@@ -243,4 +211,4 @@ const ProductsPage: React.FC<Products> = (props) => {
   );
 };
 
-export default ProductsPage;
+export default ProductsBody;
