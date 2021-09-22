@@ -17,9 +17,11 @@ const ProductsBody: React.FC<Products> = (props) => {
   const [graybg, setGraybg] = useState(false);
   const [products, setProducts] = useState([]);
   const [queryValue, setQueryValue] = useState("");
+  const [category, setCategory] = useState("");
   const [features, setFeatures] = useState([]);
   const [menuOn, setMenuOn] = useState(false);
   const [startOver, setStartOver] = useState(false);
+
   const router = useRouter();
 
   const menuStyle = useSpring({
@@ -119,6 +121,18 @@ const ProductsBody: React.FC<Products> = (props) => {
     setProducts(props.feed);
   }, [props.feed, startOver]);
 
+  useEffect(() => {
+    // Get the category name and format it with capitalized first letter
+    if (router.query.category) {
+      const name = String(router.query.category).split("-");
+      for (let i = 0; i < name.length; i++) {
+        name[i] = name[i].charAt(0).toUpperCase() + name[i].slice(1);
+      }
+      const formattedName = name.join(" ");
+      setCategory(formattedName);
+    }
+  }, [router.query.category, category]);
+
   return (
     <Layout>
       <div
@@ -147,7 +161,7 @@ const ProductsBody: React.FC<Products> = (props) => {
         <animated.ul
           ref={ref}
           style={menuStyle}
-          className="fixed top-36 sm:top-28 right-4 md:right-8 px-5 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg"
+          className="fixed top-36 sm:top-28 right-4 md:right-8 px-5 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg text-sm sm:text-base md:text-lg"
         >
           <h2>Filter by feature:</h2>
           {FeaturesList.map((feature) => (
@@ -189,9 +203,14 @@ const ProductsBody: React.FC<Products> = (props) => {
           {graybg && (
             <div className="h-screen w-screen fixed z-20 bg-black bg-opacity-50"></div>
           )}
+          {category && (
+            <h1 className={`pt-24 pb-2 sm: pb-0 sm:pt-16 text-center ${graybg ? "opacity-50" : "opacity-100"}`}>
+              {category}
+            </h1>
+          )}
           <main
             className={`${
-              queryValue ? "pt-2 sm:pt-4" : "pt-24 sm:pt-16"
+              (queryValue || category) ? "pt-2 sm:pt-4" : "pt-24 sm:pt-16"
             } px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4`}
           >
             {products.map((product) => (

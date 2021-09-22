@@ -15,7 +15,7 @@ const Header: React.FC = () => {
         </Link>
         <div className="flex items-center">
           {router.pathname.startsWith("/products") ? (
-            <menu className="font-serif flex items-center justify-end pl-2">
+            <menu className="flex items-center justify-end pl-1">
               <Link href="/products/bags">
                 <a className="text-sm sm:text-base md:text-lg mx-1 sm:mx-2 leading-tight text-center">
                   Bags
