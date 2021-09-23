@@ -35,7 +35,7 @@ class MyDocument extends Document {
             crossOrigin="true"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Heebo&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Jost&display=swap"
             rel="stylesheet"
           />
           {/* Global Site Tag (gtag.js) - Google Analytics */}

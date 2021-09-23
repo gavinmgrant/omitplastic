@@ -160,7 +160,7 @@ const Product: React.FC<ProductProps> = (props) => {
                     href={Object.values(url)[0]}
                     target="_blank"
                     rel="noreferrer"
-                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-2 px-3 bg-black hover:bg-white font-serif text-xl text-white hover:text-black shadow-md flex justify-center items-center"
+                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-2 px-3 bg-black hover:bg-white font-sans text-xl text-white hover:text-black shadow-md flex justify-center items-center"
                   >
                     <p>Buy at {Object.keys(url)[0]} </p>
                     <div className="ml-1">

@@ -25,8 +25,7 @@ const ProductsBody: React.FC<Products> = (props) => {
   const router = useRouter();
 
   const menuStyle = useSpring({
-    transform: "translateX(125%)",
-    to: { transform: menuOn ? "translateX(0)" : "translateX(125%)" },
+    transform: menuOn ? "translate3d(0, 0, 0)" : "translate3d(125%, 0, 0)"
   });
 
   const ref = useOnclickOutside(() => {
@@ -161,7 +160,7 @@ const ProductsBody: React.FC<Products> = (props) => {
         <animated.ul
           ref={ref}
           style={menuStyle}
-          className="fixed top-36 sm:top-28 right-4 md:right-8 px-5 pb-2 pt-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg text-sm sm:text-base md:text-lg"
+          className="fixed top-36 sm:top-28 right-4 md:right-8 px-5 py-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg text-base sm:text-lg"
         >
           <h2>Filter by feature:</h2>
           {FeaturesList.map((feature) => (
@@ -169,15 +168,15 @@ const ProductsBody: React.FC<Products> = (props) => {
               key={feature.slug}
               className={
                 features.includes(feature.slug)
-                  ? "leading-8 opacity-100"
-                  : "leading-8 opacity-40"
+                  ? "leading-9 opacity-100"
+                  : "leading-9 opacity-40"
               }
               onClick={() => addFeature(feature.slug)}
             >
               <Feature key={feature.slug} feat={feature.slug} text />
             </div>
           ))}
-          <button className="w-full my-2" onClick={clearFeatures}>
+          <button className="w-full mt-3 mb-2" onClick={clearFeatures}>
             <p
               className={`text-center ${
                 features.length !== 0 ? "opacity-100" : "opacity-40"

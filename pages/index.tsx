@@ -16,7 +16,7 @@ const CallToAction = () => {
   return (
     <div className="flex items-center mt-6">
       <Link href="/products">
-        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-serif text-xl text-white hover:text-custom-green shadow-md">
+        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-sans text-xl text-white hover:text-custom-green shadow-md">
           Start buying less plastic!
         </a>
       </Link>
@@ -34,11 +34,12 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const number = useSpring({
-    val: isVisible ? 8000000 : 7000000,
-    from: { val: 7000000 },
+    val: isVisible ? 8000000 : 7990000,
+    from: { val: 7990000 },
     config: config.molasses,
     reset: !isVisible,
     clamp: true,
+    duration: isVisible ? 500 : 0,
   });
 
   const onChange = (visible: boolean) => {
@@ -170,7 +171,7 @@ const Home: React.FC = () => {
             We&apos;ve curated a collection of well-designed products that
             reduce plastic pollution.
           </h2>
-          <h3 className="mb-8 text-center leading-7">
+          <h3 className="font-sans mb-8 text-center leading-7">
             Filter our collection of products by features that are important to
             you:
           </h3>
@@ -191,8 +192,8 @@ const Home: React.FC = () => {
             Five reasons to reduce the use of plastics now.
           </h2>
           <ul>
-            <li className="pb-4">
-              <h3 className="leading-5 mb-2 flex items-center relative left-0">
+            <li className="pb-6">
+              <h3 className="font-sans leading-5 mb-2 flex items-center relative left-0">
                 <span className="text-4xl">1.</span>
                 <span className="relative left-2">
                   Plastic production contributes to climate change.
@@ -212,8 +213,8 @@ const Home: React.FC = () => {
                 each year.
               </p>
             </li>
-            <li className="pb-4">
-              <h3 className="leading-5 mb-2 flex items-center relative left-0">
+            <li className="pb-6">
+              <h3 className="font-sans leading-5 mb-2 flex items-center relative left-0">
                 <span className="text-4xl">2.</span>
                 <span className="relative left-2">
                   Plastics pollution is killing vulnerable wildlife.
@@ -235,8 +236,8 @@ const Home: React.FC = () => {
                 .
               </p>
             </li>
-            <li className="pb-4">
-              <h3 className="leading-5 mb-2 flex items-center relative left-0">
+            <li className="pb-6">
+              <h3 className="font-sans leading-5 mb-2 flex items-center relative left-0">
                 <span className="text-4xl">3.</span>
                 <span className="relative left-2">
                   Enormous amounts of plastic waste are thrown away into
@@ -257,8 +258,8 @@ const Home: React.FC = () => {
                 as heavy as the Empire State Building!
               </p>
             </li>
-            <li className="pb-4">
-              <h3 className="leading-5 mb-2 flex items-center relative left-0">
+            <li className="pb-6">
+              <h3 className="font-sans leading-5 mb-2 flex items-center relative left-0">
                 <span className="text-4xl">4.</span>
                 <span className="relative left-2">
                   The amount of plastic polluting oceans could nearly triple by
@@ -279,8 +280,8 @@ const Home: React.FC = () => {
                 .
               </p>
             </li>
-            <li className="pb-4">
-              <h3 className="leading-5 mb-2 flex items-center relative left-0">
+            <li className="pb-6">
+              <h3 className="font-sans leading-5 mb-2 flex items-center relative left-0">
                 <span className="text-4xl">5.</span>
                 <span className="relative left-2">
                   Reusing products rather than using single-use plastic saves

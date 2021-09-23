@@ -31,7 +31,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   return (
     <div className="h-60 lg:h-64 flex flex-col justify-between">
       <div className="flex justify-between cursor-pointer">
-        <div className="pt-2 pr-6 w-2/5 md:pr-10">
+        <div className="pt-2 pr-6 w-2/5">
           <Link href={`/product/${product.slug}`}>
             <a>
               <img
@@ -45,7 +45,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
         <div className="w-3/5">
           <Link href={`/product/${product.slug}`}>
             <a>
-              <h2 className="font-serif leading-snug text-lg text-black">
+              <h2 className="font-sans leading-snug text-lg text-black">
                 {productName}
               </h2>
             </a>
