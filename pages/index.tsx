@@ -180,7 +180,7 @@ const Home: React.FC = () => {
               <div
                 key={feature.slug}
                 className="p-4 pt-6 rounded-lg border-2 border-gray-300 hover:border-black hover:shadow-lg cursor-pointer"
-                onClick={() => router.push("/products")}
+                onClick={() => router.push(`/products/?s=${feature.slug.replace(/-/g, " ")}`)}
               >
                 <Feature key={i} feat={feature.slug} text />
               </div>
