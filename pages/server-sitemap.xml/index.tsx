@@ -5,17 +5,25 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const products = await fetcher("https://www.omitplastic.com/api/products");
+  const categories = ["bags", "bottles", "household-supplies", "personal-care"];
 
-  const fields: ISitemapField[] = products
-    .map((product) => ({
-      loc: `https://www.omitplastic.com/product/${product.slug}`,
-      lastmod: new Date().toISOString(),
-    }))
-    .concat([
-      { loc: "https://www.omitplastic.com", lastmod: new Date().toISOString() },
-      { loc: "https://www.omitplastic.com/products", lastmod: new Date().toISOString() },
-      { loc: "https://www.omitplastic.com/faq", lastmod: new Date().toISOString() },
-    ]);
+  const mainFields: ISitemapField[] = [
+    { loc: "https://www.omitplastic.com", lastmod: new Date().toISOString() },
+    { loc: "https://www.omitplastic.com/products", lastmod: new Date().toISOString() },
+    { loc: "https://www.omitplastic.com/faq", lastmod: new Date().toISOString() },
+  ];
+
+  const categoryFields: ISitemapField[] = categories.map((category) => ({
+    loc: `https://www.omitplastic.com/products/${category}`,
+    lastmod: new Date().toISOString(),
+  }));
+
+  const productFields: ISitemapField[] = products.map((product) => ({
+    loc: `https://www.omitplastic.com/product/${product.slug}`,
+    lastmod: new Date().toISOString(),
+  }));
+
+  const fields = [...mainFields, ...categoryFields, ...productFields];
 
   return getServerSideSitemap(ctx, fields);
 };
