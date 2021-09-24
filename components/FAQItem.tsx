@@ -17,7 +17,7 @@ const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
   return (
     <div>
       <div className="flex items-start justify-between">
-        <h2 className="leading-tight mb-4 mr-4">{question}</h2>
+        <h2 className="font-sans leading-tight mb-4 mr-4">{question}</h2>
         <animated.article
           className="cursor-pointer"
           style={{
@@ -30,7 +30,7 @@ const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
           <IconPlus size={30} />
         </animated.article>
       </div>
-      {isOpen && <p className="mr-2 rounded-lg border-2 border-solid border-gray-300 p-4">{answer}</p>}
+      {isOpen && <p className="mr-2 rounded-lg border-2 border-solid border-gray-300 p-4 text-lg">{answer}</p>}
     </div>
   );
 };

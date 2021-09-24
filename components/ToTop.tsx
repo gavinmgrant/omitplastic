@@ -8,12 +8,12 @@ const ToTop: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleScroll = () => {
-    const top = window.scrollY;
-    setIsVisible(top > 100);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const top = window.scrollY;
+      setIsVisible(top > 100);
+    };
+    
     window.addEventListener("scroll", handleScroll);
   }, []);
 
@@ -21,7 +21,7 @@ const ToTop: React.FC = () => {
     isVisible && (
       <button
         onClick={scrollToTop}
-        className="bg-white fixed bottom-4 right-4 md:right-8 transition-all duration-500 p-3 border-black shadow-lg rounded-full border-2 border-solid z-40"
+        className="bg-white fixed bottom-4 right-4 md:right-8 transition-all duration-500 p-3 border-black shadow-lg rounded-full border-2 border-solid z-40 hover:bg-black hover:text-white"
       >
         <IconChevronUp />
       </button>

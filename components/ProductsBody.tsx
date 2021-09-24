@@ -195,7 +195,7 @@ const ProductsBody: React.FC<Products> = (props) => {
       ) : (
         <div>
           {queryValue && (
-            <h2 className="pt-24 sm:pt-16 text-center">
+            <h2 className="px-2 pt-24 sm:pt-16 text-center leading-tight">
               Search results for &quot;{queryValue}&quot;.
             </h2>
           )}
@@ -203,7 +203,7 @@ const ProductsBody: React.FC<Products> = (props) => {
             <div className="h-screen w-screen fixed z-20 bg-black bg-opacity-50"></div>
           )}
           {category && (
-            <h1 className={`pt-24 pb-2 sm: pb-0 sm:pt-16 text-center ${graybg ? "opacity-50" : "opacity-100"}`}>
+            <h1 className={`pt-24 pb-2 sm: pb-0 sm:pt-16 text-center leading-tight ${graybg ? "opacity-50" : "opacity-100"}`}>
               {category}
             </h1>
           )}

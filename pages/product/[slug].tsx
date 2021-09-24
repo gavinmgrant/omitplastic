@@ -131,7 +131,7 @@ const Product: React.FC<ProductProps> = (props) => {
         </div>
         <div className="col-span-2">
           <h1 className="font-serif py-4 leading-snug">{props.name}</h1>
-          <p>{props.description}</p>
+          <p className="text-lg">{props.description}</p>
           <div className="mt-8">
             <h2 className="font-serif mb-2">Features:</h2>
             <ul>
