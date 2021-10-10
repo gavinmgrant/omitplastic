@@ -40,7 +40,9 @@ const CategoryPage: React.FC<Products> = (props) => {
     switch (router.query.category) {
       case "bags":
         setTitle("Bags | OmitPlastic");
-        setDescription("Reusable bags made with no plastic or recycled plastic.");
+        setDescription(
+          "Reusable bags made with no plastic or recycled plastic."
+        );
         setImage("/public/images/ocean-plastic.jpg");
         break;
       case "bottles":
@@ -50,12 +52,16 @@ const CategoryPage: React.FC<Products> = (props) => {
         break;
       case "household-supplies":
         setTitle("Household Supplies | OmitPlastic");
-        setDescription("Plastic free and low plastic content household supplies.");
+        setDescription(
+          "Plastic free and low plastic content household supplies."
+        );
         setImage("/public/images/ocean-plastic.jpg");
         break;
       case "personal-care":
         setTitle("Personal Care | OmitPlastic");
-        setDescription("Plastic free and low plastic content personal care products.");
+        setDescription(
+          "Plastic free and low plastic content personal care products."
+        );
         setImage("/public/images/ocean-plastic.jpg");
         break;
     }
@@ -78,6 +84,7 @@ const CategoryPage: React.FC<Products> = (props) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <link rel="canonical" href="/products" key="canonical" />
       </Head>
       <ProductsBody feed={props.feed} />
     </div>
