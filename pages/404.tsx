@@ -7,6 +7,7 @@ export const NotFoundPage: React.FC = () => (
   <Layout>
     <Head>
       <title>Page not found | OmitPlastic</title>
+      <meta name="robots" content="noindex,nofollow" />
     </Head>
     <div className="flex flex-col justify-center items-center h-screen">
       <section className="mb-32 text-center">

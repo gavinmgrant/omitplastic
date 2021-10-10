@@ -8,6 +8,7 @@ const TermsPage: React.FC = () => {
       <Head>
         <title>Terms and Conditions | OmitPlastic</title>
         <meta name="description" content="Terms and conditions for OmitPlastic." />
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
       <div className="p-4 md:px-8">
         <h1>Terms and Conditions</h1>
