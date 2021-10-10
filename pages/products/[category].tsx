@@ -62,7 +62,7 @@ const CategoryPage: React.FC<Products> = (props) => {
   }, [router.query.category]);
 
   return (
-    <>
+    <div>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -80,7 +80,7 @@ const CategoryPage: React.FC<Products> = (props) => {
         <meta name="twitter:image" content={image} />
       </Head>
       <ProductsBody feed={props.feed} />
-    </>
+    </div>
   );
 };
 

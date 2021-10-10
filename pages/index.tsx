@@ -12,7 +12,7 @@ import bottle from "../public/images/beach-bottle.jpg";
 import ocean from "../public/images/ocean-above.jpg";
 import plastic from "../public/images/plastic-pollution.jpg";
 
-const CallToAction = () => {
+export const CallToAction = () => {
   return (
     <div className="flex items-center mt-6">
       <Link href="/products">
@@ -119,6 +119,7 @@ const Home: React.FC = () => {
               alt="Reduce plastic pollution in oceans by buying less plastic."
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
             />
           </div>
           <div className="hidden md:block pr-12">
@@ -128,6 +129,7 @@ const Home: React.FC = () => {
               width={360}
               height={450}
               layout="fixed"
+              placeholder="blur"
             />
           </div>
         </div>
@@ -138,6 +140,7 @@ const Home: React.FC = () => {
               alt="Buy products with less plastic to reduce plastic pollution."
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
             />
           </div>
           <div className="hidden md:block pl-12">
@@ -147,6 +150,7 @@ const Home: React.FC = () => {
               width={360}
               height={450}
               layout="fixed"
+              placeholder="blur"
             />
           </div>
 
