@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { GetStaticProps } from "next";
 import Product, { ProductProps } from "./Product";
 import useSWR from "swr";
@@ -38,14 +39,20 @@ const RelatedProducts: React.FC<Products> = ({ id, type }, props) => {
 
   return (
     <div className="px-4 pb-4 md:px-8">
-      <h2 className="font-serif leading-snug pb-4">Other {type.toLowerCase()}:</h2>
+      <h2 className="font-serif leading-snug pb-4">
+        Other {type.toLowerCase()}:
+      </h2>
       <div className="grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {products.map((product) => (
           <div
             key={product.id}
             className="transition-all duration-500 p-4 hover:shadow-lg hover:border-black rounded-lg border-2 border-solid"
           >
-            <Product key={product.id} product={product} />
+            <Link href={`/product/${product.slug}`}>
+              <a>
+                <Product key={product.id} product={product} />
+              </a>
+            </Link>
           </div>
         ))}
       </div>

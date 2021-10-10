@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import Layout from "./Layout";
 import Feature from "./Feature";
 import Product, { ProductProps } from "./Product";
@@ -25,7 +26,7 @@ const ProductsBody: React.FC<Products> = (props) => {
   const router = useRouter();
 
   const menuStyle = useSpring({
-    transform: menuOn ? "translate3d(0, 0, 0)" : "translate3d(125%, 0, 0)"
+    transform: menuOn ? "translate3d(0, 0, 0)" : "translate3d(125%, 0, 0)",
   });
 
   const ref = useOnclickOutside(() => {
@@ -203,13 +204,17 @@ const ProductsBody: React.FC<Products> = (props) => {
             <div className="h-screen w-screen fixed z-20 bg-black bg-opacity-50"></div>
           )}
           {category && (
-            <h1 className={`pt-24 pb-2 sm: pb-0 sm:pt-16 text-center leading-tight ${graybg ? "opacity-50" : "opacity-100"}`}>
+            <h1
+              className={`pt-24 pb-2 sm: pb-0 sm:pt-16 text-center leading-tight ${
+                graybg ? "opacity-50" : "opacity-100"
+              }`}
+            >
               {category}
             </h1>
           )}
           <main
             className={`${
-              (queryValue || category) ? "pt-2 sm:pt-4" : "pt-24 sm:pt-16"
+              queryValue || category ? "pt-2 sm:pt-4" : "pt-24 sm:pt-16"
             } px-4 pb-4 md:px-8 grid grid-cols-1 w-full gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4`}
           >
             {products.map((product) => (
@@ -219,7 +224,11 @@ const ProductsBody: React.FC<Products> = (props) => {
                   graybg ? "opacity-50" : "opacity-100"
                 }`}
               >
-                <Product key={product.id} product={product} />
+                <Link href={`/product/${product.slug}`}>
+                  <a>
+                    <Product key={product.id} product={product} />
+                  </a>
+                </Link>
               </div>
             ))}
           </main>
