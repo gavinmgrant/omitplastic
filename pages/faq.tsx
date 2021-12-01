@@ -1,10 +1,12 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import FAQItem from "../components/FAQItem";
 
 const FAQ: React.FC = () => {
-  const title = "Frequently asked questions about reducing plastic pollution. | OmitPlastic";
+  const title =
+    "Frequently asked questions about reducing plastic pollution. | OmitPlastic";
   const description =
     "Answers to frequently asked questions about reducing plastic pollution. OmitPlastic helps you buy products with less plastic.";
   const image = "/public/images/ocean-plastic.jpg";
@@ -14,10 +16,7 @@ const FAQ: React.FC = () => {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta
-          property="og:url"
-          content="https://www.omitplastic.com/faq"
-        />
+        <meta property="og:url" content="https://www.omitplastic.com/faq" />
         <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />
         <meta property="og:description" content={description} />
@@ -30,9 +29,9 @@ const FAQ: React.FC = () => {
       <h1 className="p-4 md:px-8 border-b-2 border-solid border-gray-300 leading-tight">
         Frequently Asked Questions
       </h1>
-      <div className="p-4 md:p-8 grid grid-cols-1 w-full gap-8 sm:grid-cols-2">
+      <div className="p-4 md:p-8 grid grid-cols-1 gap-8 w-full md:grid-cols-2">
         <FAQItem
-          question={<>How did you determine which products to include here?</>}
+          question="How did you determine which products to include here?"
           answer={
             <>
               The majority of{" "}
@@ -52,7 +51,7 @@ const FAQ: React.FC = () => {
           }
         />
         <FAQItem
-          question={<>What is BPA and why should I avoid it?</>}
+          question="What is BPA and why should I avoid it?"
           answer={
             <>
               BPA stands for bisphenol A, an industrial chemical that is found
@@ -80,12 +79,7 @@ const FAQ: React.FC = () => {
           }
         />
         <FAQItem
-          question={
-            <>
-              What&apos;s the difference between a biodegradable and compostable
-              product?
-            </>
-          }
+          question="What's the difference between a biodegradable and compostable product?"
           answer={
             <>
               Biodegradable items refer to any material that breaks down and
@@ -107,11 +101,56 @@ const FAQ: React.FC = () => {
           }
         />
         <FAQItem
-          question={<>How do I buy a product?</>}
+          question="How do I buy a product?"
           answer={
             <>
               Click on the BUY button to take you to the retailer&apos;s site
               where you can buy the product.
+            </>
+          }
+        />
+        <FAQItem
+          question="Why should I use less plastic?"
+          answer={
+            <ol style={{ listStyle: "number" }}>
+              <li style={{ display: "list-item", listStylePosition: "inside" }}>
+                Plastic production contributes to climate change.
+              </li>
+              <li style={{ display: "list-item", listStylePosition: "inside" }}>
+                Plastics pollution is killing vulnerable wildlife.
+              </li>
+              <li style={{ display: "list-item", listStylePosition: "inside" }}>
+                Enormous amounts of plastic waste are thrown away into
+                landfills, taking up valuable space.
+              </li>
+              <li style={{ display: "list-item", listStylePosition: "inside" }}>
+                The amount of plastic polluting oceans could nearly triple by
+                2040 without urgent action.
+              </li>
+              <li style={{ display: "list-item", listStylePosition: "inside" }}>
+                Reusing products rather than using single-use plastic saves
+                money.
+              </li>
+            </ol>
+          }
+        />
+        <FAQItem
+          question="What is an easy way to make an impact in reducing plastic waste?"
+          answer={
+            <>
+              Replace single-use plastic products with a reusable one. Reuse
+              beats single-use on{" "}
+              <a
+                href="https://upstreamsolutions.org/reuse-vs-single-use-environment"
+                target="_blank"
+                rel="noreferrer"
+              >
+                every environmental metric
+              </a>
+              , such as greenhouse gas emissions, water consumption, resource
+              extraction, and plastic pollution. Check out our{" "}
+              <Link href="/products/bags">reusable bags</Link> and{" "}
+              <Link href="/products/bottles">water bottles</Link>.
             </>
           }
         />
