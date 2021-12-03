@@ -9,7 +9,6 @@ import Loader from "../../components/Loader";
 import RelatedProducts from "../../components/RelatedProducts";
 import { IconBrandTwitter, IconBrandFacebook, IconSend } from "@tabler/icons";
 import prisma from "../../lib/prisma";
-import axios from "axios";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const product = await prisma.product.findUnique({
@@ -25,12 +24,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const Product: React.FC<ProductProps> = (props) => {
   const [price, setPrice] = useState("");
   const [productName, setProductName] = useState(props.name);
-  const [productDescription, setProductDescription] = useState(props.description);
+  const [productDescription, setProductDescription] = useState(
+    props.description
+  );
   const [loading, setLoading] = useState(true);
-
-  setTimeout(() => {
-    setLoading(false);
-  }, 16000);
 
   useEffect(() => {
     if (props.name.length > 55) {
@@ -43,37 +40,21 @@ const Product: React.FC<ProductProps> = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(
-        `https://amazon-product-scrapper.p.rapidapi.com/products/${props.asin}`,
-        {
-          params: {
-            api_key: process.env.NEXT_PUBLIC_AMAZON_SCRAPPER_API_KEY,
-          },
-          headers: {
-            "x-rapidapi-key": process.env.NEXT_PUBLIC_XRAPID_API_KEY,
-            "x-rapidapi-host": "amazon-web-scrapper.p.rapidapi.com",
-          },
-        }
-      )
-      .then((response) => {
-        !price && setPrice(response.data.pricing);
-        price && setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
+
+    fetch("/api/price", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ ASIN: props.asin }),
+    })
+      .then((res) => res.json())
+      .then((price) => {
+        const priceString = price.price.split("$", 2)[1];
+        setPrice(`$${priceString}`);
+        setLoading(false);
       });
   }, [props, price]);
-
-  useEffect(() => {
-    if (price.includes("-")) {
-      let index = price.indexOf("-");
-      let firstPrice = price.slice(0, index);
-      setPrice(`from ${firstPrice}`);
-    } else {
-      setPrice(price);
-    }
-  }, [price]);
 
   return (
     <Layout>
