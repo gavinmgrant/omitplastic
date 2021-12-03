@@ -51,7 +51,11 @@ const Product: React.FC<ProductProps> = (props) => {
       .then((res) => res.json())
       .then((price) => {
         const priceString = price.price.split("$", 2)[1];
-        setPrice(`$${priceString}`);
+        if (!priceString) {
+          setPrice("");
+        } else {
+          setPrice(`$${priceString}`);
+        }
         setLoading(false);
       });
   }, [props, price]);
