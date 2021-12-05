@@ -8,6 +8,7 @@ export type ProductProps = {
   id: number;
   barcode: string;
   asin: string;
+  price: string;
   category: string;
   type: string;
   name: string;
@@ -22,8 +23,8 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   const [productName, setProductName] = useState(product.name);
 
   useEffect(() => {
-    if (product.name.length > 127) {
-      setProductName(product.name.substring(0, 127) + "...");
+    if (product.name.length > 90) {
+      setProductName(product.name.substring(0, 90) + "...");
     }
   }, [product.name]);
 
@@ -37,6 +38,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
           <h2 className="font-sans leading-snug text-lg text-black">
             {productName}
           </h2>
+          <p className="mt-2">{product.price}</p>
         </div>
       </div>
 

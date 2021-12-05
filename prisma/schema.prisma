@@ -11,6 +11,7 @@ model Product {
   id          Int     @default(autoincrement()) @id
   barcode     String  @unique  
   asin        String  @unique
+  price       String  @default("0.00")
   category    String
   type        String
   name        String 
