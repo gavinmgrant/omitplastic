@@ -29,7 +29,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   }, [product.name]);
 
   return (
-    <div className="h-60 lg:h-64 flex flex-col justify-between">
+    <div className="relative h-60 lg:h-64 flex flex-col justify-between">
       <div className="flex justify-between cursor-pointer">
         <div className="pt-2 pr-6 w-2/5">
           <img src={product.imageUrl} alt={product.name} className="max-h-44" />
@@ -38,7 +38,6 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
           <h2 className="font-sans leading-snug text-lg text-black">
             {productName}
           </h2>
-          <p className="mt-2">{product.price}</p>
         </div>
       </div>
 
@@ -48,10 +47,9 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
             <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
-        <div className="flex justify-end">
-          Details
-          <IconChevronRight />
-        </div>
+        <p className="flex justify-end text-black border-2 border-black border-solid rounded-full py-2 px-3 text-center hover:bg-black hover:text-white">
+          {product.price === '0.00' ? 'Click for price' : `$${product.price}`}
+        </p>
       </div>
     </div>
   );

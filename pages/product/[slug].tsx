@@ -39,26 +39,30 @@ const Product: React.FC<ProductProps> = (props) => {
   }, [props.name, props.description]);
 
   useEffect(() => {
-    setLoading(true);
-
-    fetch("/api/price", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ ASIN: props.asin }),
-    })
-      .then((res) => res.json())
-      .then((price) => {
-        const priceString = price.price.split("$", 2)[1];
-        if (!priceString) {
-          setPrice("");
-        } else {
-          setPrice(`$${priceString}`);
-        }
-        setLoading(false);
-      });
-  }, [props, price]);
+    if (props.price === "0.00") {
+      setLoading(true);
+      fetch("/api/price", {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ ASIN: props.asin }),
+      })
+        .then((res) => res.json())
+        .then((price) => {
+          const priceString = price.price;
+          if (!priceString) {
+            setPrice("");
+          } else {
+            setPrice(`$${priceString}`);
+          }
+          setLoading(false);
+        });
+    } else {
+      setPrice(`$${props.price}`);
+      setLoading(false);
+    }
+  }, [props.asin, props.price]);
 
   return (
     <Layout>
