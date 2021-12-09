@@ -6,7 +6,6 @@ import { IconChevronRight } from "@tabler/icons";
 
 export type ProductProps = {
   id: number;
-  barcode: string;
   asin: string;
   price: string;
   category: string;
