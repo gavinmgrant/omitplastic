@@ -46,7 +46,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
             <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
-        <p className="flex justify-end text-black border-2 border-black border-solid rounded-full py-2 px-3 text-center hover:bg-black hover:text-white">
+        <p className="transitions-all duration-300 flex justify-end text-black border-2 border-black border-solid rounded-full py-2 px-3 text-center hover:bg-black hover:text-white">
           {product.price === '0.00' ? 'Click for price' : `$${product.price}`}
         </p>
       </div>
