@@ -7,8 +7,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const products = await fetcher("https://www.omitplastic.com/api/products");
 
   const mainFields: ISitemapField[] = [
-    { loc: "https://www.omitplastic.com", lastmod: new Date().toISOString() },
-    { loc: "https://www.omitplastic.com/products", lastmod: new Date().toISOString() },
+    { loc: "https://www.omitplastic.com", lastmod: new Date().toISOString(), priority: '1.0' },
+    { loc: "https://www.omitplastic.com/products", lastmod: new Date().toISOString(), priority: '0.9' },
     { loc: "https://www.omitplastic.com/faq", lastmod: new Date().toISOString() },
   ];
 
