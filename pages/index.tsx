@@ -16,7 +16,7 @@ export const CallToAction = () => {
   return (
     <div className="flex items-center mt-6">
       <Link href="/products">
-        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-white font-sans text-xl text-white hover:text-custom-green shadow-md">
+        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-transparent font-sans text-xl text-white hover:text-custom-green shadow-md">
           Start buying less plastic!
         </a>
       </Link>
