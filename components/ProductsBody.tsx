@@ -161,7 +161,7 @@ const ProductsBody: React.FC<Products> = (props) => {
         <animated.ul
           ref={ref}
           style={menuStyle}
-          className="fixed top-36 sm:top-28 right-4 md:right-8 px-5 py-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg text-base sm:text-lg"
+          className="fixed w-screen sm:w-auto top-36 sm:top-28 sm:right-4 md:right-8 px-5 py-2 border-solid border-2 border-black rounded-lg bg-white z-30 shadow-lg text-base sm:text-lg"
         >
           <h2>Filter by feature:</h2>
           {FeaturesList.map((feature) => (
@@ -169,8 +169,8 @@ const ProductsBody: React.FC<Products> = (props) => {
               key={feature.slug}
               className={
                 features.includes(feature.slug)
-                  ? "leading-9 opacity-100"
-                  : "leading-9 opacity-40"
+                  ? "leading-9 sm:leading-10 opacity-100"
+                  : "leading-9 sm:leading-10 opacity-40"
               }
               onClick={() => addFeature(feature.slug)}
             >
@@ -205,7 +205,7 @@ const ProductsBody: React.FC<Products> = (props) => {
           )}
           {category && (
             <h1
-              className={`pt-24 pb-2 sm: pb-0 sm:pt-16 text-center leading-tight ${
+              className={`pt-24 pb-2 sm:pb-0 sm:pt-16 text-center leading-tight ${
                 graybg ? "opacity-50" : "opacity-100"
               }`}
             >

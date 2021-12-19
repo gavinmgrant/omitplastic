@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { IconHeart } from "@tabler/icons";
+import { IconBrandTwitter } from "@tabler/icons";
 
 const Footer: React.FC = () => {
   return (
@@ -30,7 +31,12 @@ const Footer: React.FC = () => {
           </Link>
         </div>
       </section>
-      <p className="pb-2 text-white">© 2021 OmitPlastic</p>
+      <div className="flex justify-center">
+        <a href="https://twitter.com/OmitPlastic" target="_blank" rel="noreferrer" className="text-white mr-3">
+          <IconBrandTwitter />
+        </a>
+        <p className="pb-2 text-white">© 2021 OmitPlastic</p>
+      </div>
     </footer>
   );
 };
