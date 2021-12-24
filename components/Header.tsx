@@ -26,8 +26,11 @@ const Header: React.FC = () => {
     <header>
       <nav className="flex fixed w-full top-0 left-0 px-4 md:px-8 h-16 items-center justify-between py-4 bg-white z-20">
         <Link href="/">
-          <a className="font-serif text-2xl md:text-3xl text-black">
+          <a className="flex justify-center items-center font-serif text-xl md:text-2xl text-black">
             OmitPlastic
+            <span className="transition-all text-base md:text-xl text-transparent bg-clip-text bg-gradient-to-br from-green-800 to-red-500 ml-2 md:ml-3">
+              {" "}<span className="hidden sm:inline">🎄</span> Merry Christmas!
+            </span>
           </a>
         </Link>
         <div className="flex items-center">
@@ -35,28 +38,48 @@ const Header: React.FC = () => {
             <>
               <div className="hidden sm:block">
                 <menu className="flex items-center justify-end pl-1">
-                <Link href="/products">
-                    <a className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${all ? "border-black" : "border-white"}`}>
+                  <Link href="/products">
+                    <a
+                      className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${
+                        all ? "border-black" : "border-white"
+                      }`}
+                    >
                       All Products
                     </a>
                   </Link>
                   <Link href="/products/bags">
-                    <a className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${bags ? "border-black" : "border-white"}`}>
+                    <a
+                      className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${
+                        bags ? "border-black" : "border-white"
+                      }`}
+                    >
                       Bags
                     </a>
                   </Link>
                   <Link href="/products/bottles">
-                    <a className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${bottles ? "border-black" : "border-white"}`}>
+                    <a
+                      className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${
+                        bottles ? "border-black" : "border-white"
+                      }`}
+                    >
                       Bottles
                     </a>
                   </Link>
                   <Link href="/products/household-supplies">
-                    <a className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${householdSupplies ? "border-black" : "border-white"}`}>
+                    <a
+                      className={`transition-all duration-500 lg:text-lg mx-2 lg:mx-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${
+                        householdSupplies ? "border-black" : "border-white"
+                      }`}
+                    >
                       Household Supplies
                     </a>
                   </Link>
                   <Link href="/products/personal-care">
-                    <a className={`transition-all duration-500 lg:text-lg ml-2 lg:ml-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${personalCare ? "border-black" : "border-white"}`}>
+                    <a
+                      className={`transition-all duration-500 lg:text-lg ml-2 lg:ml-4 leading-tight text-center text-black hover:border-black border-b-4 border-solid pb-1 pt-2 ${
+                        personalCare ? "border-black" : "border-white"
+                      }`}
+                    >
                       Personal Care
                     </a>
                   </Link>
@@ -94,19 +117,51 @@ const Header: React.FC = () => {
               className="absolute top-5 right-4 cursor-pointer"
             />
             <Link href="/products">
-              <a className={`mb-2 pt-3 pb-1 text-white border-b-4 ${all ? "border-white border-solid" : "border-none"}`}>All Products</a>
+              <a
+                className={`mb-2 pt-3 pb-1 text-white border-b-4 ${
+                  all ? "border-white border-solid" : "border-none"
+                }`}
+              >
+                All Products
+              </a>
             </Link>
             <Link href="/products/bags">
-              <a className={`mb-2 pt-3 pb-1 text-white border-b-4 ${bags ? "border-white border-solid" : "border-none"}`}>Bags</a>
+              <a
+                className={`mb-2 pt-3 pb-1 text-white border-b-4 ${
+                  bags ? "border-white border-solid" : "border-none"
+                }`}
+              >
+                Bags
+              </a>
             </Link>
             <Link href="/products/bottles">
-              <a className={`mb-2 pt-3 pb-1 text-white border-b-4 ${bottles ? "border-white border-solid" : "border-none"}`}>Bottles</a>
+              <a
+                className={`mb-2 pt-3 pb-1 text-white border-b-4 ${
+                  bottles ? "border-white border-solid" : "border-none"
+                }`}
+              >
+                Bottles
+              </a>
             </Link>
             <Link href="/products/household-supplies">
-              <a className={`mb-2 pt-3 pb-1 text-white border-b-4 ${householdSupplies ? "border-white border-solid" : "border-none"}`}>Household Supplies</a>
+              <a
+                className={`mb-2 pt-3 pb-1 text-white border-b-4 ${
+                  householdSupplies
+                    ? "border-white border-solid"
+                    : "border-none"
+                }`}
+              >
+                Household Supplies
+              </a>
             </Link>
             <Link href="/products/personal-care">
-              <a className={`mb-2 pt-3 pb-1 text-white border-b-4 ${personalCare ? "border-white border-solid" : "border-none"}`}>Personal Care</a>
+              <a
+                className={`mb-2 pt-3 pb-1 text-white border-b-4 ${
+                  personalCare ? "border-white border-solid" : "border-none"
+                }`}
+              >
+                Personal Care
+              </a>
             </Link>
           </animated.div>
         </>
