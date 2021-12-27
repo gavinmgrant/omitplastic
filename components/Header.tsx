@@ -28,9 +28,9 @@ const Header: React.FC = () => {
         <Link href="/">
           <a className="flex justify-center items-center font-serif text-xl md:text-2xl text-black">
             OmitPlastic
-            <span className="transition-all text-base md:text-xl text-transparent bg-clip-text bg-gradient-to-br from-green-800 to-red-500 ml-2 md:ml-3">
+            {/* <span className="transition-all text-base md:text-xl text-transparent bg-clip-text bg-gradient-to-br from-green-800 to-red-500 ml-2 md:ml-3">
               {" "}<span className="hidden sm:inline">🎄</span> Merry Christmas!
-            </span>
+            </span> */}
           </a>
         </Link>
         <div className="flex items-center">
