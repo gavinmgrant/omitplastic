@@ -34,8 +34,8 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const number = useSpring({
-    val: isVisible ? 8000000 : 7990000,
-    from: { val: 7990000 },
+    val: isVisible ? 14000000 : 0,
+    from: { val: 0 },
     config: config.molasses,
     reset: !isVisible,
     clamp: true,
@@ -96,21 +96,21 @@ const Home: React.FC = () => {
         <div className="flex flex-row justify-center items-center h-screen md:px-2 lg:px-10 xl:px-16 relative">
           <VisibilitySensor onChange={onChange}>
             <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-gray-200 md:text-black z-10 pb-16 md:pb-0">
-              Approximate tons of{" "}
+              Tons of{" "}
               <a
-                href="https://www.nationalgeographic.com/environment/article/plastic-pollution"
+                href="https://www.iucn.org/resources/issues-briefs/marine-plastic-pollution"
                 target="_blank"
                 rel="noreferrer"
                 className="text-white md:text-custom-green"
               >
                 plastic waste
               </a>{" "}
-              that end up in the oceans from coastal nations every year:
-              <animated.div className="mt-1 text-5xl xl:text-6xl text-white md:text-black">
+              that end up in our oceans every year:
+              <animated.div className="mt-2 ml-2 text-4xl xl:text-5xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
                 {number.val.to((val) =>
                   new Intl.NumberFormat().format(Math.floor(val))
                 )}
-              </animated.div>
+              </animated.div>{" "}
             </h2>
           </VisibilitySensor>
           <div className="md:hidden">
