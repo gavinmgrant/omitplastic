@@ -15,6 +15,10 @@ const ToTop: React.FC = () => {
     };
     
     window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   return (
