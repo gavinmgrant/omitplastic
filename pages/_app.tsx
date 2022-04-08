@@ -1,6 +1,7 @@
 import { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { ParallaxProvider } from "react-scroll-parallax";
 import "tailwindcss/tailwind.css";
 import * as ga from "../lib/ga";
 
@@ -22,7 +23,11 @@ const App = ({ Component, pageProps }: AppProps) => {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <ParallaxProvider>
+      <Component {...pageProps} />
+    </ParallaxProvider>
+  );
 };
 
 export default App;

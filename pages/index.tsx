@@ -11,6 +11,7 @@ import VisibilitySensor from "react-visibility-sensor";
 import bottle from "../public/images/beach-bottle.jpg";
 import ocean from "../public/images/ocean-above.jpg";
 import plastic from "../public/images/plastic-pollution.jpg";
+import { Parallax } from "react-scroll-parallax";
 
 export const CallToAction = () => {
   return (
@@ -88,7 +89,9 @@ const Home: React.FC = () => {
 
           <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left pb-28 md:pb-0 flex flex-col justify-center items-center">
             <h1 className="relative text-3xl xl:text-4xl">
-              We help people omit plastic from their online purchases.
+              <Parallax translateY={[-50, 20]}>
+                We help people omit plastic from their online purchases.
+              </Parallax>
             </h1>
             <CallToAction />
           </div>
@@ -96,17 +99,19 @@ const Home: React.FC = () => {
         <div className="flex flex-row justify-center items-center h-screen md:px-2 lg:px-10 xl:px-16 relative">
           <VisibilitySensor onChange={onChange}>
             <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-gray-200 md:text-black z-10 pb-16 md:pb-0">
-              Tons of{" "}
-              <a
-                href="https://www.iucn.org/resources/issues-briefs/marine-plastic-pollution"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white md:text-custom-green"
-              >
-                plastic waste
-              </a>{" "}
-              that end up in our oceans every year:
-              <animated.div className="mt-2 ml-2 text-4xl xl:text-5xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
+              <Parallax translateY={[-50, 20]}>
+                Tons of{" "}
+                <a
+                  href="https://www.iucn.org/resources/issues-briefs/marine-plastic-pollution"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white md:text-custom-green"
+                >
+                  plastic waste
+                </a>{" "}
+                that end up in our oceans every year:
+              </Parallax>
+              <animated.div className="mt-2 text-5xl xl:text-6xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
                 {number.val.to((val) =>
                   new Intl.NumberFormat().format(Math.floor(val))
                 )}
@@ -156,16 +161,18 @@ const Home: React.FC = () => {
 
           <div className="px-6 md:px-4 md:pl-8 font-serif text-center absolute md:relative md:text-left text-gray-200 md:text-black flex flex-col justify-center items-center">
             <h2 className="text-3xl xl:text-4xl">
-              Scientists say the world is approaching a non-reversible{" "}
-              <a
-                href="https://scitechdaily.com/global-plastic-pollution-may-be-nearing-an-irreversible-tipping-point/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white md:text-custom-green"
-              >
-                tipping point
-              </a>{" "}
-              in plastic pollution.
+              <Parallax translateY={[-50, 20]}>
+                The world is approaching a non-reversible{" "}
+                <a
+                  href="https://scitechdaily.com/global-plastic-pollution-may-be-nearing-an-irreversible-tipping-point/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white md:text-custom-green"
+                >
+                  tipping point
+                </a>{" "}
+                in plastic pollution.
+              </Parallax>
             </h2>
             <CallToAction />
           </div>
