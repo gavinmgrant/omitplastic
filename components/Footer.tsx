@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { IconHeart } from "@tabler/icons";
-import { IconBrandTwitter } from "@tabler/icons";
+import { IconBrandTwitter, IconBrandGithub } from "@tabler/icons";
 
 const Footer: React.FC = () => {
-  const year =  new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="bg-custom-green text-white text-center pb-3">
@@ -34,7 +34,20 @@ const Footer: React.FC = () => {
         </div>
       </section>
       <div className="flex justify-center">
-        <a href="https://twitter.com/OmitPlastic" target="_blank" rel="noreferrer" className="text-white mr-3">
+        <a
+          href="https://github.com/gavinmgrant/omitplastic"
+          target="_blank"
+          rel="noreferrer"
+          className="text-white mr-3"
+        >
+          <IconBrandGithub />
+        </a>
+        <a
+          href="https://twitter.com/OmitPlastic"
+          target="_blank"
+          rel="noreferrer"
+          className="text-white mr-3"
+        >
           <IconBrandTwitter />
         </a>
         <p className="pb-2 text-white">© {year} OmitPlastic</p>
