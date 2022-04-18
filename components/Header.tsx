@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { IconMenu, IconX } from "@tabler/icons";
 import { useSpring, animated } from "react-spring";
+import {Squeeze as Hamburger} from "hamburger-react";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                 className="block sm:hidden cursor-pointer z-50"
                 onClick={() => setIsOpen(true)}
               >
-                <IconMenu size={28} />
+                <Hamburger toggled={isOpen} toggle={setIsOpen} />
               </div>
             </>
           ) : (
@@ -112,10 +112,9 @@ const Header: React.FC = () => {
             className="fixed flex flex-col justify-center items-center h-screen w-screen text-white text-xl z-50"
             onClick={() => setIsOpen(false)}
           >
-            <IconX
-              size={28}
-              className="absolute top-5 right-4 cursor-pointer"
-            />
+            <div className="absolute top-2 right-4 cursor-pointer">
+              <Hamburger toggled={isOpen} toggle={setIsOpen} />
+            </div>
             <Link href="/products">
               <a
                 className={`mb-2 pt-3 pb-1 text-white border-b-4 ${
