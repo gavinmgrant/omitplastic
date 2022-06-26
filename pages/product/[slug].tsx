@@ -95,6 +95,8 @@ const Product: React.FC<ProductProps> = (props) => {
           {lightboxOpen && (
             <Lightbox
               image={props.imageUrl}
+              title={props.name}
+              showTitle
               onClose={() => setLightboxOpen(false)}
             />
           )}
