@@ -23,3 +23,14 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * Create the tables in the database using Prisma: `npx prisma db push`
 * Run the application locally: `npm run dev` or `yarn dev`
 * Open `http://localhost:3000/` in your browser.
+
+## Edit Database Schema
+
+* Open the `schema.prisma` file.
+* After you have made your changes, run `npx prisma db push` to update the database.
+* Go here for more information about the [Prisma schema file](https://www.prisma.io/docs/concepts/components/prisma-schema).
+
+## Edit Prisma Tables
+
+* Run the command `npx prisma studio`
+* This opens [Prisma Studio](https://www.prisma.io/studio).

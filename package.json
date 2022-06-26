@@ -19,6 +19,7 @@
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "hamburger-react": "^2.5.0",
+    "jest": "^27.5.1",
     "next": "^11.0.1",
     "next-auth": "^3.27.2",
     "next-sitemap": "^1.6.140",
