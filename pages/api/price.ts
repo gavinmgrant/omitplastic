@@ -31,7 +31,6 @@ export default async function getPrice(req, res) {
       const price = $(".apexPriceToPay").text().split("$", 2)[1];
 
       res.statusCode = 200;
-      console.log(asin, currentPrice, price);
 
       if (currentPrice !== price) {
         await prisma.product.update({

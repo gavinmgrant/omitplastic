@@ -9,6 +9,8 @@ import Loader from "../../components/Loader";
 import RelatedProducts from "../../components/RelatedProducts";
 import { IconBrandTwitter, IconBrandFacebook, IconSend } from "@tabler/icons";
 import prisma from "../../lib/prisma";
+import Lightbox from "react-awesome-lightbox";
+import "react-awesome-lightbox/build/style.css";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const product = await prisma.product.findUnique({
@@ -28,6 +30,7 @@ const Product: React.FC<ProductProps> = (props) => {
     props.description
   );
   const [loading, setLoading] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     if (props.name.length > 55) {
@@ -83,9 +86,18 @@ const Product: React.FC<ProductProps> = (props) => {
       </Head>
       <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-8 p-4 md:px-8">
         <div className="col-span-2 flex flex-col justify-start items-start my-2 md:my-6">
-          <div className="w-full flex justify-center">
+          <div
+            className="w-full flex justify-center cursor-pointer"
+            onClick={() => setLightboxOpen(true)}
+          >
             <img src={props.imageUrl} alt={props.name} className="max-h-96" />
           </div>
+          {lightboxOpen && (
+            <Lightbox
+              image={props.imageUrl}
+              onClose={() => setLightboxOpen(false)}
+            />
+          )}
           <div className="w-full flex justify-center items-center mt-6 md:mt-8">
             <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
               <a

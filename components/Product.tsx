@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
 import Feature from "./Feature";
-import Link from "next/link";
-import { IconChevronRight } from "@tabler/icons";
 
 export type ProductProps = {
   id: number;
@@ -47,7 +45,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
           ))}
         </ul>
         <p className="transitions-all duration-300 flex justify-end text-black border-2 border-black border-solid rounded-full py-2 px-3 text-center hover:bg-black hover:text-white">
-          {product.price === '0.00' ? 'Click for price' : `$${product.price}`}
+          {product.price === "0.00" ? "Click for price" : `$${product.price}`}
         </p>
       </div>
     </div>
