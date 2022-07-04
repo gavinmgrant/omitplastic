@@ -41,26 +41,26 @@ const CategoryPage: React.FC<Products> = (props) => {
       case "bags":
         setTitle("Bags | OmitPlastic");
         setDescription(
-          "Reusable bags made with no plastic or recycled plastic."
+          "Reusable bags made with no plastic or recycled plastic. Plastic free bags."
         );
         setImage("/public/images/ocean-plastic.jpg");
         break;
       case "bottles":
         setTitle("Bottles | OmitPlastic");
-        setDescription("Reusable water bottles made with no or less plastic.");
+        setDescription("Reusable water bottles made with no or less plastic. Plastic free bottles.");
         setImage("/public/images/ocean-plastic.jpg");
         break;
       case "household-supplies":
         setTitle("Household Supplies | OmitPlastic");
         setDescription(
-          "Plastic free and low plastic content household supplies."
+          "Plastic free and low plastic content household supplies. Plastic free laundry detergent."
         );
         setImage("/public/images/ocean-plastic.jpg");
         break;
       case "personal-care":
         setTitle("Personal Care | OmitPlastic");
         setDescription(
-          "Plastic free and low plastic content personal care products."
+          "Plastic free and low plastic content personal care products. Plastic free shampoo. Plastic free toothbrush. Plastic free deodorant."
         );
         setImage("/public/images/ocean-plastic.jpg");
         break;
