@@ -52,6 +52,7 @@ const ProductsPage: React.FC<Products> = (props) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
+        <link rel="canonical" href="/products" key="canonical" />
       </Head>
       <ProductsBody feed={props.feed} />
     </>

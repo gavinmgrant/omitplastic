@@ -66,7 +66,7 @@ const CategoryPage: React.FC<Products> = (props) => {
         break;
     }
   }, [router.query.category]);
-
+  console.log(router.query.category)
   return (
     <div>
       <Head>
@@ -74,7 +74,7 @@ const CategoryPage: React.FC<Products> = (props) => {
         <meta name="description" content={description} />
         <meta
           property="og:url"
-          content="https://www.omitplastic.com/products"
+          content={`https://www.omitplastic.com/products/${router.query.category}`}
         />
         <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />
@@ -84,7 +84,7 @@ const CategoryPage: React.FC<Products> = (props) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
-        <link rel="canonical" href="/products" key="canonical" />
+        <link rel="canonical" href={`/products/${router.query.category}`} key="canonical" />
       </Head>
       <ProductsBody feed={props.feed} />
     </div>
