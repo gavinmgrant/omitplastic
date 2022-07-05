@@ -105,7 +105,16 @@ const FAQ: React.FC = () => {
           answer={
             <>
               Click on the BUY button to take you to the retailer&apos;s site
-              where you can buy the product.
+              where you can buy the product. Currently, all links take you to
+              Amazon. Read more about how{" "}
+              <a
+                href="https://sustainability.aboutamazon.com/environment/circular-economy/packaging"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Amazon is improving their packaging
+              </a>
+              .
             </>
           }
         />
@@ -151,6 +160,62 @@ const FAQ: React.FC = () => {
               extraction, and plastic pollution. Check out our{" "}
               <Link href="/products/bags">reusable bags</Link> and{" "}
               <Link href="/products/bottles">water bottles</Link>.
+            </>
+          }
+        />
+        <FAQItem
+          question="What personal care products can be replaced with less plastic or plastic free versions?"
+          answer={
+            <>
+              Check out our{" "}
+              <a
+                href="http://localhost:3000/products?s=swabs"
+                target="_blank"
+                rel="noreferrer"
+              >
+                swabs
+              </a>
+              ,{" "}
+              <a
+                href="http://localhost:3000/products?s=deodorant"
+                target="_blank"
+                rel="noreferrer"
+              >
+                deodorants
+              </a>
+              ,{" "}
+              <a
+                href="http://localhost:3000/products?s=tampons"
+                target="_blank"
+                rel="noreferrer"
+              >
+                tampons
+              </a>
+              ,{" "}
+              <a
+                href="http://localhost:3000/products?s=shampoo"
+                target="_blank"
+                rel="noreferrer"
+              >
+                shampoo
+              </a>
+              ,{" "}
+              <a
+                href="http://localhost:3000/products?s=razors"
+                target="_blank"
+                rel="noreferrer"
+              >
+                razors
+              </a>
+              , and{" "}
+              <a
+                href="http://localhost:3000/products?s=toothbrush"
+                target="_blank"
+                rel="noreferrer"
+              >
+                toothbrushes
+              </a>
+              .
             </>
           }
         />
