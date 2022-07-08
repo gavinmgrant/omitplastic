@@ -35,8 +35,8 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const number = useSpring({
-    val: isVisible ? 14000000 : 0,
-    from: { val: 0 },
+    val: isVisible ? 33000000000 : 30000000000,
+    from: { val: 30000000000 },
     config: config.molasses,
     reset: !isVisible,
     clamp: true,
@@ -100,16 +100,16 @@ const Home: React.FC = () => {
           <VisibilitySensor onChange={onChange}>
             <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-gray-200 md:text-black z-10 pb-16 md:pb-0">
               <Parallax translateY={[-50, 20]}>
-                Tons of{" "}
+                The estimated{" "}
                 <a
-                  href="https://www.iucn.org/resources/issues-briefs/marine-plastic-pollution"
+                  href="https://usa.oceana.org/our-campaigns/plastic/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-white md:text-custom-green"
                 >
-                  plastic waste
+                  pounds of plastic
                 </a>{" "}
-                that end up in our oceans every year:
+                that enter the ocean every year:
               </Parallax>
               <animated.div className="mt-2 text-5xl xl:text-6xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
                 {number.val.to((val) =>
