@@ -111,7 +111,7 @@ const Home: React.FC = () => {
                 </a>{" "}
                 that enter the ocean every year:
               </Parallax>
-              <animated.div className="mt-2 text-5xl xl:text-6xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
+              <animated.div className="mt-2 text-4xl xl:text-6xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
                 {number.val.to((val) =>
                   new Intl.NumberFormat().format(Math.floor(val))
                 )}
