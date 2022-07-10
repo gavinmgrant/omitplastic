@@ -19,7 +19,8 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * Install the dependencies for the project: `npm install` or `yarn install`
 * Create a free PostgreSQL database on Heroku. [Follow these steps.](https://dev.to/prisma/how-to-setup-a-free-postgresql-database-on-heroku-1dc1)
 * Bootstrap a basic Prisma setup: `npx prisma init`
-* Open the `.env` file and replace the dummy connection UL with the connection UL of your PostgreSQL database.
+* Open the `example.env` file and replace the dummy connection URL `DATABASE_URL` with the connection URL of your PostgreSQL database.
+* After you've added ave it as the `.env` file.
 * Create the tables in the database using Prisma: `npx prisma db push`
 * Run the application locally: `npm run dev` or `yarn dev`
 * Open `http://localhost:3000/` in your browser.

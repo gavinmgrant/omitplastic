@@ -167,7 +167,13 @@ const Product: React.FC<ProductProps> = (props) => {
                     <p>Buy at {Object.keys(url)[0]} </p>
                     <div className="ml-1">
                       {Object.keys(url)[0] === "Amazon" &&
-                        (loading ? <Loader /> : price)}
+                        (loading ? (
+                          <Loader />
+                        ) : price === "$0.00" ? (
+                          "- Click for price"
+                        ) : (
+                          price
+                        ))}
                     </div>
                   </a>
                 </button>
