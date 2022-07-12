@@ -28,7 +28,7 @@ export default async function getPrice(req, res) {
       const response = await fetch(`https://www.amazon.com/dp/${asin}`);
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
-      const price = $(".apexPriceToPay").text().split("$", 2)[1];
+      const price = $(".a-offscreen").text().split("$")[1];
 
       res.statusCode = 200;
 
