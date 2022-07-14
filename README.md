@@ -1,6 +1,6 @@
 # OmitPlastic
 
-This full-stack app is designed to help people reduce plastic consumption by purchasing products with less plastic content.
+This full-stack app is designed to help people reduce plastic consumption by purchasing products with less plastic content. However, this full-stack e-commerce affiliate app that uses Next.js, Prisma, and PostgreSQL can be adapted for other types of products. The affiliate marketing program used is [Amazon Associates](https://affiliate-program.amazon.com/). 
 
 ## Technology
 

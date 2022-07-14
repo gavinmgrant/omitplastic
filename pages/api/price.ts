@@ -32,7 +32,10 @@ export default async function getPrice(req, res) {
 
       res.statusCode = 200;
 
-      if (currentPrice !== price) {
+      const canUpdate =
+        currentPrice !== price && price.length < 8 && price.length > 3;
+
+      if (canUpdate) {
         await prisma.product.update({
           where: {
             asin: asin,
