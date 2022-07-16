@@ -54,7 +54,11 @@ const Product: React.FC<ProductProps> = (props) => {
       .then((price) => {
         const priceString = price.price;
         if (priceString) {
-          setPrice(`$${priceString}`);
+          if (props.price === "Unavailable") {
+            setPrice("- Unavailable");
+          } else {
+            setPrice(`$${priceString}`);
+          }
         } else {
           setPrice(`$${props.price}`);
         }

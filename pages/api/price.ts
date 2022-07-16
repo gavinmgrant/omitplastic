@@ -29,6 +29,8 @@ export default async function getPrice(req, res) {
       const htmlString = await response.text();
       const $ = cheerio.load(htmlString);
       const price = $(".a-offscreen").text().split("$")[1];
+      const availability = $("#availability").text();
+      const unavailable = availability.includes("unavailable");
 
       res.statusCode = 200;
 
@@ -42,6 +44,17 @@ export default async function getPrice(req, res) {
           },
           data: {
             price: price,
+          },
+        });
+      }
+
+      if (unavailable) {
+        await prisma.product.update({
+          where: {
+            asin: asin,
+          },
+          data: {
+            price: "Unavailable",
           },
         });
       }
