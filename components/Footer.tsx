@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
           </p>
           <p className="pb-2 text-white">
             Made with <IconHeart size={19} className="inline-block mb-1" /> in
-            San Diego.
+            San Diego, California.
           </p>
           <Link href="/server-sitemap.xml">
             <a className="pb-2 text-white">Sitemap</a>
