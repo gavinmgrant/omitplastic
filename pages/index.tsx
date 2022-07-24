@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -318,6 +319,18 @@ const Home: React.FC = () => {
             </li>
           </ul>
           <CallToAction />
+        </div>
+        <div className="flex justify-center items-center m-4">
+          <a
+            href="https://www.ontoplist.com/health-websites/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src="https://www.ontoplist.com/images/ontoplist31.png?id=61b97f76da4dc"
+              alt="Health Websites For Consumers and Patients - OnToplist.com"
+            />
+          </a>
         </div>
       </Layout>
     </>
