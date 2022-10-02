@@ -12,6 +12,7 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * Prisma - database toolkit for PostgreSQL
 * SWR - React hooks for data fetching
 * Vercel - platform for deploying and hosting
+* React Spring - component animations
 
 ## Setup
 
