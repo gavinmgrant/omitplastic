@@ -105,30 +105,30 @@ const Product: React.FC<ProductProps> = (props) => {
             />
           )}
           <div className="w-full flex justify-center items-center mt-6 md:mt-8">
-            <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
+            <div className="transitions-all duration-500 border-2 border-black border-solid rounded-full mx-2 p-2 hover:text-white hover:bg-black">
               <a
                 href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20${props.name}:%20omitplastic.com/product/${props.slug}&hashtags=omitplastic,reducewaste,ecofriendly,climateaction`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-black"
+                className="transitions-all duration-500 text-black hover:text-white"
               >
                 <IconBrandTwitter size={28} stroke={1.5} />
               </a>
             </div>
-            <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
+            <div className="transitions-all duration-500 border-2 border-black border-solid rounded-full mx-2 p-2 hover:text-white hover:bg-black">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=https://omitplastic.com/product/${props.slug}`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-black"
+                className="transitions-all duration-500 text-black hover:text-white"
               >
                 <IconBrandFacebook size={28} stroke={1.5} />
               </a>
             </div>
-            <div className="border-2 border-black border-solid rounded-full mx-2 p-2">
+            <div className="transitions-all duration-500 border-2 border-black border-solid rounded-full mx-2 p-2 hover:text-white hover:bg-black">
               <a
                 href={`mailto:?subject=${props.name}%20&body=Check%20out%20the%20${props.name}%20at%20https://omitplastic.com/product/${props.slug}.`}
-                className="text-black"
+                className="transitions-all duration-500 text-black hover:text-white"
               >
                 <IconSend size={28} stroke={1.5} />
               </a>
