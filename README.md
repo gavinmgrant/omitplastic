@@ -25,6 +25,7 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * Create the tables in the database using Prisma: `npx prisma db push`
 * Run the application locally: `npm run dev` or `yarn dev`
 * Open `http://localhost:3000/` in your browser.
+* To deploy to Vercel [read this](https://planetscale.com/docs/tutorials/deploy-to-vercel#deploy-to-vercel).
 
 ## Edit Database Schema
 
