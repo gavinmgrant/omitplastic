@@ -11,7 +11,7 @@ export type ProductProps = {
   name: string;
   slug: string;
   imageUrl: string;
-  urls: string;
+  url: string;
   description: string;
   features: string;
 };
