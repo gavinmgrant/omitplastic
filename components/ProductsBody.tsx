@@ -46,7 +46,6 @@ const ProductsBody: React.FC<Products> = (props) => {
       const filterProducts = (prods, query) => {
         return prods.filter((product) => {
           const features = product.features
-            .join(" ")
             .toLowerCase()
             .replace(/-/g, " ");
           const content =

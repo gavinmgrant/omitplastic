@@ -141,7 +141,7 @@ const Product: React.FC<ProductProps> = (props) => {
           <div className="mt-8">
             <h2 className="font-serif mb-2">Features:</h2>
             <ul>
-              {props.features.map((feature, index) => (
+              {props.features.split(",").map((feature, index) => (
                 <a
                   key={index}
                   href={`/products/?s=${feature.replace(/-/g, " ")}`}
@@ -158,31 +158,27 @@ const Product: React.FC<ProductProps> = (props) => {
           </div>
 
           <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-8 md:flex-row">
-            {props.urls.map((url, index) => (
-              <li key={index} className="mb-3 mx-2">
-                <button key={index} className="h-14">
-                  <a
-                    key={index}
-                    href={Object.values(url)[0]}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-2 px-3 bg-black hover:bg-white font-sans text-xl text-white hover:text-black shadow-md flex justify-center items-center"
-                  >
-                    <p>Buy at {Object.keys(url)[0]} </p>
-                    <div className="ml-1">
-                      {Object.keys(url)[0] === "Amazon" &&
-                        (loading ? (
-                          <Loader />
-                        ) : price === "$0.00" ? (
-                          "- Click for price"
-                        ) : (
-                          price
-                        ))}
-                    </div>
-                  </a>
-                </button>
-              </li>
-            ))}
+            <li className="mb-3 mx-2">
+              <button className="h-14">
+                <a
+                  href={props.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-2 px-3 bg-black hover:bg-white font-sans text-xl text-white hover:text-black shadow-md flex justify-center items-center"
+                >
+                  <p>Buy at Amazon</p>
+                  <div className="ml-1">
+                    {loading ? (
+                      <Loader />
+                    ) : price === "$0.00" ? (
+                      "- Click for price"
+                    ) : (
+                      price
+                    )}
+                  </div>
+                </a>
+              </button>
+            </li>
           </ul>
         </div>
       </div>

@@ -11,9 +11,9 @@ export type ProductProps = {
   name: string;
   slug: string;
   imageUrl: string;
-  urls: object[];
+  urls: string;
   description: string;
-  features: string[];
+  features: string;
 };
 
 const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
@@ -56,7 +56,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
 
       <div className="flex justify-between">
         <ul className={`flex ${isUnavailable && "opacity-30"}`}>
-          {product.features.map((feature) => (
+          {product.features.split(",").map((feature) => (
             <Feature key={feature} feat={feature} text={false} />
           ))}
         </ul>
