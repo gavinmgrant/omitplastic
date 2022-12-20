@@ -21,8 +21,8 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * Install the dependencies for the project: `npm install` or `yarn install`
 * Create a free account and MySQL database on PlanetScale.
 * Bootstrap a basic Prisma setup: `npx prisma init`
-* Open the `example.env` file and replace the dummy connection URL `DATABASE_URL` with `'mysql://root@127.0.0.1:3309/<DATABASE_NAME>'`
 * Create the tables in the database using Prisma: `npx prisma db push`
+* Open the `example.env` file and replace the dummy connection URL `DATABASE_URL` with `'mysql://root@127.0.0.1:3309/<DATABASE_NAME>'`
 * Run the application locally: `npm run dev` or `yarn dev`
 * Open `http://localhost:3000/` in your browser.
 * To deploy to Vercel [read this](https://planetscale.com/docs/tutorials/deploy-to-vercel#deploy-to-vercel).
