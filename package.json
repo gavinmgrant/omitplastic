@@ -2,6 +2,7 @@
   "name": "omitplastic",
   "version": "1.0.0",
   "description": "A full-stack e-commerce affiliate app focusing on reducing plastic consumption.",
+  "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -45,6 +46,7 @@
     "postcss": "^7.0.36",
     "prisma": "2.26.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
-    "typescript": "4.3.5"
+    "typescript": "4.3.5",
+    "vercel": "^28.9.0"
   }
 }
