@@ -14,6 +14,7 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * SWR - React hooks for data fetching
 * Vercel - platform for deploying and hosting
 * React Spring - component animations
+* Cheerio - library for parsing and manipulating HTML and XML
 
 ## Setup
 
@@ -37,3 +38,9 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 
 * Run the command `npx prisma studio`
 * This opens [Prisma Studio](https://www.prisma.io/studio).
+
+## Scraping Amazon Web Page For Pricing
+
+* This app checks for and updates the prices for all products by scraping its corresponding Amazon web page.
+* To view the Node.js code for this, go to the [`pages/api/price` page](https://github.com/gavinmgrant/omitplastic/blob/main/pages/api/price.ts).
+* The Cheerio library is used to parse and traverse markup data to get pricing and availability.
