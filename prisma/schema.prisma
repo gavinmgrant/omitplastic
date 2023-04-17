@@ -17,7 +17,7 @@ model Product {
   name        String 
   slug        String  @unique 
   imageUrl    String 
-  url        String
+  url         String
   description String? 
   features    String
 }
