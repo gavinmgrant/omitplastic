@@ -66,7 +66,7 @@ const CategoryPage: React.FC<Products> = (props) => {
         break;
     }
   }, [router.query.category]);
-  console.log(router.query.category)
+
   return (
     <div>
       <Head>
