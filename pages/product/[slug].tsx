@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
-import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
+import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import Feature from "../../components/Feature";
@@ -13,7 +12,16 @@ import prisma from "../../lib/prisma";
 import Lightbox from "react-awesome-lightbox";
 import "react-awesome-lightbox/build/style.css";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const feed = await prisma.product.findMany();
+  const paths = feed.map((product) => ({
+    params: { slug: product.slug },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const product = await prisma.product.findUnique({
     where: {
       slug: String(params?.slug),

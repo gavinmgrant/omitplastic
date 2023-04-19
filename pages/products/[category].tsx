@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { GetServerSideProps } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import ProductsBody from "../../components/ProductsBody";
 import { ProductProps } from "../../components/Product";
 import prisma from "../../lib/prisma";
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const products: ProductProps[] = await prisma.product.findMany();
+  const categories: string[] = [
+    ...new Set(products.map((product) => product.category)),
+  ];
+  const paths = categories.map((category) => ({
+    params: { category },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const feed = await prisma.product.findMany({
     where: {
       category: String(params?.category),
@@ -47,7 +59,9 @@ const CategoryPage: React.FC<Products> = (props) => {
         break;
       case "bottles":
         setTitle("Bottles | OmitPlastic");
-        setDescription("Reusable water bottles made with no or less plastic. Plastic free bottles.");
+        setDescription(
+          "Reusable water bottles made with no or less plastic. Plastic free bottles."
+        );
         setImage("/public/images/ocean-plastic.jpg");
         break;
       case "household-supplies":
@@ -84,7 +98,11 @@ const CategoryPage: React.FC<Products> = (props) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
-        <link rel="canonical" href={`/products/${router.query.category}`} key="canonical" />
+        <link
+          rel="canonical"
+          href={`/products/${router.query.category}`}
+          key="canonical"
+        />
       </Head>
       <ProductsBody feed={props.feed} />
     </div>
