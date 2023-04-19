@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import Feature from "../../components/Feature";
@@ -18,6 +19,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       slug: String(params?.slug),
     },
   });
+
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: product,
   };
