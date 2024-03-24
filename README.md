@@ -10,7 +10,7 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 * Tailwind CSS - CSS framework
 * MySQL - relational database management system
 * Prisma - Node.js and TypeScript Object Relational Mapper
-* PlanetScale - database platform
+* Neon - database platform
 * SWR - React hooks for data fetching
 * Vercel - platform for deploying and hosting
 * React Spring - component animations
@@ -20,13 +20,13 @@ This full-stack app is designed to help people reduce plastic consumption by pur
 
 * Clone this repository to your local computer.
 * Install the dependencies for the project: `npm install` or `yarn install`
-* Create a free account and MySQL database on PlanetScale.
+* Create a free account and database on Neon.
 * Bootstrap a basic Prisma setup: `npx prisma init`
 * Create the tables in the database using Prisma: `npx prisma db push`
-* Open the `example.env` file and replace the dummy connection URL `DATABASE_URL` with `'mysql://root@127.0.0.1:3309/<DATABASE_NAME>'`
+* Open the `example.env` file and replace the dummy connection URL `DATABASE_URL` with `'postgresql://<DATABASE_NAME>'`
 * Run the application locally: `npm run dev` or `yarn dev`
 * Open `http://localhost:3000/` in your browser.
-* To deploy to Vercel [read this](https://planetscale.com/docs/tutorials/deploy-to-vercel#deploy-to-vercel).
+* To deploy to Vercel [read this](https://neon.tech/docs/guides/vercel).
 
 ## Data Model Definition - Product
 ```
