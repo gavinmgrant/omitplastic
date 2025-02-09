@@ -33,7 +33,7 @@ const ProductsPage: React.FC<Products> = (props) => {
     "Find plastic free products and plastic free packaging. | OmitPlastic";
   const description =
     "Reduce plastic use by purchasing plastic free products, plastic free packaging, and reusable products.";
-  const image = "/public/images/ocean-plastic.jpg";
+  const image = "/public/images/ocean-plastic.webp";
 
   return (
     <>

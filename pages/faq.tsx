@@ -9,7 +9,7 @@ const FAQ: React.FC = () => {
     "Frequently asked questions about reducing plastic pollution. | OmitPlastic";
   const description =
     "Answers to frequently asked questions about reducing plastic pollution. OmitPlastic helps you buy products with less plastic.";
-  const image = "/public/images/ocean-plastic.jpg";
+  const image = "/public/images/ocean-plastic.webp";
 
   return (
     <Layout>

@@ -1,41 +1,59 @@
-import * as cheerio from "cheerio";
-import * as Cors from "cors";
-import prisma from "../../lib/prisma";
+import * as cheerio from "cheerio"
+import Cors from "cors"
+import prisma from "../../lib/prisma"
+import { NextApiRequest, NextApiResponse } from "next"
 
 const cors = Cors({
   methods: ["POST"],
-});
+})
 
-function runMiddleware(req, res, fn) {
+interface MiddlewareFn {
+  (req: any, res: any, fn: (result: any) => void): void
+}
+
+function runMiddleware(req: any, res: any, fn: MiddlewareFn): Promise<void> {
   return new Promise((resolve, reject) => {
     fn(req, res, (result) => {
       if (result instanceof Error) {
-        return reject(result);
+        return reject(result)
       }
 
-      return resolve(result);
-    });
-  });
+      return resolve(result)
+    })
+  })
 }
 
-export default async function getPrice(req, res) {
-  await runMiddleware(req, res, cors);
+interface PriceRequestBody {
+  ASIN: string
+  currentPrice: string
+}
+
+interface PriceResponse {
+  price?: string
+  html?: string
+  error?: string
+}
+
+export default async function getPrice(
+  req: NextApiRequest & { body: PriceRequestBody },
+  res: NextApiResponse<PriceResponse>
+) {
+  await runMiddleware(req, res, cors)
   if (req.method === "POST") {
-    const asin = req.body.ASIN;
-    const currentPrice = req.body.currentPrice;
+    const { ASIN: asin, currentPrice } = req.body
 
     try {
-      const response = await fetch(`https://www.amazon.com/dp/${asin}`);
-      const htmlString = await response.text();
-      const $ = cheerio.load(htmlString);
-      const price = $(".a-offscreen").text().split("$")[1];
-      const availability = $("#availability").text();
-      const unavailable = availability.includes("unavailable");
+      const response = await fetch(`https://www.amazon.com/dp/${asin}`)
+      const htmlString = await response.text()
+      const $ = cheerio.load(htmlString)
+      const price = $(".a-offscreen").text().split("$")[1]
+      const availability = $("#availability").text()
+      const unavailable = availability.includes("unavailable")
 
-      res.statusCode = 200;
+      res.statusCode = 200
 
       const canUpdate =
-        currentPrice !== price && price.length < 8 && price.length > 3;
+        currentPrice !== price && price.length < 8 && price.length > 3
 
       if (canUpdate) {
         await prisma.product.update({
@@ -45,7 +63,7 @@ export default async function getPrice(req, res) {
           data: {
             price: price,
           },
-        });
+        })
       }
 
       if (unavailable) {
@@ -56,18 +74,18 @@ export default async function getPrice(req, res) {
           data: {
             price: "Unavailable",
           },
-        });
+        })
       }
 
       return res.json({
         price: price,
         html: htmlString,
-      });
+      })
     } catch (e) {
-      res.statusCode = 404;
+      res.statusCode = 404
       return res.json({
         error: `Price for item ${asin} is not found.`,
-      });
+      })
     }
   }
 }

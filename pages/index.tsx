@@ -1,39 +1,42 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import Layout from "../components/Layout";
-import Feature from "../components/Feature";
-import { FeaturesList } from "../lib/featuresList";
-import { useSpring, animated, config } from "react-spring";
-import VisibilitySensor from "react-visibility-sensor";
-import bottle from "../public/images/beach-bottle.jpg";
-import ocean from "../public/images/ocean-above.jpg";
-import plastic from "../public/images/plastic-pollution.jpg";
-import { Parallax } from "react-scroll-parallax";
+import React, { useState } from "react"
+import Head from "next/head"
+import Link from "next/link"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import Layout from "../components/Layout"
+import Feature from "../components/Feature"
+import { FeaturesList } from "../lib/featuresList"
+import { useSpring, animated, config } from "react-spring"
+import bottle from "../public/images/beach-bottle.webp"
+import ocean from "../public/images/ocean-above.webp"
+import plastic from "../public/images/plastic-pollution.webp"
+import { Parallax } from "react-scroll-parallax"
+import InView from "../components/InView"
+
+const AnimatedDiv = animated.div as React.FC<any>
 
 export const CallToAction = () => {
   return (
     <div className="flex items-center mt-6">
-      <Link href="/products">
-        <a className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-transparent font-sans text-xl text-white hover:text-custom-green shadow-md">
-          Start buying less plastic!
-        </a>
+      <Link
+        href="/products"
+        className="transitions-all duration-300 border-solid border-2 border-custom-green rounded-full py-2 px-3 bg-custom-green hover:bg-transparent font-sans text-xl text-white hover:text-custom-green shadow-md"
+      >
+        Start buying less plastic!
       </Link>
     </div>
-  );
-};
+  )
+}
 
-const title = "Buy products that reduce plastic pollution. | OmitPlastic";
+const title = "Buy products that reduce plastic pollution. | OmitPlastic"
 const description =
-  "Find plastic-free products, compostable products, reusable products, and more to reduce plastic pollution.";
-const image = "/public/images/beach-bottle.jpg";
+  "Find plastic-free products, compostable products, reusable products, and more to reduce plastic pollution."
+const image = "/public/images/beach-bottle.webp"
 
 const Home: React.FC = () => {
-  const [isVisible, setVisibility] = useState(false);
-  const router = useRouter();
+  const [isVisible, setVisibility] = useState(false)
+  const router = useRouter()
 
   const number = useSpring({
     val: isVisible ? 33000000000 : 30000000000,
@@ -42,13 +45,11 @@ const Home: React.FC = () => {
     reset: !isVisible,
     clamp: true,
     duration: isVisible ? 500 : 0,
-  });
+  })
 
-  const onChange = (visible: boolean) => {
-    if (!isVisible && visible) {
-      setVisibility(true);
-    }
-  };
+  const onInView = () => {
+    if (!isVisible) setVisibility(true)
+  }
 
   return (
     <>
@@ -71,8 +72,6 @@ const Home: React.FC = () => {
             <Image
               src={bottle}
               alt="Find plastic-free products to reduce plastic pollution."
-              layout="fill"
-              objectFit="cover"
               placeholder="blur"
               priority={true}
             />
@@ -83,7 +82,6 @@ const Home: React.FC = () => {
               alt="Find plastic-free products to reduce plastic pollution."
               width={360}
               height={450}
-              layout="fixed"
               placeholder="blur"
             />
           </div>
@@ -98,7 +96,7 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-row justify-center items-center h-screen md:px-2 lg:px-10 xl:px-16 relative">
-          <VisibilitySensor onChange={onChange}>
+          <InView onInView={onInView}>
             <h2 className="px-10 md:px-4 md:pr-8 font-serif text-center text-3xl xl:text-4xl absolute md:relative md:text-left text-gray-200 md:text-black z-10 pb-16 md:pb-0">
               <Parallax translateY={[-50, 20]}>
                 The estimated{" "}
@@ -112,19 +110,17 @@ const Home: React.FC = () => {
                 </a>{" "}
                 that enter the ocean every year:
               </Parallax>
-              <animated.div className="mt-2 text-4xl xl:text-6xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
+              <AnimatedDiv className="mt-2 text-4xl xl:text-6xl text-red-400 md:text-red-700 tabular-nums font-sans font-bold">
                 {number.val.to((val) =>
                   new Intl.NumberFormat().format(Math.floor(val))
                 )}
-              </animated.div>{" "}
+              </AnimatedDiv>{" "}
             </h2>
-          </VisibilitySensor>
+          </InView>
           <div className="md:hidden">
             <Image
               src={ocean}
               alt="Reduce plastic pollution in oceans by buying less plastic."
-              layout="fill"
-              objectFit="cover"
               placeholder="blur"
             />
           </div>
@@ -134,7 +130,6 @@ const Home: React.FC = () => {
               alt="Reduce plastic pollution in oceans by buying less plastic."
               width={360}
               height={450}
-              layout="fixed"
               placeholder="blur"
             />
           </div>
@@ -144,8 +139,6 @@ const Home: React.FC = () => {
             <Image
               src={plastic}
               alt="Buy products with less plastic to reduce plastic pollution."
-              layout="fill"
-              objectFit="cover"
               placeholder="blur"
             />
           </div>
@@ -155,7 +148,6 @@ const Home: React.FC = () => {
               alt="Buy products with less plastic to reduce plastic pollution."
               width={360}
               height={450}
-              layout="fixed"
               placeholder="blur"
             />
           </div>
@@ -322,7 +314,7 @@ const Home: React.FC = () => {
         </div>
       </Layout>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

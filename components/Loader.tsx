@@ -2,6 +2,8 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import { IconLoader } from "@tabler/icons";
 
+const AnimatedDiv = animated.div as React.FC<any>;
+
 const Loader: React.FC = () => {
   const styles = useSpring({
     loop: true,
@@ -9,7 +11,7 @@ const Loader: React.FC = () => {
     to: { rotateZ: 180 },
   });
   return (
-    <animated.div
+    <AnimatedDiv
       style={{
         width: 24,
         height: 24,
@@ -17,7 +19,7 @@ const Loader: React.FC = () => {
       }}
     >
       <IconLoader />
-    </animated.div>
+    </AnimatedDiv>
   );
 };
 

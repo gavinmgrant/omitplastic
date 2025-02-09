@@ -22,14 +22,14 @@ const ToTop: React.FC = () => {
   }, []);
 
   return (
-    isVisible && (
+    isVisible ? (
       <button
         onClick={scrollToTop}
         className="bg-white fixed bottom-4 right-4 md:right-8 transition-all duration-500 p-3 border-black shadow-lg rounded-full border-2 border-solid z-40 hover:bg-black hover:text-white"
       >
         <IconChevronUp />
       </button>
-    )
+    ) : null
   );
 };
 

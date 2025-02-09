@@ -1,7 +1,15 @@
 import prisma from "../../lib/prisma";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handle(req, res) {
-  const products = await prisma.product.findMany({
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  type: string;
+}
+
+export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+  const products: Product[] = await prisma.product.findMany({
     orderBy: [
       {
         category: "desc"

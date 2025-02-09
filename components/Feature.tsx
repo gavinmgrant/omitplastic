@@ -61,7 +61,7 @@ const Feature: React.FC<Props> = ({ feat, text }) => {
   }
   return (
     <li className="flex mb-1 items-center cursor-pointer text-black">
-      <span data-tip={!text ? name : ""} date-place="top">
+      <span data-tip={!text ? name : ""} data-place="top">
         {icon}
       </span>
       <span className="ml-2">{text && name}</span>

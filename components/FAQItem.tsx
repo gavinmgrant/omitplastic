@@ -4,8 +4,11 @@ import { IconPlus } from "@tabler/icons";
 
 interface FAQProps {
   question: string;
-  answer: JSX.Element;
+  answer: any;
 }
+
+const AnimatedArticle = animated.article as React.FC<React.HTMLAttributes<HTMLElement>>;
+const AnimatedDiv = animated.div as React.FC<any>;
 
 const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -22,7 +25,7 @@ const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
     <div>
       <div className="flex items-start justify-between">
         <h2 className="font-sans leading-tight mb-4 mr-4">{question}</h2>
-        <animated.article
+        <AnimatedArticle
           className="cursor-pointer"
           style={{
             width: 30,
@@ -32,14 +35,14 @@ const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <IconPlus size={30} />
-        </animated.article>
+        </AnimatedArticle>
       </div>
-      <animated.div
+      <AnimatedDiv
         className="text-lg mr-8"
         style={{ overflowY: "hidden", ...expand }}
       >
         {answer}
-      </animated.div>
+      </AnimatedDiv>
     </div>
   );
 };

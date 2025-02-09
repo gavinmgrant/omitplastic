@@ -1,29 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2017", // Modern target but avoids unnecessary transpilation issues
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
+    "skipLibCheck": true, // Skips checking .d.ts files to avoid unnecessary build issues
+    "strict": false, // Disables strict mode but still allows good type checking
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": true, // Ensures TS is only used for type checking, not emitting JS files
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
+    "isolatedModules": true, // Needed for Next.js compatibility
+    "jsx": "preserve",
+    "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

@@ -17,19 +17,19 @@ const Footer: React.FC = () => {
             Made with <IconHeart size={19} className="inline-block mb-1" /> in
             San Diego, California.
           </p>
-          <Link href="/server-sitemap.xml">
-            <a className="pb-2 text-white">Sitemap</a>
+          <Link href="/server-sitemap.xml" className="pb-2 text-white">
+            Sitemap
           </Link>
         </div>
         <div className="flex flex-col text-center md:text-right md:order-last">
-          <Link href="/faq">
-            <a className="pb-2 text-white">Frequently Asked Questions</a>
+          <Link href="/faq" className="pb-2 text-white">
+            Frequently Asked Questions
           </Link>
-          <Link href="/terms">
-            <a className="pb-2 text-white">Terms and Conditions</a>
+          <Link href="/terms" className="pb-2 text-white">
+            Terms and Conditions
           </Link>
-          <Link href="/privacy">
-            <a className="pb-2 text-white">Privacy Policy</a>
+          <Link href="/privacy" className="pb-2 text-white">
+            Privacy Policy
           </Link>
         </div>
       </section>
