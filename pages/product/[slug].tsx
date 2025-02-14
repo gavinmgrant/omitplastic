@@ -1,66 +1,70 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react"
-import { GetStaticProps, GetStaticPaths } from "next"
-import Head from "next/head"
-import Layout from "../../components/Layout"
-import Feature from "../../components/Feature"
-import { ProductProps } from "../../components/Product"
-import Loader from "../../components/Loader"
-import RelatedProducts from "../../components/RelatedProducts"
-import { IconBrandTwitter, IconBrandFacebook, IconSend } from "@tabler/icons"
-import prisma from "../../lib/prisma"
-import Lightbox from "yet-another-react-lightbox"
-import "yet-another-react-lightbox/styles.css"
+import React, { useEffect, useState } from "react";
+import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
+import Layout from "../../components/Layout";
+import Feature from "../../components/Feature";
+import { ProductProps } from "../../components/Product";
+import Loader from "../../components/Loader";
+import RelatedProducts from "../../components/RelatedProducts";
+import {
+  IconBrandThreads,
+  IconBrandFacebook,
+  IconSend,
+} from "@tabler/icons-react";
+import prisma from "../../lib/prisma";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const feed = await prisma.product.findMany()
+  const feed = await prisma.product.findMany();
   const paths: { params: { slug: string } }[] = feed.map(
     (product: { slug: string }) => ({
       params: { slug: product.slug },
     })
-  )
+  );
 
-  return { paths, fallback: false }
-}
+  return { paths, fallback: false };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const product = await prisma.product.findUnique({
     where: {
       slug: String(params?.slug),
     },
-  })
+  });
 
   if (!product) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return {
     props: product,
-  }
-}
+  };
+};
 
 const Product: React.FC<ProductProps> = (props) => {
-  const [price, setPrice] = useState("")
-  const [productName, setProductName] = useState(props.name)
+  const [price, setPrice] = useState("");
+  const [productName, setProductName] = useState(props.name);
   const [productDescription, setProductDescription] = useState(
     props.description
-  )
-  const [loading, setLoading] = useState(true)
-  const [lightboxOpen, setLightboxOpen] = useState(false)
+  );
+  const [loading, setLoading] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     if (props.name.length > 55) {
-      setProductName(props.name.substring(0, 55) + "...")
+      setProductName(props.name.substring(0, 55) + "...");
     }
     if (props.description.length > 155) {
-      setProductDescription(props.description.substring(0, 155) + "...")
+      setProductDescription(props.description.substring(0, 155) + "...");
     }
-  }, [props.name, props.description])
+  }, [props.name, props.description]);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     fetch("/api/price", {
       method: "post",
       headers: {
@@ -70,23 +74,23 @@ const Product: React.FC<ProductProps> = (props) => {
     })
       .then((res) => res.json())
       .then((price) => {
-        const priceString = price.price
+        const priceString = price.price;
         if (priceString) {
           if (props.price === "Unavailable") {
-            setPrice("- Unavailable")
+            setPrice("- Unavailable");
           } else {
-            setPrice(`$${priceString}`)
+            setPrice(`$${priceString}`);
           }
         } else {
-          setPrice(`$${props.price}`)
+          setPrice(`$${props.price}`);
         }
-        setLoading(false)
+        setLoading(false);
       })
       .catch((err) => {
-        console.log(err)
-        setLoading(false)
-      })
-  }, [props.asin, props.price])
+        console.log(err);
+        setLoading(false);
+      });
+  }, [props.asin, props.price]);
 
   return (
     <Layout>
@@ -124,12 +128,12 @@ const Product: React.FC<ProductProps> = (props) => {
           <div className="w-full flex justify-center items-center mt-6 md:mt-8">
             <div className="transitions-all duration-500 border-2 border-black border-solid rounded-full mx-2 p-2 hover:text-white hover:bg-black">
               <a
-                href={`https://twitter.com/intent/tweet?text=Check%20out%20the%20${props.name}:%20omitplastic.com/product/${props.slug}&hashtags=omitplastic,reducewaste,ecofriendly,climateaction`}
+                href={`https://www.threads.net/intent/post?text=Check%20out%20the%20${props.name}:%20omitplastic.com/product/${props.slug}`}
                 target="_blank"
                 rel="noreferrer"
                 className="transitions-all duration-500 text-black hover:text-white"
               >
-                <IconBrandTwitter size={28} stroke={1.5} />
+                <IconBrandThreads size={28} stroke={1.5} />
               </a>
             </div>
             <div className="transitions-all duration-500 border-2 border-black border-solid rounded-full mx-2 p-2 hover:text-white hover:bg-black">
@@ -211,7 +215,7 @@ const Product: React.FC<ProductProps> = (props) => {
         </p>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

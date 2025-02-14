@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { IconHeart } from "@tabler/icons";
-import { IconBrandTwitter, IconBrandGithub } from "@tabler/icons";
+import { IconHeart } from "@tabler/icons-react";
+import { IconBrandTwitter, IconBrandGithub } from "@tabler/icons-react";
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();

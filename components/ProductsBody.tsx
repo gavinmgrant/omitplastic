@@ -1,56 +1,56 @@
-import React, { useState, useEffect } from "react"
-import { useRouter } from "next/router"
-import Link from "next/link"
-import Layout from "./Layout"
-import Feature from "./Feature"
-import Product, { ProductProps } from "./Product"
-import SearchBar from "./SearchBar"
-import { FeaturesList } from "../lib/featuresList"
-import { IconFilter, IconX } from "@tabler/icons"
-import useOnclickOutside from "react-cool-onclickoutside"
-import { useSpring, animated } from "react-spring"
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Layout from "./Layout";
+import Feature from "./Feature";
+import Product, { ProductProps } from "./Product";
+import SearchBar from "./SearchBar";
+import { FeaturesList } from "../lib/featuresList";
+import { IconFilter, IconX } from "@tabler/icons-react";
+import useOnclickOutside from "react-cool-onclickoutside";
+import { useSpring, animated } from "react-spring";
 
 type Products = {
-  feed: ProductProps[]
-}
+  feed: ProductProps[];
+};
 
-const AnimatedUl = animated.ul as React.FC<any>
+const AnimatedUl = animated.ul as React.FC<any>;
 
 const ProductsBody: React.FC<Products> = (props) => {
-  const [graybg, setGraybg] = useState(false)
-  const [products, setProducts] = useState<ProductProps[]>([])
-  const [queryValue, setQueryValue] = useState("")
-  const [category, setCategory] = useState("")
-  const [features, setFeatures] = useState<string[]>([])
-  const [menuOn, setMenuOn] = useState(false)
-  const [startOver, setStartOver] = useState(false)
+  const [graybg, setGraybg] = useState(false);
+  const [products, setProducts] = useState<ProductProps[]>([]);
+  const [queryValue, setQueryValue] = useState("");
+  const [category, setCategory] = useState("");
+  const [features, setFeatures] = useState<string[]>([]);
+  const [menuOn, setMenuOn] = useState(false);
+  const [startOver, setStartOver] = useState(false);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const menuStyle = useSpring({
     transform: menuOn ? "translate3d(0, 0, 0)" : "translate3d(125%, 0, 0)",
-  })
+  });
 
   const ref = useOnclickOutside(() => {
-    setMenuOn(false)
-    setGraybg(false)
-  })
+    setMenuOn(false);
+    setGraybg(false);
+  });
 
   const handleClickBtn = () => {
-    setMenuOn(!menuOn)
-    setGraybg(!graybg)
-  }
+    setMenuOn(!menuOn);
+    setGraybg(!graybg);
+  };
 
   useEffect(() => {
     if (!startOver) {
-      const { search } = window.location
-      const query = new URLSearchParams(search.toLowerCase()).get("s")
+      const { search } = window.location;
+      const query = new URLSearchParams(search.toLowerCase()).get("s");
       const filterProducts = (
         prods: ProductProps[],
         query: string
       ): ProductProps[] => {
         return prods.filter((product: ProductProps) => {
-          const features = product.features.toLowerCase().replace(/-/g, " ")
+          const features = product.features.toLowerCase().replace(/-/g, " ");
           const content =
             product.name.toLowerCase() +
             " " +
@@ -60,88 +60,88 @@ const ProductsBody: React.FC<Products> = (props) => {
             " " +
             product.type.toLowerCase() +
             " " +
-            features
+            features;
 
-          return content.includes(query)
-        })
-      }
+          return content.includes(query);
+        });
+      };
 
       const filteredProducts = filterProducts(props.feed, query || "").sort(
         (a, b) => {
-          const aName = a.name.toLowerCase()
-          const bName = b.name.toLowerCase()
-          return aName.localeCompare(bName)
+          const aName = a.name.toLowerCase();
+          const bName = b.name.toLowerCase();
+          return aName.localeCompare(bName);
         }
-      )
+      );
 
-      setProducts(filteredProducts)
-      query ? setQueryValue(query) : setQueryValue("")
+      setProducts(filteredProducts);
+      query ? setQueryValue(query) : setQueryValue("");
     }
-  }, [queryValue, startOver, props.feed])
+  }, [queryValue, startOver, props.feed]);
 
   useEffect(() => {
     interface FilterProducts {
-      (prods: ProductProps[], features: string[]): ProductProps[]
+      (prods: ProductProps[], features: string[]): ProductProps[];
     }
 
     const filterProducts: FilterProducts = (prods, features) => {
       return prods.filter((product) => {
-        return features.every((f) => product.features.includes(f))
-      })
-    }
+        return features.every((f) => product.features.includes(f));
+      });
+    };
 
-    let filteredProducts: ProductProps[] = []
+    let filteredProducts: ProductProps[] = [];
 
     if (features.length > 0) {
       filteredProducts = filterProducts(props.feed, features).sort((a, b) => {
-        const aName = a.name.toLowerCase()
-        const bName = b.name.toLowerCase()
-        return aName.localeCompare(bName)
-      })
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+        return aName.localeCompare(bName);
+      });
     }
 
     features.length > 0
       ? setProducts(filteredProducts)
-      : setProducts(props.feed)
-  }, [features, props.feed])
+      : setProducts(props.feed);
+  }, [features, props.feed]);
 
   interface AddFeature {
-    (feature: string): void
+    (feature: string): void;
   }
 
   const addFeature: AddFeature = (feature) => {
     if (!features.includes(feature)) {
-      setFeatures(features.concat(feature))
+      setFeatures(features.concat(feature));
     } else {
-      setFeatures(features.filter((item) => item !== feature))
+      setFeatures(features.filter((item) => item !== feature));
     }
-  }
+  };
 
   const clearFeatures = () => {
-    setFeatures([])
-  }
+    setFeatures([]);
+  };
 
   const showAll = () => {
-    setQueryValue("")
-    setStartOver(true)
-    router.push("/products")
-  }
+    setQueryValue("");
+    setStartOver(true);
+    router.push("/products");
+  };
 
   useEffect(() => {
-    setProducts(props.feed)
-  }, [props.feed, startOver])
+    setProducts(props.feed);
+  }, [props.feed, startOver]);
 
   useEffect(() => {
     // Get the category name and format it with capitalized first letter
     if (router.query.category) {
-      const name = String(router.query.category).split("-")
+      const name = String(router.query.category).split("-");
       for (let i = 0; i < name.length; i++) {
-        name[i] = name[i].charAt(0).toUpperCase() + name[i].slice(1)
+        name[i] = name[i].charAt(0).toUpperCase() + name[i].slice(1);
       }
-      const formattedName = name.join(" ")
-      setCategory(formattedName)
+      const formattedName = name.join(" ");
+      setCategory(formattedName);
     }
-  }, [router.query.category, category])
+  }, [router.query.category, category]);
 
   return (
     <Layout>
@@ -241,7 +241,7 @@ const ProductsBody: React.FC<Products> = (props) => {
         </div>
       )}
     </Layout>
-  )
-}
+  );
+};
 
-export default ProductsBody
+export default ProductsBody;

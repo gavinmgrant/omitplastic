@@ -9,7 +9,7 @@ import {
   IconSquareMinus,
   IconRecycle,
   IconRepeat,
-} from "@tabler/icons";
+} from "@tabler/icons-react";
 
 const ReactTooltip = dynamic(() => import("react-tooltip"), {
   ssr: false,

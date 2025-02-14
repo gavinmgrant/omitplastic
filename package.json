@@ -1,6 +1,6 @@
 {
   "name": "omitplastic",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A full-stack e-commerce affiliate app focusing on reducing plastic consumption.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^6.3.0",
-    "@tabler/icons": "^1.41.2",
+    "@tabler/icons-react": "^3.30.0",
     "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
     "hamburger-react": "^2.5.0",

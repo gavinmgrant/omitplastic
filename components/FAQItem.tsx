@@ -1,13 +1,15 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
-import { IconPlus } from "@tabler/icons";
+import { IconPlus } from "@tabler/icons-react";
 
 interface FAQProps {
   question: string;
   answer: any;
 }
 
-const AnimatedArticle = animated.article as React.FC<React.HTMLAttributes<HTMLElement>>;
+const AnimatedArticle = animated.article as React.FC<
+  React.HTMLAttributes<HTMLElement>
+>;
 const AnimatedDiv = animated.div as React.FC<any>;
 
 const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
@@ -18,7 +20,11 @@ const FAQ: React.FC<FAQProps> = ({ question, answer }) => {
   });
   const expand = useSpring({
     from: { opacity: 0, height: 0, paddingBottom: 0 },
-    to: { opacity: isOpen ? 1 : 0, height: isOpen ? "auto" : 0, paddingBottom: isOpen ? 16 : 0 },
+    to: {
+      opacity: isOpen ? 1 : 0,
+      height: isOpen ? "auto" : 0,
+      paddingBottom: isOpen ? 16 : 0,
+    },
   });
 
   return (
