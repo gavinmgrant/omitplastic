@@ -19,7 +19,7 @@ export type ProductProps = {
 const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   const [productName, setProductName] = useState(product.name);
   const [productPrice, setProductPrice] = useState(product.price);
-  const isUnavailable = product.price === "Unavailable";
+  const [isUnavailable, setIsUnavailable] = useState(false);
 
   useEffect(() => {
     if (product.name.length > 90) {
@@ -28,14 +28,16 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
   }, [product.name]);
 
   useEffect(() => {
+    product.price === "Unavailable"
+      ? setIsUnavailable(true)
+      : setIsUnavailable(false);
+
     if (product.price === "0.00") {
       setProductPrice("Click for price");
-    } else if (isUnavailable) {
-      setProductPrice("Check Availability");
     } else {
       setProductPrice(`$${product.price}`);
     }
-  }, [product.price, isUnavailable]);
+  }, [product.price]);
 
   return (
     <div className="relative h-60 lg:h-64 flex flex-col justify-between">
@@ -61,7 +63,7 @@ const Product: React.FC<{ product: ProductProps }> = ({ product }) => {
           ))}
         </ul>
         <p className="transitions-all duration-300 flex justify-end text-black border-2 border-black border-solid rounded-full py-2 px-3 text-center hover:bg-black hover:text-white">
-          {productPrice}
+          {isUnavailable ? "Check Availability" : productPrice}
         </p>
       </div>
     </div>

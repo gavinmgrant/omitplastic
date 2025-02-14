@@ -11,6 +11,7 @@ import {
   IconBrandThreads,
   IconBrandFacebook,
   IconSend,
+  IconMoodSad,
 } from "@tabler/icons-react";
 import prisma from "../../lib/prisma";
 import Lightbox from "yet-another-react-lightbox";
@@ -76,11 +77,7 @@ const Product: React.FC<ProductProps> = (props) => {
       .then((price) => {
         const priceString = price.price;
         if (priceString) {
-          if (props.price === "Unavailable") {
-            setPrice("- Unavailable");
-          } else {
-            setPrice(`$${priceString}`);
-          }
+          setPrice(`$${priceString}`);
         } else {
           setPrice(`$${props.price}`);
         }
@@ -187,16 +184,25 @@ const Product: React.FC<ProductProps> = (props) => {
                   rel="noreferrer"
                   className="transitions-all duration-300 border-solid border-2 border-black rounded-full py-2 px-3 bg-black hover:bg-white font-sans text-xl text-white hover:text-black shadow-md flex justify-center items-center"
                 >
-                  <p>Buy at Amazon</p>
-                  <div className="ml-1">
-                    {loading ? (
-                      <Loader />
-                    ) : price === "$0.00" ? (
-                      "- Click for price"
-                    ) : (
-                      price
-                    )}
-                  </div>
+                  {props.price === "Unavailable" ? (
+                    <p className="flex items-center gap-2">
+                      <IconMoodSad size={28} stroke={1.5} />
+                      <span>Unavailable</span>
+                    </p>
+                  ) : (
+                    <>
+                      <p>Buy at Amazon</p>
+                      <div className="ml-1">
+                        {loading ? (
+                          <Loader />
+                        ) : price === "$0.00" ? (
+                          "- Click for price"
+                        ) : (
+                          price
+                        )}
+                      </div>
+                    </>
+                  )}
                 </a>
               </button>
             </li>

@@ -1,6 +1,6 @@
 {
   "name": "omitplastic",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A full-stack e-commerce affiliate app focusing on reducing plastic consumption.",
   "main": "index.js",
   "scripts": {
