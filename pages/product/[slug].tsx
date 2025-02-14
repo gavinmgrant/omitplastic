@@ -74,8 +74,8 @@ const Product: React.FC<ProductProps> = (props) => {
       body: JSON.stringify({ ASIN: props.asin, currentPrice: props.price }),
     })
       .then((res) => res.json())
-      .then((price) => {
-        const priceString = price.price;
+      .then((data) => {
+        const priceString = data.price;
         if (priceString) {
           setPrice(`$${priceString}`);
         } else {
@@ -169,10 +169,11 @@ const Product: React.FC<ProductProps> = (props) => {
                 </a>
               ))}
             </ul>
-            <p className="my-8">
+            <p className="mt-8 mb-2">
               When you buy this product using our links, we may earn an
               affiliate commission.
             </p>
+            <p>ASIN: {props.asin}</p>
           </div>
 
           <ul className="sticky bottom-0 flex justify-center items-center flex-col mt-8 md:flex-row">
