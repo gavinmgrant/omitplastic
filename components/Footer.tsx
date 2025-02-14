@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { IconHeart } from "@tabler/icons-react";
-import { IconBrandTwitter, IconBrandGithub } from "@tabler/icons-react";
+import { IconBrandGithub } from "@tabler/icons-react";
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();
@@ -41,14 +41,6 @@ const Footer: React.FC = () => {
           className="text-white mr-3"
         >
           <IconBrandGithub />
-        </a>
-        <a
-          href="https://twitter.com/OmitPlastic"
-          target="_blank"
-          rel="noreferrer"
-          className="text-white mr-3"
-        >
-          <IconBrandTwitter />
         </a>
         <p className="pb-2 text-white">© {year} OmitPlastic</p>
       </div>
